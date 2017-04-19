@@ -1,0 +1,26 @@
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.dll
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.dll
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.xml
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.xml
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csprojResolveAssemblyReference.cache
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.exe
+C:\Users\Sencer\documents\visual studio 2015\Projects\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.exe
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.dll
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.dll
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.xml
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.xml
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csprojResolveAssemblyReference.cache
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
+C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache
