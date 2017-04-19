@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using AForge.Video;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
+using System.Security.Permissions;
 
 //THIS SOFTWARE HAS BEEN DEVELOPED BY SENCER YAZICI. FOR MORE INFORMATION PLASE CONTACT VIA EMAIL "sencer_yazici98@hotmail.com" 
 // NOTE: THIS SOFTWARE IS IN DEVELOPMENT UNTER ITUROV TEAM AT ISTANBUL TECHNICAL UNIVERSITY
@@ -23,16 +25,25 @@ namespace WindowsFormsApplication5
         {
             InitializeComponent();
         }
+        
         MJPEGStream stream;
         int statePanel1 = 0;
+        static int tcpEnable = 1;
+        
         Point parameterBase;
         Point panelbase;
+        static int lightIntensity = 0;
         public static string[] dataReceived = new string[32];
         public static string[] dataSent = new string[32];
+        Thread myTcp;
+        [SecurityPermissionAttribute(SecurityAction.Demand, ControlThread = true)]
         private void Form1_Load(object sender, EventArgs e)
         {
             cameraInitialize();
-            graphicsInitalize();  
+            graphicsInitalize();
+            //myTcp = new Thread(new ThreadStart(delegate { Listen(tcpEnable); }));
+            myTcp = new Thread(Listen);
+            myTcp.Start();
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)
@@ -43,10 +54,10 @@ namespace WindowsFormsApplication5
 
         private void closeButton_Click(object sender, EventArgs e) // CLOSE BUTTON 
         {
-            //stream.SignalToStop();
+            myTcp.Abort();
+            tcpEnable = 0;
             stream.Stop();
-            Application.Exit();
-            
+            this.Dispose();            
         }
 
         private void toptitlebar1_Click(object sender, EventArgs e)// WEBSITE
@@ -67,10 +78,9 @@ namespace WindowsFormsApplication5
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)//IMPORTANT, STREAM HAS TO BE STOPPED BEFORE QUITTING APPLICATION
         {
-            //stream.SignalToStop();
-            //stream.Stop();//STOPPING STREAM
-
-
+            tcpEnable = 0;
+            Application.Exit();
+            this.Dispose();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
@@ -195,77 +205,108 @@ namespace WindowsFormsApplication5
         public static void Listen()
         {
             TcpListener server = null;
-            try
-            {
-                // Set the TcpListener on port 13000.
-                Int32 port = 11000;
-                IPAddress localAddr = IPAddress.Any;
-
-                // TcpListener server = new TcpListener(port);
-                server = new TcpListener(localAddr, port);
-
-                // Start listening for client requests.
-                server.Start();
-
-                // Buffer for reading data
-                Byte[] bytes = new Byte[256];
-                String data = null;
-
-                // Enter the listening loop.
-                while (true)
+                try
                 {
-                    //myConsole("Waiting for a connection... ");
+                    // Set the TcpListener on port 13000.
+                    Int32 port = 8092;
+                    IPAddress localAddr = IPAddress.Any;
 
-                    // Perform a blocking call to accept requests.
-                    // You could also user server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    //myConsole("Connected!");
+                    // TcpListener server = new TcpListener(port);
+                    server = new TcpListener(localAddr, port);
 
-                    data = null;
+                    // Start listening for client requests.
+                    server.Start();
 
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
+                    // Buffer for reading data
+                    Byte[] bytes = new Byte[256];
+                    String data = null;
 
-                    int i;
-
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    // Enter the listening loop.
+                    while (true)
                     {
-                        // Translate data bytes to a ASCII string.
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        //myConsole("Received:" + data);
-                        string[] receivedString = data.Split(',');
-                        for(int k = 0; k < receivedString.Length; k++)
+                        //myConsole("Waiting for a connection... ");
+
+                        // Perform a blocking call to accept requests.
+                        // You could also user server.AcceptSocket() here.
+
+                        TcpClient client = server.AcceptTcpClient();
+                        //myConsole("Connected!");
+                        if (!client.Connected)
                         {
-                            Form1.dataReceived[k] = receivedString[k];
+                            
+                            return;
+                        }
+                        else
+                        {
+                            data = null;
+                            // Get a stream object for reading and writing
+                            NetworkStream stream = client.GetStream();
+
+                            int i;
+
+                            // Loop to receive all the data sent by the client.
+                            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                            {
+                                // Translate data bytes to a ASCII string.
+                                data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                                //myConsole("Received:" + data);
+                                string[] receivedString = data.Split(',');
+                                for (int k = 0; k < receivedString.Length; k++)
+                                {
+                                    Form1.dataReceived[k] = receivedString[k];
+                                }
+                                string[] dataArray = new string[16];
+                                for (int dat = 0; dat < dataSent.Length; dat++)
+                                {
+                                    dataSent[dat] = "0";
+                                }
+                                dataArray[0] = dataSent[3]; // Throttle 
+                                dataArray[1] = dataSent[4]; // 
+                                dataArray[2] = dataSent[5]; // 
+                                dataArray[3] = (lightIntensity * 7).ToString(); // Light intensity value
+
+                                dataArray[4] = "";
+
+
+                                string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6];
+
+                                byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
+
+                                // Send back a response.
+                                stream.Write(msg, 0, msg.Length);
+
+                                //myConsole("Sent:" + data);
+                            }
+
+                            // Shutdown and end connection
+                            client.Close();
                         }
 
-                        string outgoingData = dataSent[3] + "," + dataSent[4] + "," + dataSent[5];
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-
-                        //myConsole("Sent:" + data);
+                        //return;
                     }
-
-                    // Shutdown and end connection
-                    client.Close();
                 }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-            }
-            finally
-            {
-                // Stop listening for new clients.
-                server.Stop();
-            }
+                catch (SocketException e)
+                {
+                    server.Stop();
+                    Console.WriteLine("SocketException: {0}", e);
+                }
+                finally
+                {
+                    // Stop listening for new clients.
+                    server.Stop();
+                }
 
 
-            Console.WriteLine("\nHit enter to continue...");
-            Console.Read();
+                Console.WriteLine("\nHit enter to continue...");
+                Console.Read();
+            
+
+        }
+        private void lightBar_Scroll(object sender, EventArgs e)
+        {
+            lightPercent.Text = (lightBar.Value * 10).ToString() + "%"; //Light Intensity Display
+            lightIntensity = lightBar.Value * 10;
+            //label1.Text = lightIntensity.ToString();
         }
     }
 }

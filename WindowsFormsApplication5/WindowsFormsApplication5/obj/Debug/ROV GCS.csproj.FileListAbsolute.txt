@@ -24,3 +24,16 @@ C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\W
 C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
 C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
 C:\Users\Sencer\Google Drive\Sync Files\Visual Studio\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.exe
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.dll
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.dll
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.xml
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.xml
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csprojResolveAssemblyReference.cache
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
+C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache

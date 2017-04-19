@@ -40,11 +40,15 @@
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.toptitlebar1 = new System.Windows.Forms.PictureBox();
             this.consoleBox = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lightPercent = new System.Windows.Forms.Label();
+            this.lightBar = new System.Windows.Forms.TrackBar();
             this.parameterspanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artHorpanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toptitlebar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightBar)).BeginInit();
             this.SuspendLayout();
             // 
             // camStatLabel
@@ -61,13 +65,16 @@
             // 
             // parameterspanel
             // 
+            this.parameterspanel.Controls.Add(this.lightBar);
+            this.parameterspanel.Controls.Add(this.lightPercent);
+            this.parameterspanel.Controls.Add(this.label1);
             this.parameterspanel.Controls.Add(this.button1);
             this.parameterspanel.Controls.Add(this.label3);
             this.parameterspanel.Controls.Add(this.textBoxPort);
             this.parameterspanel.Controls.Add(this.label2);
             this.parameterspanel.Controls.Add(this.textBoxIP);
             this.parameterspanel.Location = new System.Drawing.Point(825, 266);
-            this.parameterspanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.parameterspanel.Margin = new System.Windows.Forms.Padding(4);
             this.parameterspanel.Name = "parameterspanel";
             this.parameterspanel.Size = new System.Drawing.Size(447, 675);
             this.parameterspanel.TabIndex = 6;
@@ -75,7 +82,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(364, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 13;
@@ -97,7 +104,7 @@
             // textBoxPort
             // 
             this.textBoxPort.Location = new System.Drawing.Point(313, 14);
-            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(41, 22);
             this.textBoxPort.TabIndex = 11;
@@ -117,7 +124,7 @@
             // textBoxIP
             // 
             this.textBoxIP.Location = new System.Drawing.Point(155, 14);
-            this.textBoxIP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxIP.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(103, 22);
             this.textBoxIP.TabIndex = 9;
@@ -127,7 +134,7 @@
             // 
             this.pictureBox1.Image = global::WindowsFormsApplication5.Properties.Resources.paramtab_000003;
             this.pictureBox1.Location = new System.Drawing.Point(3, 207);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(685, 951);
             this.pictureBox1.TabIndex = 7;
@@ -137,7 +144,7 @@
             // artHorpanel
             // 
             this.artHorpanel.Location = new System.Drawing.Point(753, 219);
-            this.artHorpanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artHorpanel.Margin = new System.Windows.Forms.Padding(4);
             this.artHorpanel.Name = "artHorpanel";
             this.artHorpanel.Size = new System.Drawing.Size(1280, 886);
             this.artHorpanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +158,7 @@
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Image = global::WindowsFormsApplication5.Properties.Resources.Comp_2_00000_00000;
             this.closeButton.Location = new System.Drawing.Point(2349, 15);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(64, 59);
             this.closeButton.TabIndex = 2;
@@ -165,7 +172,7 @@
             this.toptitlebar1.BackColor = System.Drawing.Color.Transparent;
             this.toptitlebar1.Image = global::WindowsFormsApplication5.Properties.Resources.Comp_1_000002;
             this.toptitlebar1.Location = new System.Drawing.Point(648, 15);
-            this.toptitlebar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toptitlebar1.Margin = new System.Windows.Forms.Padding(4);
             this.toptitlebar1.Name = "toptitlebar1";
             this.toptitlebar1.Size = new System.Drawing.Size(1423, 59);
             this.toptitlebar1.TabIndex = 0;
@@ -177,7 +184,7 @@
             this.consoleBox.BackColor = System.Drawing.Color.RoyalBlue;
             this.consoleBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.consoleBox.Location = new System.Drawing.Point(455, 55);
-            this.consoleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.consoleBox.Margin = new System.Windows.Forms.Padding(4);
             this.consoleBox.Name = "consoleBox";
             this.consoleBox.ReadOnly = true;
             this.consoleBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -187,6 +194,35 @@
             this.consoleBox.TextChanged += new System.EventHandler(this.consoleBox_TextChanged);
             this.consoleBox.MouseEnter += new System.EventHandler(this.consoleBox_MouseEnter);
             this.consoleBox.MouseLeave += new System.EventHandler(this.consoleBox_MouseLeave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(50, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Light Intensity:";
+            // 
+            // lightPercent
+            // 
+            this.lightPercent.AutoSize = true;
+            this.lightPercent.ForeColor = System.Drawing.Color.White;
+            this.lightPercent.Location = new System.Drawing.Point(393, 57);
+            this.lightPercent.Name = "lightPercent";
+            this.lightPercent.Size = new System.Drawing.Size(28, 17);
+            this.lightPercent.TabIndex = 16;
+            this.lightPercent.Text = "0%";
+            // 
+            // lightBar
+            // 
+            this.lightBar.Location = new System.Drawing.Point(155, 43);
+            this.lightBar.Name = "lightBar";
+            this.lightBar.Size = new System.Drawing.Size(211, 56);
+            this.lightBar.TabIndex = 17;
+            this.lightBar.Value = 5;
+            this.lightBar.Scroll += new System.EventHandler(this.lightBar_Scroll);
             // 
             // Form1
             // 
@@ -203,7 +239,7 @@
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.toptitlebar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1707, 886);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -216,6 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.artHorpanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toptitlebar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,6 +272,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxIP;
         public System.Windows.Forms.RichTextBox consoleBox;
+        private System.Windows.Forms.TrackBar lightBar;
+        private System.Windows.Forms.Label lightPercent;
+        private System.Windows.Forms.Label label1;
     }
 }
 
