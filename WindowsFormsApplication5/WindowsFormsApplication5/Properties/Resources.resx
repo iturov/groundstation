@@ -121,6 +121,9 @@
   <data name="1_00000" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1_00000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="video_00000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video_00000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="paramtab_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paramtab_000002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,8 +133,14 @@
   <data name="Comp 2_00000" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Comp 2_00000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="paramtab_000003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paramtab_000003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="paramtab_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paramtab_000001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Comp 4_00000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Comp 4_00000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,13 +166,16 @@
   <data name="Comp 1_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Comp 1_000002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="video_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video_000001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="line1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\line1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Comp 2_00000_00000" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Comp 2_00000_00000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="paramtab_000003" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paramtab_000003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Comp 4_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Comp 4_000001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

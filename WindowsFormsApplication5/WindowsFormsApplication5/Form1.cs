@@ -29,7 +29,9 @@ namespace WindowsFormsApplication5
         MJPEGStream stream;
         int statePanel1 = 0;
         static int tcpEnable = 1;
-        
+        static int myPort;
+        static string connectionStatus = "No Connection!";
+        bool dpiEnabled = false;
         Point parameterBase;
         Point panelbase;
         static int lightIntensity = 0;
@@ -43,11 +45,12 @@ namespace WindowsFormsApplication5
             graphicsInitalize();
             //myTcp = new Thread(new ThreadStart(delegate { Listen(tcpEnable); }));
             myTcp = new Thread(Listen);
-            myTcp.Start();
+            
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)
         {
+            artHorpanel.SizeMode = PictureBoxSizeMode.StretchImage;
             Bitmap bmp = (Bitmap)eventargs.Frame.Clone();
             artHorpanel.Image = bmp;
         } // FOR CAPTURING NEW FRAMES
@@ -149,7 +152,15 @@ namespace WindowsFormsApplication5
             //Screen.PrimaryScreen.
             closeButton.Height = closeButton.Image.Height;
             closeButton.Location = new Point(Screen.PrimaryScreen.Bounds.Width - closeButton.Width, 0);
-            parameterBase = new Point(225 - pictureBox1.Width, Screen.PrimaryScreen.Bounds.Height / 2 - pictureBox1.Height / 2);//CHANGED
+            if(!dpiEnabled)
+            {
+                parameterBase = new Point(225 - pictureBox1.Width, Screen.PrimaryScreen.Bounds.Height / 2 - pictureBox1.Height / 2);//CHANGED
+            }
+            else
+            {
+                parameterBase = new Point(40 - pictureBox1.Width, Screen.PrimaryScreen.Bounds.Height / 2 - pictureBox1.Height / 2);//CHANGED
+            }
+
             pictureBox1.Location = parameterBase;
             panelbase = new Point(-parameterspanel.Width, Screen.PrimaryScreen.Bounds.Height / 2 - pictureBox1.Height / 2 + 35);//CHANGED
             parameterspanel.Location = panelbase;
@@ -162,7 +173,13 @@ namespace WindowsFormsApplication5
             consoleBox.BorderStyle = BorderStyle.None;
             consoleBox.ForeColor = Color.White;
             consoleBox.BringToFront();
-            consoleBox.Parent = artHorpanel;
+            consoleBox.Parent = artHorpanel2;
+            //artHorpanel.Image = ;
+            artHorpanel2.Location = new Point(0, 0);
+            artHorpanel2.Size = new Size(1920, 1080);
+            artHorpanel2.BackColor = Color.Transparent;
+            artHorpanel2.Parent = artHorpanel;
+            artHorpanel2.SendToBack();
 
             artHorpanel.Location = new Point(0, 0);
             artHorpanel.Size = new Size(1920, 1080);
@@ -174,12 +191,13 @@ namespace WindowsFormsApplication5
             toptitlebar1.BackColor = Color.Transparent;
             closeButton.BackColor = Color.Transparent;
             pictureBox1.BackColor = Color.Transparent;
-            camStatLabel.Parent = artHorpanel;
-            pictureBox1.Parent = artHorpanel;
+
+            camStatLabel.Parent = artHorpanel2;
+            pictureBox1.Parent = artHorpanel2;
             parameterspanel.BringToFront();
             //parameterspanel.Parent = pictureBox1;
-            toptitlebar1.Parent = artHorpanel;
-            closeButton.Parent = artHorpanel;
+            toptitlebar1.Parent = artHorpanel2;
+            closeButton.Parent = artHorpanel2;
             //consoleBox.Parent = artHorpanel;
 
             /***** GRAPHICS INITIALIZE *****/
@@ -188,17 +206,14 @@ namespace WindowsFormsApplication5
         private void cameraInitialize()
         {
             /***** CAMERA INITIALIZE *****/
-            //stream = new MJPEGStream("http://192.168.2.127:8091/?action=stream");
             stream = new MJPEGStream("http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream");
             stream.NewFrame += new NewFrameEventHandler(newFrame);
-
             camStatLabel.Text = "Receiving Video Feed From:   " + "http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
             /***** CAMERA INITIALIZE *****/
         }
 
         public void myConsole(string output)
         {
-            //Console.WriteLine(output);
             consoleBox.AppendText("\r\n" + output);
         }
 
@@ -207,43 +222,33 @@ namespace WindowsFormsApplication5
             TcpListener server = null;
                 try
                 {
-                    // Set the TcpListener on port 13000.
-                    Int32 port = 8092;
+                    // Set the TcpListener on port 8092(USER CAN CHANGE IT!).
+                    Int32 port = myPort;
                     IPAddress localAddr = IPAddress.Any;
-
                     // TcpListener server = new TcpListener(port);
                     server = new TcpListener(localAddr, port);
-
                     // Start listening for client requests.
                     server.Start();
-
                     // Buffer for reading data
                     Byte[] bytes = new Byte[256];
                     String data = null;
-
                     // Enter the listening loop.
                     while (true)
                     {
-                        //myConsole("Waiting for a connection... ");
-
-                        // Perform a blocking call to accept requests.
-                        // You could also user server.AcceptSocket() here.
-
                         TcpClient client = server.AcceptTcpClient();
                         //myConsole("Connected!");
                         if (!client.Connected)
                         {
-                            
+                            connectionStatus = "No Connection!";
                             return;
                         }
                         else
                         {
+                            connectionStatus = "Connection Established!";
                             data = null;
                             // Get a stream object for reading and writing
                             NetworkStream stream = client.GetStream();
-
                             int i;
-
                             // Loop to receive all the data sent by the client.
                             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                             {
@@ -264,25 +269,16 @@ namespace WindowsFormsApplication5
                                 dataArray[1] = dataSent[4]; // 
                                 dataArray[2] = dataSent[5]; // 
                                 dataArray[3] = (lightIntensity * 7).ToString(); // Light intensity value
-
                                 dataArray[4] = "";
-
-
                                 string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6];
-
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
-
                                 // Send back a response.
                                 stream.Write(msg, 0, msg.Length);
-
-                                //myConsole("Sent:" + data);
                             }
 
                             // Shutdown and end connection
                             client.Close();
                         }
-
-                        //return;
                     }
                 }
                 catch (SocketException e)
@@ -306,7 +302,33 @@ namespace WindowsFormsApplication5
         {
             lightPercent.Text = (lightBar.Value * 10).ToString() + "%"; //Light Intensity Display
             lightIntensity = lightBar.Value * 10;
-            //label1.Text = lightIntensity.ToString();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Enabled")
+            {
+                dpiEnabled = true;
+            }
+            if (comboBox1.SelectedItem.ToString() == "Disabled")
+            {
+                dpiEnabled = false;
+            }
+            statePanel1 = 0;
+            graphicsInitalize();
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            myPort = Int32.Parse(textBox1.Text);
+            myTcp.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label6.Text = connectionStatus;
         }
     }
 }

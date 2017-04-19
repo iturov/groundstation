@@ -37,3 +37,16 @@ C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\Window
 C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
 C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
 C:\Users\Crystolyte\Desktop\groundstation-master\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.dll
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.dll
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.xml
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.xml
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csprojResolveAssemblyReference.cache
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Form1.resources
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.Properties.Resources.resources
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\ROV GCS.csproj.GenerateResource.Cache
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.exe
+D:\Atom\ROV\iturov\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb

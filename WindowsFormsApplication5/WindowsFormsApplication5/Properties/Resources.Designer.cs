@@ -123,6 +123,26 @@ namespace WindowsFormsApplication5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Comp_4_00000 {
+            get {
+                object obj = ResourceManager.GetObject("Comp 4_00000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Comp_4_000001 {
+            get {
+                object obj = ResourceManager.GetObject("Comp 4_000001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GCS_Title_00000 {
             get {
                 object obj = ResourceManager.GetObject("GCS Title_00000", resourceCulture);
@@ -216,6 +236,26 @@ namespace WindowsFormsApplication5.Properties {
         internal static System.Drawing.Bitmap paramtab_000003 {
             get {
                 object obj = ResourceManager.GetObject("paramtab_000003", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap video_00000 {
+            get {
+                object obj = ResourceManager.GetObject("video_00000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap video_000001 {
+            get {
+                object obj = ResourceManager.GetObject("video_000001", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
