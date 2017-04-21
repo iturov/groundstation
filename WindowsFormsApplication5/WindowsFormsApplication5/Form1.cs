@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 using System.Security.Permissions;
+using SharpDX.DirectInput;
 
 //THIS SOFTWARE HAS BEEN DEVELOPED BY SENCER YAZICI. FOR MORE INFORMATION PLASE CONTACT VIA EMAIL "sencer_yazici98@hotmail.com" 
 // NOTE: THIS SOFTWARE IS IN DEVELOPMENT UNTER ITUROV TEAM AT ISTANBUL TECHNICAL UNIVERSITY
@@ -29,7 +30,9 @@ namespace WindowsFormsApplication5
         MJPEGStream stream;
         int statePanel1 = 0;
         static int tcpEnable = 1;
+        static int controllerType;
         static int myPort;
+        static int[] joystickData = new int[32];
         static string connectionStatus = "No Connection!";
         bool dpiEnabled = false;
         Point parameterBase;
@@ -38,6 +41,8 @@ namespace WindowsFormsApplication5
         public static string[] dataReceived = new string[32];
         public static string[] dataSent = new string[32];
         Thread myTcp;
+        Thread myJoystick;
+
         [SecurityPermissionAttribute(SecurityAction.Demand, ControlThread = true)]
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -45,7 +50,10 @@ namespace WindowsFormsApplication5
             graphicsInitalize();
             //myTcp = new Thread(new ThreadStart(delegate { Listen(tcpEnable); }));
             myTcp = new Thread(Listen);
-            
+            myJoystick = new Thread(Joystick);
+            myJoystick.Start();
+            timer1.Enabled = true;
+
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)
@@ -58,6 +66,7 @@ namespace WindowsFormsApplication5
         private void closeButton_Click(object sender, EventArgs e) // CLOSE BUTTON 
         {
             myTcp.Abort();
+            myJoystick.Abort();
             tcpEnable = 0;
             stream.Stop();
             this.Dispose();            
@@ -216,6 +225,112 @@ namespace WindowsFormsApplication5
         {
             consoleBox.AppendText("\r\n" + output);
         }
+        public static void Joystick()
+        {
+            // Initialize DirectInput
+            var directInput = new DirectInput();
+
+            // Find a Joystick Guid
+            var joystickGuid = Guid.Empty;
+
+            foreach (var deviceInstance in directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
+                joystickGuid = deviceInstance.InstanceGuid;
+
+            // If Gamepad not found, look for a Joystick
+            if (joystickGuid == Guid.Empty)
+                foreach (var deviceInstance in directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AllDevices))
+                    joystickGuid = deviceInstance.InstanceGuid;
+
+            // If Joystick not found, throws an error
+            if (joystickGuid == Guid.Empty)
+            {
+                Console.WriteLine("No joystick/Gamepad found.");
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+
+            // Instantiate the joystick
+            var joystick = new Joystick(directInput, joystickGuid);
+
+            Console.WriteLine("Found Joystick/Gamepad with GUID: {0}", joystickGuid);
+
+            // Query all suported ForceFeedback effects
+            var allEffects = joystick.GetEffects();
+            foreach (var effectInfo in allEffects)
+                Console.WriteLine("Effect available {0}", effectInfo.Name);
+
+            // Set BufferSize in order to use buffered data.
+            joystick.Properties.BufferSize = 128;
+
+            // Acquire the joystick
+            joystick.Acquire();
+
+            // Poll events from joystick
+            while (true)
+            {
+                joystick.Poll();
+                var datas = joystick.GetCurrentState();
+                joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); // What the f...?
+                //joya[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top
+                joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, 0, 1000);
+                joystickData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -500, 500, 1);
+
+                if (controllerType == 1)
+                {
+                    //FOR DUALSHOCK 3
+                    joystickData[4] = mapInt(Int32.Parse(datas.RotationX.ToString()), 0, 65534, -1000, 1000);
+                    joystickData[5] = mapInt(Int32.Parse(datas.RotationY.ToString()), 0, 65534, -1000, 1000, 1);
+                }
+                if (controllerType == 0)
+                {
+                    //FOR DUALSHOCK 2
+                    joystickData[4] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -1000, 1000);
+                    joystickData[5] = mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -1000, 1000, 1);
+
+                }
+
+                joystickData[6] = Convert.ToInt32(datas.Buttons.GetValue(2));
+                joystickData[7] = Convert.ToInt32(datas.Buttons.GetValue(1));
+                joystickData[8] = Convert.ToInt32(datas.Buttons.GetValue(0));
+                joystickData[9] = Convert.ToInt32(datas.Buttons.GetValue(3));
+                joystickData[10] = Convert.ToInt32(datas.Buttons.GetValue(7));
+                joystickData[11] = Convert.ToInt32(datas.Buttons.GetValue(5));
+                joystickData[12] = Convert.ToInt32(datas.Buttons.GetValue(6));
+                joystickData[13] = Convert.ToInt32(datas.Buttons.GetValue(4));
+                joystickData[14] = Convert.ToInt32(datas.Buttons.GetValue(9));
+                joystickData[15] = Convert.ToInt32(datas.Buttons.GetValue(8));
+                joystickData[16] = Convert.ToInt32(datas.Buttons.GetValue(10));
+                joystickData[17] = Convert.ToInt32(datas.Buttons.GetValue(11));
+                //DEBUGGING
+                //var datass = joystick.GetBufferedData();
+                //foreach (var dt in datass)
+                //    Console.WriteLine(dt);
+                //DEBUGGING
+
+                /*this.Invoke(new MethodInvoker(delegate {
+                    // Execute the following code on the GUI thread.
+                    this.Text = joystickData[0].ToString();
+                }));*/
+                //Console.WriteLine(joystickData[0]);
+            }
+        }
+
+        private static int mapInt(int value, int currentMin, int currentMax, int targetMin, int targetMax, int reverse = 0)
+        {
+            int st1, st2;
+            if (reverse == 1)
+            {
+                st1 = currentMin;
+                st2 = currentMax;
+                currentMin = st2;
+                currentMax = st1;
+            }
+
+            int range = (currentMax - currentMin);
+            int rangeT = targetMax - targetMin;
+            value = (value - currentMin) * rangeT / range + targetMin;
+            return value;
+        }
 
         public static void Listen()
         {
@@ -329,6 +444,13 @@ namespace WindowsFormsApplication5
         private void timer1_Tick(object sender, EventArgs e)
         {
             label6.Text = connectionStatus;
+            label6.Text = joystickData[2].ToString();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem.ToString() == "DualShock2") controllerType = 0;
+            if (comboBox2.SelectedItem.ToString() == "DualShock3") controllerType = 1;
         }
     }
 }
