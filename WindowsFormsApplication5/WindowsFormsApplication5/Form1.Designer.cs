@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.camStatLabel = new System.Windows.Forms.Label();
             this.parameterspanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -52,8 +54,8 @@
             this.artHorpanel = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.toptitlebar1 = new System.Windows.Forms.PictureBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.referanceTextJoy = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.parameterspanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lightBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artHorpanel2)).BeginInit();
@@ -77,6 +79,8 @@
             // 
             // parameterspanel
             // 
+            this.parameterspanel.Controls.Add(this.label8);
+            this.parameterspanel.Controls.Add(this.referanceTextJoy);
             this.parameterspanel.Controls.Add(this.label7);
             this.parameterspanel.Controls.Add(this.comboBox2);
             this.parameterspanel.Controls.Add(this.label6);
@@ -94,10 +98,34 @@
             this.parameterspanel.Controls.Add(this.label2);
             this.parameterspanel.Controls.Add(this.textBoxIP);
             this.parameterspanel.Location = new System.Drawing.Point(723, 266);
-            this.parameterspanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.parameterspanel.Margin = new System.Windows.Forms.Padding(4);
             this.parameterspanel.Name = "parameterspanel";
             this.parameterspanel.Size = new System.Drawing.Size(549, 674);
             this.parameterspanel.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(124, 275);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 17);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Controller Type:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "DualShock2",
+            "DualShock3"});
+            this.comboBox2.Location = new System.Drawing.Point(240, 272);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(127, 24);
+            this.comboBox2.TabIndex = 13;
+            this.comboBox2.Text = "DualShock2";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -113,7 +141,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(295, 214);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 28);
             this.button2.TabIndex = 21;
@@ -124,7 +152,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(240, 217);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(45, 22);
             this.textBox1.TabIndex = 20;
@@ -159,7 +187,7 @@
             "Enabled",
             "Disabled"});
             this.comboBox1.Location = new System.Drawing.Point(240, 160);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(103, 24);
             this.comboBox1.TabIndex = 12;
@@ -197,7 +225,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(449, 22);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 43);
             this.button1.TabIndex = 13;
@@ -219,7 +247,7 @@
             // textBoxPort
             // 
             this.textBoxPort.Location = new System.Drawing.Point(399, 32);
-            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(41, 22);
             this.textBoxPort.TabIndex = 11;
@@ -239,7 +267,7 @@
             // textBoxIP
             // 
             this.textBoxIP.Location = new System.Drawing.Point(240, 32);
-            this.textBoxIP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxIP.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(103, 22);
             this.textBoxIP.TabIndex = 9;
@@ -250,7 +278,7 @@
             this.consoleBox.BackColor = System.Drawing.Color.RoyalBlue;
             this.consoleBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.consoleBox.Location = new System.Drawing.Point(455, 55);
-            this.consoleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.consoleBox.Margin = new System.Windows.Forms.Padding(4);
             this.consoleBox.Name = "consoleBox";
             this.consoleBox.ReadOnly = true;
             this.consoleBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -264,14 +292,14 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // artHorpanel2
             // 
             this.artHorpanel2.Image = global::WindowsFormsApplication5.Properties.Resources.Comp_4_000001;
             this.artHorpanel2.Location = new System.Drawing.Point(440, 751);
-            this.artHorpanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artHorpanel2.Margin = new System.Windows.Forms.Padding(4);
             this.artHorpanel2.Name = "artHorpanel2";
             this.artHorpanel2.Size = new System.Drawing.Size(1536, 651);
             this.artHorpanel2.TabIndex = 12;
@@ -281,7 +309,7 @@
             // 
             this.pictureBox1.Image = global::WindowsFormsApplication5.Properties.Resources.paramtab_000003;
             this.pictureBox1.Location = new System.Drawing.Point(3, 207);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(685, 951);
             this.pictureBox1.TabIndex = 7;
@@ -292,7 +320,7 @@
             // 
             this.artHorpanel.Image = global::WindowsFormsApplication5.Properties.Resources.video_000001;
             this.artHorpanel.Location = new System.Drawing.Point(696, 126);
-            this.artHorpanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artHorpanel.Margin = new System.Windows.Forms.Padding(4);
             this.artHorpanel.Name = "artHorpanel";
             this.artHorpanel.Size = new System.Drawing.Size(1280, 886);
             this.artHorpanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -306,7 +334,7 @@
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Image = global::WindowsFormsApplication5.Properties.Resources.Comp_2_00000_00000;
             this.closeButton.Location = new System.Drawing.Point(2349, 15);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(64, 59);
             this.closeButton.TabIndex = 2;
@@ -320,36 +348,32 @@
             this.toptitlebar1.BackColor = System.Drawing.Color.Transparent;
             this.toptitlebar1.Image = global::WindowsFormsApplication5.Properties.Resources.Comp_1_000002;
             this.toptitlebar1.Location = new System.Drawing.Point(648, 15);
-            this.toptitlebar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toptitlebar1.Margin = new System.Windows.Forms.Padding(4);
             this.toptitlebar1.Name = "toptitlebar1";
             this.toptitlebar1.Size = new System.Drawing.Size(1423, 59);
             this.toptitlebar1.TabIndex = 0;
             this.toptitlebar1.TabStop = false;
             this.toptitlebar1.Click += new System.EventHandler(this.toptitlebar1_Click);
             // 
-            // comboBox2
+            // referanceTextJoy
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "DualShock2",
-            "DualShock3"});
-            this.comboBox2.Location = new System.Drawing.Point(240, 272);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(127, 24);
-            this.comboBox2.TabIndex = 13;
-            this.comboBox2.Text = "DualShock2";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.referanceTextJoy.AutoSize = true;
+            this.referanceTextJoy.ForeColor = System.Drawing.Color.White;
+            this.referanceTextJoy.Location = new System.Drawing.Point(384, 275);
+            this.referanceTextJoy.Name = "referanceTextJoy";
+            this.referanceTextJoy.Size = new System.Drawing.Size(46, 17);
+            this.referanceTextJoy.TabIndex = 24;
+            this.referanceTextJoy.Text = "label8";
             // 
-            // label7
+            // label8
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(124, 275);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 17);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Controller Type:";
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(268, 320);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "label8";
             // 
             // Form1
             // 
@@ -367,7 +391,7 @@
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.toptitlebar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1707, 886);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -414,6 +438,8 @@
         private System.Windows.Forms.PictureBox artHorpanel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label referanceTextJoy;
+        private System.Windows.Forms.Label label8;
     }
 }
 

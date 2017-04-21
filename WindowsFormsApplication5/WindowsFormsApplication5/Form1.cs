@@ -42,18 +42,20 @@ namespace WindowsFormsApplication5
         public static string[] dataSent = new string[32];
         Thread myTcp;
         Thread myJoystick;
-
+        Thread myCamera;
+        static int[] roboticArm = new int[4];
+        static int lightIntensityMaster;
         [SecurityPermissionAttribute(SecurityAction.Demand, ControlThread = true)]
         private void Form1_Load(object sender, EventArgs e)
         {
-            cameraInitialize();
+            //cameraInitialize();
             graphicsInitalize();
             //myTcp = new Thread(new ThreadStart(delegate { Listen(tcpEnable); }));
             myTcp = new Thread(Listen);
             myJoystick = new Thread(Joystick);
             myJoystick.Start();
             timer1.Enabled = true;
-
+            myCamera = new Thread(cameraInitialize);
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)
@@ -68,7 +70,7 @@ namespace WindowsFormsApplication5
             myTcp.Abort();
             myJoystick.Abort();
             tcpEnable = 0;
-            stream.Stop();
+            myCamera.Abort();
             this.Dispose();            
         }
 
@@ -79,13 +81,12 @@ namespace WindowsFormsApplication5
 
         private void button1_Click(object sender, EventArgs e) //STOP , CHANGE PARAMETERS ,RESTART
         {
-            stream.Stop();
-            stream.Source ="http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
-            stream.Start();
+            myCamera.Start();
+            /*
             if (stream.IsRunning)
             {
                 camStatLabel.Text = "Receiving Video Feed From:   " + "http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
-            }
+            }*/
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)//IMPORTANT, STREAM HAS TO BE STOPPED BEFORE QUITTING APPLICATION
@@ -217,7 +218,9 @@ namespace WindowsFormsApplication5
             /***** CAMERA INITIALIZE *****/
             stream = new MJPEGStream("http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream");
             stream.NewFrame += new NewFrameEventHandler(newFrame);
-            camStatLabel.Text = "Receiving Video Feed From:   " + "http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
+            stream.Stop();
+            stream.Source = "http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
+            stream.Start();
             /***** CAMERA INITIALIZE *****/
         }
 
@@ -270,16 +273,16 @@ namespace WindowsFormsApplication5
             {
                 joystick.Poll();
                 var datas = joystick.GetCurrentState();
-                joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); // What the f...?
-                //joya[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top
-                joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, 0, 1000);
-                joystickData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -500, 500, 1);
+                //joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); // What the f...? D-PAD HOCAM BU
+                //joystickData[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top L-STICK UP-DOWN "0-255"
+                joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, 0, 1000); //L-STICK LEFT-RIGHT "0-1000"
+                joystickData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -500, 500, 1); //L-STICK UP-DOWN
 
                 if (controllerType == 1)
                 {
                     //FOR DUALSHOCK 3
-                    joystickData[4] = mapInt(Int32.Parse(datas.RotationX.ToString()), 0, 65534, -1000, 1000);
-                    joystickData[5] = mapInt(Int32.Parse(datas.RotationY.ToString()), 0, 65534, -1000, 1000, 1);
+                    joystickData[4] = mapInt(Int32.Parse(datas.RotationX.ToString()), 0, 65534, -1000, 1000);//R-STICK LEFT-RIGHT "-1000 -1000"
+                    joystickData[5] = mapInt(Int32.Parse(datas.RotationY.ToString()), 0, 65534, -1000, 1000, 1);//R-STICK UP-DOWN "--1000-1000"
                 }
                 if (controllerType == 0)
                 {
@@ -289,22 +292,23 @@ namespace WindowsFormsApplication5
 
                 }
 
-                joystickData[6] = Convert.ToInt32(datas.Buttons.GetValue(2));
-                joystickData[7] = Convert.ToInt32(datas.Buttons.GetValue(1));
-                joystickData[8] = Convert.ToInt32(datas.Buttons.GetValue(0));
-                joystickData[9] = Convert.ToInt32(datas.Buttons.GetValue(3));
-                joystickData[10] = Convert.ToInt32(datas.Buttons.GetValue(7));
-                joystickData[11] = Convert.ToInt32(datas.Buttons.GetValue(5));
-                joystickData[12] = Convert.ToInt32(datas.Buttons.GetValue(6));
-                joystickData[13] = Convert.ToInt32(datas.Buttons.GetValue(4));
-                joystickData[14] = Convert.ToInt32(datas.Buttons.GetValue(9));
-                joystickData[15] = Convert.ToInt32(datas.Buttons.GetValue(8));
-                joystickData[16] = Convert.ToInt32(datas.Buttons.GetValue(10));
-                joystickData[17] = Convert.ToInt32(datas.Buttons.GetValue(11));
+                joystickData[6] = Convert.ToInt32(datas.Buttons.GetValue(2)); //KARE
+                joystickData[7] = Convert.ToInt32(datas.Buttons.GetValue(1)); //YUVARLAK
+                joystickData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //ÇARPI
+                joystickData[9] = Convert.ToInt32(datas.Buttons.GetValue(3)); //ÜÇGEN
+                joystickData[10] = Convert.ToInt32(datas.Buttons.GetValue(7)); //START
+                joystickData[11] = Convert.ToInt32(datas.Buttons.GetValue(5)); //R1
+                joystickData[12] = Convert.ToInt32(datas.Buttons.GetValue(6)); //SELECT
+                joystickData[13] = Convert.ToInt32(datas.Buttons.GetValue(4)); //L1
+                joystickData[14] = Convert.ToInt32(datas.Buttons.GetValue(9)); //R3
+                joystickData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
+                joystickData[16] = -mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -1000, 1000);
+                //joystickData[17] = Convert.ToInt32(datas.RotationY.ToString()); //
+
                 //DEBUGGING
                 //var datass = joystick.GetBufferedData();
                 //foreach (var dt in datass)
-                //    Console.WriteLine(dt);
+                //   Console.WriteLine(dt);
                 //DEBUGGING
 
                 /*this.Invoke(new MethodInvoker(delegate {
@@ -380,11 +384,15 @@ namespace WindowsFormsApplication5
                                 {
                                     dataSent[dat] = "0";
                                 }
-                                dataArray[0] = dataSent[3]; // Throttle 
-                                dataArray[1] = dataSent[4]; // 
-                                dataArray[2] = dataSent[5]; // 
-                                dataArray[3] = (lightIntensity * 7).ToString(); // Light intensity value
-                                dataArray[4] = "";
+                                dataArray[0] = joystickData[3].ToString(); // Throttle 
+                                dataArray[1] = joystickData[5].ToString(); // foward/back
+                                dataArray[2] = joystickData[4].ToString(); // right/left
+                                dataArray[3] = (lightIntensityMaster).ToString(); // Light intensity value
+                                dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
+                                dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
+                                dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
+
+
                                 string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
                                 // Send back a response.
@@ -415,8 +423,10 @@ namespace WindowsFormsApplication5
         }
         private void lightBar_Scroll(object sender, EventArgs e)
         {
-            lightPercent.Text = (lightBar.Value * 10).ToString() + "%"; //Light Intensity Display
-            lightIntensity = lightBar.Value * 10;
+            
+            lightIntensity = lightBar.Value * 70;
+            lightIntensityMaster = lightIntensity;
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -440,11 +450,39 @@ namespace WindowsFormsApplication5
             myPort = Int32.Parse(textBox1.Text);
             myTcp.Start();
         }
-
+        int limits(int value, int min, int max)
+        {
+            if (value > max) value = max;
+            if (value < min) value = min;
+            return value;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            int speedFactor = 25;
             label6.Text = connectionStatus;
-            label6.Text = joystickData[2].ToString();
+            roboticArm[0] += joystickData[16] / 20 * timer1.Interval / 50;
+            roboticArm[1] += -(joystickData[13] - joystickData[11]) * speedFactor * timer1.Interval / 50;
+            roboticArm[2] += (joystickData[8] - joystickData[6]) * speedFactor * timer1.Interval / 50;
+            roboticArm[3] += (joystickData[9] - joystickData[7]) * speedFactor * timer1.Interval / 50; //LIGHT!!!!!
+
+            for (int i = 0; i < roboticArm.Length; i++)
+            {
+                roboticArm[i] = limits(roboticArm[i], 0, 1000);
+            }
+            roboticArm[3] = limits(roboticArm[3], 0, 700);
+            if (!((joystickData[9] - joystickData[7]) == 0))
+            {
+                lightIntensityMaster = roboticArm[3];
+            }
+            else
+            {
+                roboticArm[3] = lightIntensityMaster;
+            }
+            lightPercent.Text = (lightBar.Value * 10).ToString() + "%"; //Light Intensity Display
+            lightBar.Value = lightIntensityMaster / 70;
+            label8.Text = lightIntensityMaster.ToString();
+            referanceTextJoy.Text = "Throttle: " + joystickData[3].ToString() + "Percent";
+            camStatLabel.Text = "Receiving Video Feed From:   " + "http://" + textBoxIP.Text + ":" + textBoxPort.Text + "/?action=stream";
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
