@@ -27,8 +27,6 @@ namespace WindowsFormsApplication5
             InitializeComponent();
         }
 
-   
-
         #region " Variables "
         MJPEGStream stream;
         int statePanel1 = 0;
@@ -49,10 +47,9 @@ namespace WindowsFormsApplication5
         static int lightIntensityMaster;
         #endregion
 
-
-
         [SecurityPermissionAttribute(SecurityAction.Demand, ControlThread = true)]
 
+        #region " Functions "
         private void Form1_Load(object sender, EventArgs e)
         {
             //cameraInitialize();
@@ -505,5 +502,6 @@ namespace WindowsFormsApplication5
         {
             myJoystick.Start();
         }
+        #endregion
     }
 }
