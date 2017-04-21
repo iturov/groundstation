@@ -26,10 +26,12 @@ namespace WindowsFormsApplication5
         {
             InitializeComponent();
         }
-        
+
+   
+
+        #region " Variables "
         MJPEGStream stream;
         int statePanel1 = 0;
-        static int tcpEnable = 1;
         static int controllerType;
         static int myPort;
         static int[] joystickData = new int[32];
@@ -45,7 +47,12 @@ namespace WindowsFormsApplication5
         Thread myCamera;
         static int[] roboticArm = new int[4];
         static int lightIntensityMaster;
+        #endregion
+
+
+
         [SecurityPermissionAttribute(SecurityAction.Demand, ControlThread = true)]
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //cameraInitialize();
@@ -53,25 +60,32 @@ namespace WindowsFormsApplication5
             //myTcp = new Thread(new ThreadStart(delegate { Listen(tcpEnable); }));
             myTcp = new Thread(Listen);
             myJoystick = new Thread(Joystick);
-            myJoystick.Start();
             timer1.Enabled = true;
             myCamera = new Thread(cameraInitialize);
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)
         {
-            artHorpanel.SizeMode = PictureBoxSizeMode.StretchImage;
-            Bitmap bmp = (Bitmap)eventargs.Frame.Clone();
-            artHorpanel.Image = bmp;
+            try
+            {
+                artHorpanel.SizeMode = PictureBoxSizeMode.StretchImage;
+                Bitmap bmp = (Bitmap)eventargs.Frame.Clone();
+                artHorpanel.Image = bmp;
+            }
+            catch (Exception)
+            {
+
+            }
+
+
         } // FOR CAPTURING NEW FRAMES
 
         private void closeButton_Click(object sender, EventArgs e) // CLOSE BUTTON 
         {
             myTcp.Abort();
             myJoystick.Abort();
-            tcpEnable = 0;
             myCamera.Abort();
-            this.Dispose();            
+            this.Dispose();
         }
 
         private void toptitlebar1_Click(object sender, EventArgs e)// WEBSITE
@@ -91,7 +105,8 @@ namespace WindowsFormsApplication5
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)//IMPORTANT, STREAM HAS TO BE STOPPED BEFORE QUITTING APPLICATION
         {
-            tcpEnable = 0;
+            
+            
             Application.Exit();
             this.Dispose();
         }
@@ -111,7 +126,7 @@ namespace WindowsFormsApplication5
                     parameterspanel.Location = panelbase;
                     pictureBox1.Location = parameterBase; //PANEL'S POSITION INCREASES
                 }
-                    
+
             }
             else // PANEL IS OPEN, NOW CLOSING
             {
@@ -122,7 +137,7 @@ namespace WindowsFormsApplication5
                     parameterspanel.Location = panelbase;
                     pictureBox1.Location = parameterBase;//PANEL'S POSITION DECREASES
                 }
-                    
+
             }
         }
 
@@ -143,7 +158,7 @@ namespace WindowsFormsApplication5
             // scroll it automatically
             consoleBox.ScrollToCaret();
         }
-        
+
         private void graphicsInitalize()
         {
             /***** GRAPHICS INITIALIZE *****/
@@ -162,7 +177,7 @@ namespace WindowsFormsApplication5
             //Screen.PrimaryScreen.
             closeButton.Height = closeButton.Image.Height;
             closeButton.Location = new Point(Screen.PrimaryScreen.Bounds.Width - closeButton.Width, 0);
-            if(!dpiEnabled)
+            if (!dpiEnabled)
             {
                 parameterBase = new Point(225 - pictureBox1.Width, Screen.PrimaryScreen.Bounds.Height / 2 - pictureBox1.Height / 2);//CHANGED
             }
@@ -228,6 +243,7 @@ namespace WindowsFormsApplication5
         {
             consoleBox.AppendText("\r\n" + output);
         }
+
         public static void Joystick()
         {
             // Initialize DirectInput
@@ -273,9 +289,9 @@ namespace WindowsFormsApplication5
             {
                 joystick.Poll();
                 var datas = joystick.GetCurrentState();
-                //joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); // What the f...? D-PAD HOCAM BU
+                //joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); 
                 //joystickData[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top L-STICK UP-DOWN "0-255"
-                joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, 0, 1000); //L-STICK LEFT-RIGHT "0-1000"
+                joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -500, 500); //L-STICK LEFT-RIGHT "-500-500"
                 joystickData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -500, 500, 1); //L-STICK UP-DOWN
 
                 if (controllerType == 1)
@@ -289,35 +305,25 @@ namespace WindowsFormsApplication5
                     //FOR DUALSHOCK 2
                     joystickData[4] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -1000, 1000);
                     joystickData[5] = mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -1000, 1000, 1);
-
                 }
-
-                joystickData[6] = Convert.ToInt32(datas.Buttons.GetValue(2)); //KARE
-                joystickData[7] = Convert.ToInt32(datas.Buttons.GetValue(1)); //YUVARLAK
-                joystickData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //ÇARPI
-                joystickData[9] = Convert.ToInt32(datas.Buttons.GetValue(3)); //ÜÇGEN
+                joystickData[6] = Convert.ToInt32(datas.Buttons.GetValue(2)); //SQUARE
+                joystickData[7] = Convert.ToInt32(datas.Buttons.GetValue(1)); //O
+                joystickData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //X
+                joystickData[9] = Convert.ToInt32(datas.Buttons.GetValue(3)); //Triangle
                 joystickData[10] = Convert.ToInt32(datas.Buttons.GetValue(7)); //START
                 joystickData[11] = Convert.ToInt32(datas.Buttons.GetValue(5)); //R1
                 joystickData[12] = Convert.ToInt32(datas.Buttons.GetValue(6)); //SELECT
                 joystickData[13] = Convert.ToInt32(datas.Buttons.GetValue(4)); //L1
                 joystickData[14] = Convert.ToInt32(datas.Buttons.GetValue(9)); //R3
                 joystickData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
-                joystickData[16] = -mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -1000, 1000);
-                //joystickData[17] = Convert.ToInt32(datas.RotationY.ToString()); //
-
+                joystickData[16] = -mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -500, 500); //R2 L2 --Yaw value 
                 //DEBUGGING
                 //var datass = joystick.GetBufferedData();
                 //foreach (var dt in datass)
                 //   Console.WriteLine(dt);
                 //DEBUGGING
-
-                /*this.Invoke(new MethodInvoker(delegate {
-                    // Execute the following code on the GUI thread.
-                    this.Text = joystickData[0].ToString();
-                }));*/
-                //Console.WriteLine(joystickData[0]);
             }
-        }
+        } // MAIN JOYSTICK FUNCTION
 
         private static int mapInt(int value, int currentMin, int currentMax, int targetMin, int targetMax, int reverse = 0)
         {
@@ -339,94 +345,96 @@ namespace WindowsFormsApplication5
         public static void Listen()
         {
             TcpListener server = null;
-                try
+            try
+            {
+                // Set the TcpListener on port 8092(USER CAN CHANGE IT!).
+                Int32 port = myPort;
+                IPAddress localAddr = IPAddress.Any;
+                // TcpListener server = new TcpListener(port);
+                server = new TcpListener(localAddr, port);
+                // Start listening for client requests.
+                server.Start();
+                // Buffer for reading data
+                Byte[] bytes = new Byte[256];
+                String data = null;
+                // Enter the listening loop.
+                while (true)
                 {
-                    // Set the TcpListener on port 8092(USER CAN CHANGE IT!).
-                    Int32 port = myPort;
-                    IPAddress localAddr = IPAddress.Any;
-                    // TcpListener server = new TcpListener(port);
-                    server = new TcpListener(localAddr, port);
-                    // Start listening for client requests.
-                    server.Start();
-                    // Buffer for reading data
-                    Byte[] bytes = new Byte[256];
-                    String data = null;
-                    // Enter the listening loop.
-                    while (true)
+                    TcpClient client = server.AcceptTcpClient();
+                    //myConsole("Connected!");
+                    if (!client.Connected)
                     {
-                        TcpClient client = server.AcceptTcpClient();
-                        //myConsole("Connected!");
-                        if (!client.Connected)
+                        connectionStatus = "No Connection!";
+                        return;
+                    }
+                    else
+                    {
+                        connectionStatus = "Connection Established!";
+                        data = null;
+                        // Get a stream object for reading and writing
+                        NetworkStream stream = client.GetStream();
+                        int i;
+                        // Loop to receive all the data sent by the client.
+                        while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                         {
-                            connectionStatus = "No Connection!";
-                            return;
-                        }
-                        else
-                        {
-                            connectionStatus = "Connection Established!";
-                            data = null;
-                            // Get a stream object for reading and writing
-                            NetworkStream stream = client.GetStream();
-                            int i;
-                            // Loop to receive all the data sent by the client.
-                            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                            // Translate data bytes to a ASCII string.
+                            data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                            //myConsole("Received:" + data);
+                            string[] receivedString = data.Split(',');
+                            for (int k = 0; k < receivedString.Length; k++)
                             {
-                                // Translate data bytes to a ASCII string.
-                                data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                                //myConsole("Received:" + data);
-                                string[] receivedString = data.Split(',');
-                                for (int k = 0; k < receivedString.Length; k++)
-                                {
-                                    Form1.dataReceived[k] = receivedString[k];
-                                }
-                                string[] dataArray = new string[16];
-                                for (int dat = 0; dat < dataSent.Length; dat++)
-                                {
-                                    dataSent[dat] = "0";
-                                }
-                                dataArray[0] = joystickData[3].ToString(); // Throttle 
-                                dataArray[1] = joystickData[5].ToString(); // foward/back
-                                dataArray[2] = joystickData[4].ToString(); // right/left
-                                dataArray[3] = (lightIntensityMaster).ToString(); // Light intensity value
-                                dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
-                                dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
-                                dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
-
-
-                                string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6];
-                                byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
-                                // Send back a response.
-                                stream.Write(msg, 0, msg.Length);
+                                Form1.dataReceived[k] = receivedString[k];
                             }
+                            string[] dataArray = new string[16];
+                            for (int dat = 0; dat < dataSent.Length; dat++)
+                            {
+                                dataSent[dat] = "0";
+                            }
+                            dataArray[0] = joystickData[3].ToString(); // Throttle 
+                            dataArray[1] = joystickData[5].ToString(); // foward/back
+                            dataArray[2] = joystickData[4].ToString(); // right/left
+                            dataArray[3] = (lightIntensityMaster).ToString(); // Light intensity value
+                            dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
+                            dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
+                            dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
+                            dataArray[7] = joystickData[2].ToString();  //ROLL
+                            dataArray[8] = joystickData[16].ToString(); //YAW
 
-                            // Shutdown and end connection
-                            client.Close();
+                            string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6] + "," + dataArray[7] + "," + dataArray[8];
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
+                            // Send back a response.
+                            stream.Write(msg, 0, msg.Length);
                         }
+
+                        // Shutdown and end connection
+                        client.Close();
                     }
                 }
-                catch (SocketException e)
-                {
-                    server.Stop();
-                    Console.WriteLine("SocketException: {0}", e);
-                }
-                finally
-                {
-                    // Stop listening for new clients.
-                    server.Stop();
-                }
+            }
+            catch (SocketException e)
+            {
+                server.Stop();
+                Console.WriteLine("SocketException: {0}", e);
+            }
+            finally
+            {
+                // Stop listening for new clients.
+                server.Stop();
+            }
 
 
-                Console.WriteLine("\nHit enter to continue...");
-                Console.Read();
-            
+            Console.WriteLine("\nHit enter to continue...");
+            Console.Read();
+
 
         }
+
         private void lightBar_Scroll(object sender, EventArgs e)
         {
-            
+
             lightIntensity = lightBar.Value * 70;
             lightIntensityMaster = lightIntensity;
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -450,12 +458,14 @@ namespace WindowsFormsApplication5
             myPort = Int32.Parse(textBox1.Text);
             myTcp.Start();
         }
+
         int limits(int value, int min, int max)
         {
             if (value > max) value = max;
             if (value < min) value = min;
             return value;
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             int speedFactor = 25;
@@ -489,6 +499,11 @@ namespace WindowsFormsApplication5
         {
             if (comboBox2.SelectedItem.ToString() == "DualShock2") controllerType = 0;
             if (comboBox2.SelectedItem.ToString() == "DualShock3") controllerType = 1;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            myJoystick.Start();
         }
     }
 }
