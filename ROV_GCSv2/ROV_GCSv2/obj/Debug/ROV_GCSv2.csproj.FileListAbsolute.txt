@@ -1,0 +1,30 @@
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.exe.config
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.exe
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.pdb
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.dll
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.Video.dll
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.DirectInput.dll
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.dll
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.xml
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.Video.xml
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.xml
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.DirectInput.xml
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.csprojResolveAssemblyReference.cache
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.Form1.resources
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.Properties.Resources.resources
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.csproj.GenerateResource.Cache
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.exe
+c:\users\crystolyte\documents\visual studio 2013\Projects\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.pdb
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.exe.config
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.exe
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\ROV_GCSv2.pdb
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.xml
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\AForge.Video.xml
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.xml
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\bin\Debug\SharpDX.DirectInput.xml
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.Form1.resources
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.Properties.Resources.resources
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.csproj.GenerateResource.Cache
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.exe
+C:\Users\lenovo\Documents\Rov\ROV_GCSv2\ROV_GCSv2\obj\Debug\ROV_GCSv2.pdb
