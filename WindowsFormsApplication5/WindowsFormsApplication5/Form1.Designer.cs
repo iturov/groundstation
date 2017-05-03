@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.camStatLabel = new System.Windows.Forms.Label();
             this.parameterspanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.referanceTextJoy = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.artHorpanel = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.toptitlebar1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.parameterspanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lightBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artHorpanel2)).BeginInit();
@@ -103,6 +103,16 @@
             this.parameterspanel.Size = new System.Drawing.Size(412, 548);
             this.parameterspanel.TabIndex = 6;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(183, 247);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(124, 23);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "Connect Joystick";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -143,7 +153,7 @@
             "DualShock2",
             "DualShock3"});
             this.comboBox2.Location = new System.Drawing.Point(180, 221);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(88, 21);
             this.comboBox2.TabIndex = 13;
@@ -213,7 +223,7 @@
             // lightBar
             // 
             this.lightBar.Location = new System.Drawing.Point(180, 67);
-            this.lightBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lightBar.Margin = new System.Windows.Forms.Padding(2);
             this.lightBar.Name = "lightBar";
             this.lightBar.Size = new System.Drawing.Size(158, 45);
             this.lightBar.TabIndex = 17;
@@ -329,7 +339,7 @@
             // 
             // artHorpanel
             // 
-            this.artHorpanel.Image = global::WindowsFormsApplication5.Properties.Resources.video_000001;
+            this.artHorpanel.Image = global::WindowsFormsApplication5.Properties.Resources._22_water_below_waterproof_cameras_630;
             this.artHorpanel.Location = new System.Drawing.Point(522, 102);
             this.artHorpanel.Name = "artHorpanel";
             this.artHorpanel.Size = new System.Drawing.Size(960, 720);
@@ -362,16 +372,6 @@
             this.toptitlebar1.TabIndex = 0;
             this.toptitlebar1.TabStop = false;
             this.toptitlebar1.Click += new System.EventHandler(this.toptitlebar1_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(183, 247);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Connect Joystick";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 

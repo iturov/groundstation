@@ -63,6 +63,16 @@ namespace WindowsFormsApplication5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _22_water_below_waterproof_cameras_630 {
+            get {
+                object obj = ResourceManager.GetObject("22-water-below-waterproof-cameras-630", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Comp_1_000002 {
             get {
                 object obj = ResourceManager.GetObject("Comp 1_000002", resourceCulture);
