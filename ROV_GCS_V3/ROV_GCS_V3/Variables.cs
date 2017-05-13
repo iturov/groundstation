@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace ROV_GCS_V3
 {
-    class Variables
+    public class Variables
     {
         public bool leftPanelOpen = false;
         public bool connectionPanelOpen = false;
-        public int controllerType = 0; //0, d3 1 d2
+        public static int controllerType = 0; //0, d3 1 d2
         public bool cameraState = false;
+        public static string controllerStatus;
+        public static string connectionStatus;
+
         public Variables()
         {
 

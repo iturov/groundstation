@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.exitButton = new System.Windows.Forms.Button();
+            this.aboutUsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,12 +61,23 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // aboutUsLabel
+            // 
+            this.aboutUsLabel.AutoSize = true;
+            this.aboutUsLabel.ForeColor = System.Drawing.Color.White;
+            this.aboutUsLabel.Location = new System.Drawing.Point(138, 438);
+            this.aboutUsLabel.Name = "aboutUsLabel";
+            this.aboutUsLabel.Size = new System.Drawing.Size(73, 13);
+            this.aboutUsLabel.TabIndex = 2;
+            this.aboutUsLabel.Text = "-aboutuslabel-";
+            // 
             // AboutUs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(753, 615);
+            this.Controls.Add(this.aboutUsLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -74,6 +86,7 @@
             this.Load += new System.EventHandler(this.AboutUs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,5 +94,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label aboutUsLabel;
     }
 }

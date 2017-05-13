@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.settingsPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.vehicleConnectionStatusLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.cameraPortBox = new System.Windows.Forms.TextBox();
             this.cameraConnectionStatus = new System.Windows.Forms.Label();
@@ -39,21 +41,23 @@
             this.joyStickStatusLabel = new System.Windows.Forms.Label();
             this.joyStickBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.minMaxButton = new System.Windows.Forms.Button();
+            this.logoBox = new System.Windows.Forms.PictureBox();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.connectionPanel = new System.Windows.Forms.Panel();
             this.minMaxConnectionPanelButton = new System.Windows.Forms.Button();
             this.cameraPlayButton = new System.Windows.Forms.Button();
             this.vehicleConnectButton = new System.Windows.Forms.Button();
             this.controllerConnectButton = new System.Windows.Forms.Button();
-            this.aboutButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.minMaxButton = new System.Windows.Forms.Button();
-            this.logoBox = new System.Windows.Forms.PictureBox();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.cameraFeed = new System.Windows.Forms.PictureBox();
+            this.refresher = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.vehiclePortBox = new System.Windows.Forms.TextBox();
             this.menuPanel.SuspendLayout();
             this.settingsPanel.SuspendLayout();
-            this.connectionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
+            this.connectionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,9 +75,28 @@
             this.menuPanel.Size = new System.Drawing.Size(200, 534);
             this.menuPanel.TabIndex = 0;
             // 
+            // aboutButton
+            // 
+            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.aboutButton.FlatAppearance.BorderSize = 0;
+            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutButton.ForeColor = System.Drawing.Color.White;
+            this.aboutButton.Image = global::ROV_GCS_V3.Properties.Resources.About_32px;
+            this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.aboutButton.Location = new System.Drawing.Point(0, 414);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(200, 40);
+            this.aboutButton.TabIndex = 6;
+            this.aboutButton.Text = "    About Us!";
+            this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.aboutButton.UseVisualStyleBackColor = false;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
             // settingsPanel
             // 
-            this.settingsPanel.Controls.Add(this.label2);
+            this.settingsPanel.Controls.Add(this.label4);
+            this.settingsPanel.Controls.Add(this.vehiclePortBox);
+            this.settingsPanel.Controls.Add(this.vehicleConnectionStatusLabel);
             this.settingsPanel.Controls.Add(this.label);
             this.settingsPanel.Controls.Add(this.cameraPortBox);
             this.settingsPanel.Controls.Add(this.cameraConnectionStatus);
@@ -84,18 +107,18 @@
             this.settingsPanel.Controls.Add(this.label1);
             this.settingsPanel.Location = new System.Drawing.Point(3, 166);
             this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(200, 208);
+            this.settingsPanel.Size = new System.Drawing.Size(200, 221);
             this.settingsPanel.TabIndex = 5;
             // 
-            // label2
+            // vehicleConnectionStatusLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(80, 165);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "-NoVehicleConnected-";
+            this.vehicleConnectionStatusLabel.AutoSize = true;
+            this.vehicleConnectionStatusLabel.ForeColor = System.Drawing.Color.White;
+            this.vehicleConnectionStatusLabel.Location = new System.Drawing.Point(80, 173);
+            this.vehicleConnectionStatusLabel.Name = "vehicleConnectionStatusLabel";
+            this.vehicleConnectionStatusLabel.Size = new System.Drawing.Size(114, 13);
+            this.vehicleConnectionStatusLabel.TabIndex = 11;
+            this.vehicleConnectionStatusLabel.Text = "-NoVehicleConnected-";
             // 
             // label
             // 
@@ -162,6 +185,7 @@
             // joyStickBox
             // 
             this.joyStickBox.BackColor = System.Drawing.Color.White;
+            this.joyStickBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.joyStickBox.Items.AddRange(new object[] {
             "DualShock 3",
             "DualShock 2"});
@@ -169,7 +193,6 @@
             this.joyStickBox.Name = "joyStickBox";
             this.joyStickBox.Size = new System.Drawing.Size(90, 21);
             this.joyStickBox.TabIndex = 4;
-            this.joyStickBox.Text = "DualShock 3";
             this.joyStickBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
@@ -181,100 +204,6 @@
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Controller Type:";
-            // 
-            // connectionPanel
-            // 
-            this.connectionPanel.Controls.Add(this.minMaxConnectionPanelButton);
-            this.connectionPanel.Controls.Add(this.cameraPlayButton);
-            this.connectionPanel.Controls.Add(this.vehicleConnectButton);
-            this.connectionPanel.Controls.Add(this.controllerConnectButton);
-            this.connectionPanel.Location = new System.Drawing.Point(827, 7);
-            this.connectionPanel.Name = "connectionPanel";
-            this.connectionPanel.Size = new System.Drawing.Size(150, 296);
-            this.connectionPanel.TabIndex = 4;
-            // 
-            // minMaxConnectionPanelButton
-            // 
-            this.minMaxConnectionPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.minMaxConnectionPanelButton.FlatAppearance.BorderSize = 0;
-            this.minMaxConnectionPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minMaxConnectionPanelButton.ForeColor = System.Drawing.Color.White;
-            this.minMaxConnectionPanelButton.Image = global::ROV_GCS_V3.Properties.Resources.LoginRoundedDown_32px;
-            this.minMaxConnectionPanelButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.minMaxConnectionPanelButton.Location = new System.Drawing.Point(0, 120);
-            this.minMaxConnectionPanelButton.Name = "minMaxConnectionPanelButton";
-            this.minMaxConnectionPanelButton.Size = new System.Drawing.Size(150, 40);
-            this.minMaxConnectionPanelButton.TabIndex = 8;
-            this.minMaxConnectionPanelButton.Text = "    Minimize!";
-            this.minMaxConnectionPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.minMaxConnectionPanelButton.UseVisualStyleBackColor = false;
-            this.minMaxConnectionPanelButton.Click += new System.EventHandler(this.minMaxConnectionPanelButton_Click);
-            // 
-            // cameraPlayButton
-            // 
-            this.cameraPlayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.cameraPlayButton.FlatAppearance.BorderSize = 0;
-            this.cameraPlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cameraPlayButton.ForeColor = System.Drawing.Color.White;
-            this.cameraPlayButton.Image = global::ROV_GCS_V3.Properties.Resources.Play_32px;
-            this.cameraPlayButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.cameraPlayButton.Location = new System.Drawing.Point(0, 80);
-            this.cameraPlayButton.Name = "cameraPlayButton";
-            this.cameraPlayButton.Size = new System.Drawing.Size(150, 40);
-            this.cameraPlayButton.TabIndex = 7;
-            this.cameraPlayButton.Text = "    Connect Camera!";
-            this.cameraPlayButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cameraPlayButton.UseVisualStyleBackColor = false;
-            this.cameraPlayButton.Click += new System.EventHandler(this.cameraPlayButton_Click);
-            // 
-            // vehicleConnectButton
-            // 
-            this.vehicleConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.vehicleConnectButton.FlatAppearance.BorderSize = 0;
-            this.vehicleConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vehicleConnectButton.ForeColor = System.Drawing.Color.White;
-            this.vehicleConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Disconnected_32px;
-            this.vehicleConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.vehicleConnectButton.Location = new System.Drawing.Point(0, 40);
-            this.vehicleConnectButton.Name = "vehicleConnectButton";
-            this.vehicleConnectButton.Size = new System.Drawing.Size(150, 40);
-            this.vehicleConnectButton.TabIndex = 6;
-            this.vehicleConnectButton.Text = "    Connect Vehicle!";
-            this.vehicleConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vehicleConnectButton.UseVisualStyleBackColor = false;
-            // 
-            // controllerConnectButton
-            // 
-            this.controllerConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.controllerConnectButton.FlatAppearance.BorderSize = 0;
-            this.controllerConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.controllerConnectButton.ForeColor = System.Drawing.Color.White;
-            this.controllerConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Controller_32px;
-            this.controllerConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.controllerConnectButton.Location = new System.Drawing.Point(0, 0);
-            this.controllerConnectButton.Name = "controllerConnectButton";
-            this.controllerConnectButton.Size = new System.Drawing.Size(150, 40);
-            this.controllerConnectButton.TabIndex = 5;
-            this.controllerConnectButton.Text = "    Connect Controller";
-            this.controllerConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.controllerConnectButton.UseVisualStyleBackColor = false;
-            // 
-            // aboutButton
-            // 
-            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.aboutButton.FlatAppearance.BorderSize = 0;
-            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.ForeColor = System.Drawing.Color.White;
-            this.aboutButton.Image = global::ROV_GCS_V3.Properties.Resources.About_32px;
-            this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.aboutButton.Location = new System.Drawing.Point(0, 414);
-            this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(200, 40);
-            this.aboutButton.TabIndex = 6;
-            this.aboutButton.Text = "    About Us!";
-            this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.aboutButton.UseVisualStyleBackColor = false;
-            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // exitButton
             // 
@@ -338,6 +267,85 @@
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // connectionPanel
+            // 
+            this.connectionPanel.Controls.Add(this.minMaxConnectionPanelButton);
+            this.connectionPanel.Controls.Add(this.cameraPlayButton);
+            this.connectionPanel.Controls.Add(this.vehicleConnectButton);
+            this.connectionPanel.Controls.Add(this.controllerConnectButton);
+            this.connectionPanel.Location = new System.Drawing.Point(827, 7);
+            this.connectionPanel.Name = "connectionPanel";
+            this.connectionPanel.Size = new System.Drawing.Size(150, 296);
+            this.connectionPanel.TabIndex = 4;
+            // 
+            // minMaxConnectionPanelButton
+            // 
+            this.minMaxConnectionPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.minMaxConnectionPanelButton.FlatAppearance.BorderSize = 0;
+            this.minMaxConnectionPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minMaxConnectionPanelButton.ForeColor = System.Drawing.Color.White;
+            this.minMaxConnectionPanelButton.Image = global::ROV_GCS_V3.Properties.Resources.LoginRoundedDown_32px;
+            this.minMaxConnectionPanelButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.minMaxConnectionPanelButton.Location = new System.Drawing.Point(0, 120);
+            this.minMaxConnectionPanelButton.Name = "minMaxConnectionPanelButton";
+            this.minMaxConnectionPanelButton.Size = new System.Drawing.Size(150, 40);
+            this.minMaxConnectionPanelButton.TabIndex = 8;
+            this.minMaxConnectionPanelButton.Text = "    Minimize!";
+            this.minMaxConnectionPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.minMaxConnectionPanelButton.UseVisualStyleBackColor = false;
+            this.minMaxConnectionPanelButton.Click += new System.EventHandler(this.minMaxConnectionPanelButton_Click);
+            // 
+            // cameraPlayButton
+            // 
+            this.cameraPlayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.cameraPlayButton.FlatAppearance.BorderSize = 0;
+            this.cameraPlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cameraPlayButton.ForeColor = System.Drawing.Color.White;
+            this.cameraPlayButton.Image = global::ROV_GCS_V3.Properties.Resources.Play_32px;
+            this.cameraPlayButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.cameraPlayButton.Location = new System.Drawing.Point(0, 80);
+            this.cameraPlayButton.Name = "cameraPlayButton";
+            this.cameraPlayButton.Size = new System.Drawing.Size(150, 40);
+            this.cameraPlayButton.TabIndex = 7;
+            this.cameraPlayButton.Text = "    Connect Camera!";
+            this.cameraPlayButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cameraPlayButton.UseVisualStyleBackColor = false;
+            this.cameraPlayButton.Click += new System.EventHandler(this.cameraPlayButton_Click);
+            // 
+            // vehicleConnectButton
+            // 
+            this.vehicleConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.vehicleConnectButton.FlatAppearance.BorderSize = 0;
+            this.vehicleConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vehicleConnectButton.ForeColor = System.Drawing.Color.White;
+            this.vehicleConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Disconnected_32px;
+            this.vehicleConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.vehicleConnectButton.Location = new System.Drawing.Point(0, 40);
+            this.vehicleConnectButton.Name = "vehicleConnectButton";
+            this.vehicleConnectButton.Size = new System.Drawing.Size(150, 40);
+            this.vehicleConnectButton.TabIndex = 6;
+            this.vehicleConnectButton.Text = "    Connect Vehicle!";
+            this.vehicleConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.vehicleConnectButton.UseVisualStyleBackColor = false;
+            this.vehicleConnectButton.Click += new System.EventHandler(this.vehicleConnectButton_Click);
+            // 
+            // controllerConnectButton
+            // 
+            this.controllerConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.controllerConnectButton.FlatAppearance.BorderSize = 0;
+            this.controllerConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.controllerConnectButton.ForeColor = System.Drawing.Color.White;
+            this.controllerConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Controller_32px;
+            this.controllerConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.controllerConnectButton.Location = new System.Drawing.Point(0, 0);
+            this.controllerConnectButton.Name = "controllerConnectButton";
+            this.controllerConnectButton.Size = new System.Drawing.Size(150, 40);
+            this.controllerConnectButton.TabIndex = 5;
+            this.controllerConnectButton.Text = "    Connect Controller";
+            this.controllerConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.controllerConnectButton.UseVisualStyleBackColor = false;
+            this.controllerConnectButton.Click += new System.EventHandler(this.controllerConnectButton_Click);
+            // 
             // cameraFeed
             // 
             this.cameraFeed.Location = new System.Drawing.Point(432, 87);
@@ -345,6 +353,31 @@
             this.cameraFeed.Size = new System.Drawing.Size(100, 50);
             this.cameraFeed.TabIndex = 9;
             this.cameraFeed.TabStop = false;
+            // 
+            // refresher
+            // 
+            this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(13, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Camera  Port:";
+            // 
+            // vehiclePortBox
+            // 
+            this.vehiclePortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vehiclePortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.vehiclePortBox.ForeColor = System.Drawing.Color.White;
+            this.vehiclePortBox.Location = new System.Drawing.Point(90, 150);
+            this.vehiclePortBox.Name = "vehiclePortBox";
+            this.vehiclePortBox.Size = new System.Drawing.Size(32, 20);
+            this.vehiclePortBox.TabIndex = 12;
+            this.vehiclePortBox.Text = "8092";
             // 
             // Form1
             // 
@@ -362,8 +395,8 @@
             this.menuPanel.ResumeLayout(false);
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
-            this.connectionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
+            this.connectionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).EndInit();
             this.ResumeLayout(false);
 
@@ -382,7 +415,6 @@
         private System.Windows.Forms.ComboBox joyStickBox;
         private System.Windows.Forms.Label cameraConnectionStatus;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label joyStickStatusLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.TextBox cameraPortBox;
         public System.Windows.Forms.Button cameraPlayButton;
@@ -390,8 +422,12 @@
         public System.Windows.Forms.Panel connectionPanel;
         public System.Windows.Forms.Button aboutButton;
         public System.Windows.Forms.Button minMaxConnectionPanelButton;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label vehicleConnectionStatusLabel;
         public System.Windows.Forms.PictureBox cameraFeed;
+        private System.Windows.Forms.Timer refresher;
+        public System.Windows.Forms.Label joyStickStatusLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox vehiclePortBox;
     }
 }
 
