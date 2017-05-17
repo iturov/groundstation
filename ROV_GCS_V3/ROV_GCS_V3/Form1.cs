@@ -15,13 +15,16 @@ namespace ROV_GCS_V3
 {
     public partial class Form1 : Form
     {
+        #region variables
         Graphics graphics; // CREATE GRAPHICS OBJECT
         public Variables variables; // CREATE VARIABLES OBJECT
         Vehicle vehicle; // CREATE VEHICLE OBJECT
         Camera camera; // CREATE CAMERA OBJECT
         Controller controller; // CREATE CONTROLLER OBJECT
         public int[] controllerData = new int[32]; // DEFINE CONTROLLER DATA TO BE POLLED
+        #endregion variables
 
+        #region eventsAndFunctions
         public Form1()
         {
             InitializeComponent();
@@ -129,5 +132,6 @@ namespace ROV_GCS_V3
         {
             joyStickStatusLabel.Text = controllerData[3].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
         }
+        #endregion eventsAndFunctions
     }
 }

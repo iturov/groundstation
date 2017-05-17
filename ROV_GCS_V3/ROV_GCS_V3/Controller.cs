@@ -12,14 +12,18 @@ namespace ROV_GCS_V3
 {
     class Controller
     {
+        #region variables
         public static int[] controllerData = new int[32];
         BackgroundWorker getController = new BackgroundWorker();
         Form1 form;
+        #endregion variables
 
+        #region privateFunctions
         public Controller(Form1 form)
         {
             this.form = form;
         }
+
         private static int mapInt(int value, int currentMin, int currentMax, int targetMin, int targetMax, int reverse = 0)
         {
             int st1, st2;
@@ -123,7 +127,9 @@ namespace ROV_GCS_V3
             }
 
         }
+        #endregion privateFunctions
 
+        #region publicFunctions
         public void StartPoll()
         {
             if (!getController.IsBusy)
@@ -136,10 +142,11 @@ namespace ROV_GCS_V3
             Thread.Sleep(500); // Connection Time!
             form.joyStickStatusLabel.Text = Variables.controllerStatus;
         }
+
         public void StopPoll()
         {
             if (getController.IsBusy) getController.CancelAsync();
         }
-
+        #endregion publicFunctions
     }
 }

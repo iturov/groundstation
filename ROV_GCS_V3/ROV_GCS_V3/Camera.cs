@@ -9,14 +9,17 @@ namespace ROV_GCS_V3
 {
     class Camera
     {
+        #region variables
+        public event NewFrameEventHandler EventHandler;
+        public event VideoSourceErrorEventHandler errorHandler;
+        private MJPEGStream stream = null;
+        #endregion variables
+
+        #region publicFunctions
         public Camera()
         {
 
         }
-        public event NewFrameEventHandler EventHandler;
-        public event VideoSourceErrorEventHandler errorHandler;
-        private MJPEGStream stream = null;
-
 
         public void initialize(string ip = "192.168.137.69", int port = 8091)
         {
@@ -64,5 +67,6 @@ namespace ROV_GCS_V3
                 }
             }
         }
+        #endregion publicFunctions
     }
 }

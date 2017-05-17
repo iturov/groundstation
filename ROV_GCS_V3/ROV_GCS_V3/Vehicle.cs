@@ -11,13 +11,16 @@ namespace ROV_GCS_V3
 {
     class Vehicle
     {
+        #region variables
         Form1 form;
         BackgroundWorker tcp = new BackgroundWorker();
         public static string[] dataReceived = new string[32];
         public static string[] dataSent = new string[16];
         public static string[] roboticArm = new string[8];
         static int port;
+        #endregion variables
 
+        #region publicFunctions
         public Vehicle(Form1 form)
         {
             this.form = form;
@@ -39,7 +42,9 @@ namespace ROV_GCS_V3
         {
             if (tcp.IsBusy) tcp.CancelAsync();
         }
+        #endregion publicFunctions
 
+        #region privateFunctions
         private static void Listen(object sender, DoWorkEventArgs e)
         {
             TcpListener server = null;
@@ -137,5 +142,7 @@ namespace ROV_GCS_V3
             Console.WriteLine("\nHit enter to continue...");
             Console.Read();
         }
+        #endregion privateFunctions
+
     }
 }

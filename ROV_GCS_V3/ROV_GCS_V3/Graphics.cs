@@ -12,6 +12,7 @@ namespace ROV_GCS_V3
 {
     public class Graphics
     {
+        #region varibles
         private Form1 form;
         private Point baseForm = new Point(0,0);
         private static int logoHeightMax = Properties.Settings.Default.logoSizeMax;
@@ -29,6 +30,9 @@ namespace ROV_GCS_V3
         private static int connectionButtonNumber = Properties.Settings.Default.connectionButtonNumber;
         private Size connectionMenuSize = new Size(connectionMenuWidth, connectionButtonNumber * buttonHeight);
         //private Point connectionPanelClosed = new Point(Screen.PrimaryScreen.Bounds.Width - );
+        #endregion varibles
+
+        #region publicFunctions
         public Graphics(Form1 form)
         {
             this.form = form;
@@ -71,11 +75,7 @@ namespace ROV_GCS_V3
             form.menuPanel.Parent = form.cameraFeed;
             
         }
-        private void setLocationButtonSettings(Button button,int location)
-        {
-            button.Size = new Size(200, buttonHeight);
-            button.Location = new Point(form.menuPanel.Location.X, form.menuPanel.Location.Y + Screen.PrimaryScreen.Bounds.Height - buttonHeight * location);
-        }
+
 
         public void update(bool leftPanelOpen, bool connectionPanelOpen, bool cameraState)
         {
@@ -124,6 +124,14 @@ namespace ROV_GCS_V3
             }
 
         }
+        #endregion publicFunctions
 
+        #region privateFunctions
+        private void setLocationButtonSettings(Button button, int location)
+        {
+            button.Size = new Size(200, buttonHeight);
+            button.Location = new Point(form.menuPanel.Location.X, form.menuPanel.Location.Y + Screen.PrimaryScreen.Bounds.Height - buttonHeight * location);
+        }
+        #endregion privateFunctions
     }
 }
