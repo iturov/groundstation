@@ -32,6 +32,8 @@
             this.menuPanel = new System.Windows.Forms.Panel();
             this.aboutButton = new System.Windows.Forms.Button();
             this.settingsPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.vehiclePortBox = new System.Windows.Forms.TextBox();
             this.vehicleConnectionStatusLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.cameraPortBox = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.controllerConnectButton = new System.Windows.Forms.Button();
             this.cameraFeed = new System.Windows.Forms.PictureBox();
             this.refresher = new System.Windows.Forms.Timer(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.vehiclePortBox = new System.Windows.Forms.TextBox();
             this.menuPanel.SuspendLayout();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
@@ -109,6 +109,27 @@
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(200, 221);
             this.settingsPanel.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(13, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Vehicle  Port:";
+            // 
+            // vehiclePortBox
+            // 
+            this.vehiclePortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vehiclePortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.vehiclePortBox.ForeColor = System.Drawing.Color.White;
+            this.vehiclePortBox.Location = new System.Drawing.Point(90, 150);
+            this.vehiclePortBox.Name = "vehiclePortBox";
+            this.vehiclePortBox.Size = new System.Drawing.Size(32, 20);
+            this.vehiclePortBox.TabIndex = 12;
+            this.vehiclePortBox.Text = "8092";
             // 
             // vehicleConnectionStatusLabel
             // 
@@ -357,27 +378,6 @@
             // refresher
             // 
             this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(13, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Camera  Port:";
-            // 
-            // vehiclePortBox
-            // 
-            this.vehiclePortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.vehiclePortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.vehiclePortBox.ForeColor = System.Drawing.Color.White;
-            this.vehiclePortBox.Location = new System.Drawing.Point(90, 150);
-            this.vehiclePortBox.Name = "vehiclePortBox";
-            this.vehiclePortBox.Size = new System.Drawing.Size(32, 20);
-            this.vehiclePortBox.TabIndex = 12;
-            this.vehiclePortBox.Text = "8092";
             // 
             // Form1
             // 
