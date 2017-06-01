@@ -339,7 +339,7 @@
             // 
             // artHorpanel
             // 
-            this.artHorpanel.Image = global::WindowsFormsApplication5.Properties.Resources._22_water_below_waterproof_cameras_630;
+            this.artHorpanel.Image = global::WindowsFormsApplication5.Properties.Resources.video_000001;
             this.artHorpanel.Location = new System.Drawing.Point(522, 102);
             this.artHorpanel.Name = "artHorpanel";
             this.artHorpanel.Size = new System.Drawing.Size(960, 720);

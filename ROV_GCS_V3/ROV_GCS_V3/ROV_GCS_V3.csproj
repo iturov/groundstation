@@ -56,6 +56,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\AForge.NET\Framework\Release\AForge.Video.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>C:\Users\Sencer\Desktop\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="kayChart, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\kayChart.dll.0.4.7\lib\net45\kayChart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SharpDX">
       <HintPath>..\..\..\..\..\Google Drive\Sync Files\Visual Studio\jystck\jystck\bin\Debug\SharpDX.dll</HintPath>
     </Reference>
@@ -64,6 +71,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +92,12 @@
     </Compile>
     <Compile Include="Camera.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Telemetry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telemetry.Designer.cs">
+      <DependentUpon>Telemetry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Variables.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,6 +120,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telemetry.resx">
+      <DependentUpon>Telemetry.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,6 +138,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -179,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Pause_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\nugetexample.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

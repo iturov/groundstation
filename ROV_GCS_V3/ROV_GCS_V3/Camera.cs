@@ -31,16 +31,16 @@ namespace ROV_GCS_V3
 
         public void update(bool state, string ip = "192.168.137.69", int port = 8091)
         {
-            
+
             if (state) //Start Stream
             {
                 stream.Source = "http://" + ip + ":" + port.ToString() + "/?action=stream";
                 if (!stream.IsRunning)
                 {
-                    
+
                     stream.Start();
                 }
-                
+
             }
             else
             {
@@ -57,9 +57,9 @@ namespace ROV_GCS_V3
                     }
                     else
                     {
-                        
+
                         return;
-                    }   
+                    }
                 }
                 catch (Exception e)
                 {

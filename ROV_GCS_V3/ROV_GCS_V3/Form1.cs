@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace ROV_GCS_V3
 {
     public partial class Form1 : Form
@@ -53,14 +52,14 @@ namespace ROV_GCS_V3
             camera = new Camera(); // ADD CAMERA OBJECT
             camera.EventHandler += newFrame; // ADD NEW FRAME EVENT TO THE CAMERA EVENTHANDLER
             camera.initialize(cameraIPBox.Text, Int32.Parse(cameraPortBox.Text)); // INITALIZE CAMERA WITH THE GIVEN PARAMETERS
-
+            
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
             variables.leftPanelOpen = true; // SET LEFT PANEL STATE TO OPEN
             graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS WITH VARIABLES
-            
+
         }
 
         private void minMaxButton_Click(object sender, EventArgs e)
@@ -131,7 +130,15 @@ namespace ROV_GCS_V3
         private void refresher_Tick(object sender, EventArgs e)
         {
             joyStickStatusLabel.Text = controllerData[3].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
+            joyStickStatusLabel.Text = Vehicle.dataReceived[0];
+
         }
         #endregion eventsAndFunctions
+
+        private void telemetryButton_Click(object sender, EventArgs e)
+        {
+            Telemetry t = new Telemetry();
+            t.Show();
+        }
     }
 }

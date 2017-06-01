@@ -32,3 +32,6 @@ D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_G
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.Form1.resources
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.Properties.Resources.resources
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.csproj.GenerateResource.Cache
+D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.Telemetry.resources
+D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\bin\Debug\Bunifu_UI_v1.52.dll
+D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\bin\Debug\kayChart.dll

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuPanel = new System.Windows.Forms.Panel();
             this.aboutButton = new System.Windows.Forms.Button();
             this.settingsPanel = new System.Windows.Forms.Panel();
@@ -54,6 +55,7 @@
             this.controllerConnectButton = new System.Windows.Forms.Button();
             this.cameraFeed = new System.Windows.Forms.PictureBox();
             this.refresher = new System.Windows.Forms.Timer(this.components);
+            this.telemetryButton = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
@@ -64,6 +66,7 @@
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.menuPanel.Controls.Add(this.telemetryButton);
             this.menuPanel.Controls.Add(this.aboutButton);
             this.menuPanel.Controls.Add(this.settingsPanel);
             this.menuPanel.Controls.Add(this.exitButton);
@@ -81,7 +84,7 @@
             this.aboutButton.FlatAppearance.BorderSize = 0;
             this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.aboutButton.ForeColor = System.Drawing.Color.White;
-            this.aboutButton.Image = global::ROV_GCS_V3.Properties.Resources.About_32px;
+            this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
             this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.aboutButton.Location = new System.Drawing.Point(0, 414);
             this.aboutButton.Name = "aboutButton";
@@ -232,7 +235,7 @@
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Image = global::ROV_GCS_V3.Properties.Resources.Close_Window_32px;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
             this.exitButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.exitButton.Location = new System.Drawing.Point(0, 494);
             this.exitButton.Name = "exitButton";
@@ -249,7 +252,7 @@
             this.minMaxButton.FlatAppearance.BorderSize = 0;
             this.minMaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minMaxButton.ForeColor = System.Drawing.Color.White;
-            this.minMaxButton.Image = global::ROV_GCS_V3.Properties.Resources.minimizeIcon;
+            this.minMaxButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxButton.Image")));
             this.minMaxButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.minMaxButton.Location = new System.Drawing.Point(0, 454);
             this.minMaxButton.Name = "minMaxButton";
@@ -262,7 +265,7 @@
             // 
             // logoBox
             // 
-            this.logoBox.Image = global::ROV_GCS_V3.Properties.Resources.logo;
+            this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
             this.logoBox.Location = new System.Drawing.Point(0, 0);
             this.logoBox.Name = "logoBox";
             this.logoBox.Size = new System.Drawing.Size(100, 100);
@@ -277,7 +280,7 @@
             this.settingsButton.FlatAppearance.BorderSize = 0;
             this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Image = global::ROV_GCS_V3.Properties.Resources.Menu_32px;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.settingsButton.Location = new System.Drawing.Point(-3, 106);
             this.settingsButton.Name = "settingsButton";
@@ -305,7 +308,7 @@
             this.minMaxConnectionPanelButton.FlatAppearance.BorderSize = 0;
             this.minMaxConnectionPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minMaxConnectionPanelButton.ForeColor = System.Drawing.Color.White;
-            this.minMaxConnectionPanelButton.Image = global::ROV_GCS_V3.Properties.Resources.LoginRoundedDown_32px;
+            this.minMaxConnectionPanelButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxConnectionPanelButton.Image")));
             this.minMaxConnectionPanelButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.minMaxConnectionPanelButton.Location = new System.Drawing.Point(0, 120);
             this.minMaxConnectionPanelButton.Name = "minMaxConnectionPanelButton";
@@ -322,7 +325,7 @@
             this.cameraPlayButton.FlatAppearance.BorderSize = 0;
             this.cameraPlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cameraPlayButton.ForeColor = System.Drawing.Color.White;
-            this.cameraPlayButton.Image = global::ROV_GCS_V3.Properties.Resources.Play_32px;
+            this.cameraPlayButton.Image = ((System.Drawing.Image)(resources.GetObject("cameraPlayButton.Image")));
             this.cameraPlayButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.cameraPlayButton.Location = new System.Drawing.Point(0, 80);
             this.cameraPlayButton.Name = "cameraPlayButton";
@@ -339,7 +342,7 @@
             this.vehicleConnectButton.FlatAppearance.BorderSize = 0;
             this.vehicleConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vehicleConnectButton.ForeColor = System.Drawing.Color.White;
-            this.vehicleConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Disconnected_32px;
+            this.vehicleConnectButton.Image = ((System.Drawing.Image)(resources.GetObject("vehicleConnectButton.Image")));
             this.vehicleConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.vehicleConnectButton.Location = new System.Drawing.Point(0, 40);
             this.vehicleConnectButton.Name = "vehicleConnectButton";
@@ -356,7 +359,7 @@
             this.controllerConnectButton.FlatAppearance.BorderSize = 0;
             this.controllerConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.controllerConnectButton.ForeColor = System.Drawing.Color.White;
-            this.controllerConnectButton.Image = global::ROV_GCS_V3.Properties.Resources.Controller_32px;
+            this.controllerConnectButton.Image = ((System.Drawing.Image)(resources.GetObject("controllerConnectButton.Image")));
             this.controllerConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.controllerConnectButton.Location = new System.Drawing.Point(0, 0);
             this.controllerConnectButton.Name = "controllerConnectButton";
@@ -378,6 +381,23 @@
             // refresher
             // 
             this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
+            // 
+            // telemetryButton
+            // 
+            this.telemetryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.telemetryButton.FlatAppearance.BorderSize = 0;
+            this.telemetryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.telemetryButton.ForeColor = System.Drawing.Color.White;
+            this.telemetryButton.Image = ((System.Drawing.Image)(resources.GetObject("telemetryButton.Image")));
+            this.telemetryButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.telemetryButton.Location = new System.Drawing.Point(0, 368);
+            this.telemetryButton.Name = "telemetryButton";
+            this.telemetryButton.Size = new System.Drawing.Size(200, 40);
+            this.telemetryButton.TabIndex = 7;
+            this.telemetryButton.Text = "    Telemetry";
+            this.telemetryButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.telemetryButton.UseVisualStyleBackColor = false;
+            this.telemetryButton.Click += new System.EventHandler(this.telemetryButton_Click);
             // 
             // Form1
             // 
@@ -428,6 +448,7 @@
         public System.Windows.Forms.Label joyStickStatusLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox vehiclePortBox;
+        public System.Windows.Forms.Button telemetryButton;
     }
 }
 

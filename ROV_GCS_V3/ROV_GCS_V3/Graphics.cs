@@ -52,13 +52,16 @@ namespace ROV_GCS_V3
             form.settingsButton.Location = new Point(form.menuPanel.Location.X, form.menuPanel.Location.Y + logoHeightMin);
 
             form.minMaxButton.Size = new Size(200, buttonHeight);
-            setLocationButtonSettings(form.minMaxButton, 3);
+            setLocationButtonSettings(form.minMaxButton, 4);
 
             form.exitButton.Size = new Size(200, buttonHeight);
             setLocationButtonSettings(form.exitButton, 1);
 
             form.aboutButton.Size = new Size(200, buttonHeight);
             setLocationButtonSettings(form.aboutButton, 2);
+
+            form.telemetryButton.Size = new Size(200, buttonHeight);
+            setLocationButtonSettings(form.telemetryButton, 3);
 
             form.connectionPanel.Size = connectionMenuSize;
             

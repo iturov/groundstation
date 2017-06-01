@@ -59,7 +59,7 @@ namespace WindowsFormsApplication5
             myJoystick = new Thread(Joystick);
             timer1.Enabled = true;
             myCamera = new Thread(cameraInitialize);
-            artHorpanel.SizeMode = PictureBoxSizeMode.StretchImage;
+            artHorpanel.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 
         void newFrame(object sender, NewFrameEventArgs eventargs)

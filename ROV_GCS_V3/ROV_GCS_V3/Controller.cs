@@ -92,8 +92,6 @@ namespace ROV_GCS_V3
                 Application.DoEvents();
                 Thread.Sleep(1);
 
-                //controllerData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); 
-                //controllerData[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top L-STICK UP-DOWN "0-255"
                 controllerData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
                 controllerData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
 
@@ -124,6 +122,9 @@ namespace ROV_GCS_V3
 
                 System.Threading.Thread.Sleep(5);
                 Application.DoEvents();
+
+                //PASS VALUES TO THE VEHICLE CLASS
+                Vehicle.dataSent[0] = controllerData[3].ToString();
             }
 
         }
