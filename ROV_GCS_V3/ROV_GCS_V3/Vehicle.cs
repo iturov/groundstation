@@ -90,7 +90,7 @@ namespace ROV_GCS_V3
                             }
 
 
-
+                            /*
                             ///CHANGED
                             string outgoingData = "";
                             for (int dat = 0; dat < dataSent.Length; dat++)
@@ -103,25 +103,23 @@ namespace ROV_GCS_V3
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
                             stream.Write(msg, 0, msg.Length);
                             ///CHANGED
+                            */
 
-                            /*
                             string[] dataArray = new string[16];
-                            
-                            
                             dataArray[0] = Controller.controllerData[3].ToString(); // Throttle 
                             dataArray[1] = Controller.controllerData[5].ToString(); // foward/back
                             dataArray[2] = Controller.controllerData[4].ToString(); // right/left
-                            dataArray[3] = roboticArm[3].ToString(); // Light intensity value
-                            dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
-                            dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
-                            dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
+                            //dataArray[3] = roboticArm[3].ToString(); // Light intensity value
+                            //dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
+                            //dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
+                            //dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
                             dataArray[7] = Controller.controllerData[2].ToString();  //ROLL
                             dataArray[8] = Controller.controllerData[16].ToString(); //YAW  %20 of 1000 uS
-                            dataArray[9] = roboticArm[4].ToString(); //Camera servo
+                            //dataArray[9] = roboticArm[4].ToString(); //Camera servo
                             string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6] + "," + dataArray[7] + "," + dataArray[8] + "," + dataArray[9];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
                             // Send back a response.
-                            stream.Write(msg, 0, msg.Length);*/
+                            stream.Write(msg, 0, msg.Length);
                         }
 
                         // Shutdown and end connection

@@ -107,7 +107,10 @@ namespace ROV_GCS_V3
 
         private void Telemetry_Load(object sender, EventArgs e)
         {
-            bunifuFlatButton1.Location = new Point(this.Width - bunifuFlatButton1.Width, this.Height - bunifuFlatButton1.Height);
+            dockbutton.Location = new Point(this.Width - closebutton.Width - dockbutton.Width, this.Height - dockbutton.Height);
+            closebutton.Location = new Point(this.Width - closebutton.Width, this.Height - dockbutton.Height);
+            closebutton.Text = "Close!";
+            dockbutton.Text = "Dock Tab!";
             progressBar1.Location = new Point(chart1.Width, 0);
             this.TopMost = true;
         }
@@ -121,13 +124,13 @@ namespace ROV_GCS_V3
             updateVariables();
 
             graph1.TriggeredUpdate(Int32.Parse(Vehicle.dataSent[0]));
-            progressBar1.Value = mapInt(Int32.Parse(Vehicle.dataSent[0]),-350,350,0,100);
+            progressBar1.Value = mapInt(Int32.Parse(Vehicle.dataSent[0]), -350, 350, -100, 100);
 
             graph2.TriggeredUpdate(Controller.controllerData[2]);
-            progressBar2.Value = mapInt(Controller.controllerData[2], -150, 150, 0, 100);
+            progressBar2.Value = mapInt(Controller.controllerData[2], -150, 150, -100, 100);
 
-            graph2.TriggeredUpdate(Controller.controllerData[4]);
-            progressBar2.Value = mapInt(Controller.controllerData[4], -400, 400, 0, 100);
+            graph3.TriggeredUpdate(Controller.controllerData[4]);
+            progressBar3.Value = mapInt(Controller.controllerData[4], -400, 400, -100, 100);
         }
         
         private void updateVariables()
@@ -148,15 +151,33 @@ namespace ROV_GCS_V3
         {
         }
         bool state = false;
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            state = !state;
-            if (state) this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
-        }
 
         private void Telemetry_LocationChanged(object sender, EventArgs e)
         {
             if(state) this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
+        }
+
+        private void dockbutton_Click_1(object sender, EventArgs e)
+        {
+            state = !state;
+            if (state)
+            {
+                this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
+                dockbutton.Image = Properties.Resources.minimizeIcon;
+                dockbutton.Text = "Undock Tab!";
+            }
+            else
+            {
+                dockbutton.Image = Properties.Resources.maximizeIcon;
+                dockbutton.Text = "Dock Tab!";
+            }
+
+            
+        }
+
+        private void closebutton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -75,8 +75,8 @@ namespace ROV_GCS_V3
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (joyStickBox.SelectedItem.ToString() == "DualShock 3") Variables.controllerType = 0; //SET CONTROLLER TYPE
-            if (joyStickBox.SelectedItem.ToString() == "DualShock 2") Variables.controllerType = 1; //SET CONTROLLER TYPE
+            if (joyStickBox.SelectedItem.ToString() == "DualShock 3") Variables.controllerType = 1; //SET CONTROLLER TYPE
+            if (joyStickBox.SelectedItem.ToString() == "DualShock 2") Variables.controllerType = 0; //SET CONTROLLER TYPE
         }
 
 

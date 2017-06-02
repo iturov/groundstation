@@ -120,13 +120,24 @@ namespace ROV_GCS_V3
                 controllerData[16] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -200, 200); //R2 L2 --Yaw value %20 of 1000 us
                 form.controllerData = controllerData;
 
-                System.Threading.Thread.Sleep(5);
+                for(int d = 0; d < 6; d++)
+                {
+                    controllerData[d] = threshold(controllerData[d], 50);
+                }
+
+                System.Threading.Thread.Sleep(2);
                 Application.DoEvents();
 
                 //PASS VALUES TO THE VEHICLE CLASS
                 Vehicle.dataSent[0] = controllerData[3].ToString();
             }
 
+        }
+        
+        private int threshold(int value, int th = 15)
+        {
+            if (Math.Abs(value) < th) value = 0;
+            return value;
         }
         #endregion privateFunctions
 
