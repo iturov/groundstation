@@ -51,8 +51,11 @@ namespace ROV_GCS_V3
             form.settingsButton.Size = new Size(200, buttonHeight);
             form.settingsButton.Location = new Point(form.menuPanel.Location.X, form.menuPanel.Location.Y + logoHeightMin);
 
+            form.infoButton.Size = new Size(200, buttonHeight);
+            setLocationButtonSettings(form.infoButton, 3);
+
             form.minMaxButton.Size = new Size(200, buttonHeight);
-            setLocationButtonSettings(form.minMaxButton, 4);
+            setLocationButtonSettings(form.minMaxButton, 5);
 
             form.exitButton.Size = new Size(200, buttonHeight);
             setLocationButtonSettings(form.exitButton, 1);
@@ -61,21 +64,29 @@ namespace ROV_GCS_V3
             setLocationButtonSettings(form.aboutButton, 2);
 
             form.telemetryButton.Size = new Size(200, buttonHeight);
-            setLocationButtonSettings(form.telemetryButton, 3);
+            setLocationButtonSettings(form.telemetryButton, 4);
 
             form.connectionPanel.Size = connectionMenuSize;
             
 
             form.settingsPanel.Location = new Point(form.menuPanel.Location.X, form.menuPanel.Location.Y + logoHeightMax + form.settingsButton.Height);
 
+            form.tiling.Location = baseForm;
+            form.tiling.SizeMode = PictureBoxSizeMode.CenterImage;
+            form.tiling.Size = new Size(form.Width, form.Height);
+
             form.cameraFeed.Location = baseForm;
             form.cameraFeed.SizeMode = PictureBoxSizeMode.StretchImage;
             form.cameraFeed.Size = new Size(form.Width,form.Height);
             form.cameraFeed.SendToBack();
 
-
-            form.connectionPanel.Parent = form.cameraFeed;
-            form.menuPanel.Parent = form.cameraFeed;
+            //form.connectionPanel.Parent = form.cameraFeed;
+            //form.menuPanel.Parent = form.cameraFeed;
+            //CHANGED
+            form.connectionPanel.Parent = form.tiling;
+            form.menuPanel.Parent = form.tiling;
+            form.tiling.Parent = form.cameraFeed;
+            //CHANGED
             
         }
 

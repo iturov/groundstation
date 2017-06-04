@@ -63,6 +63,16 @@ namespace ROV_GCS_V3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap a {
+            get {
+                object obj = ResourceManager.GetObject("a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap About_32px {
             get {
                 object obj = ResourceManager.GetObject("About_32px", resourceCulture);

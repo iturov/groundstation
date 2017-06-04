@@ -92,6 +92,12 @@
     </Compile>
     <Compile Include="Camera.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Info.Designer.cs">
+      <DependentUpon>Info.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telemetry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Info.resx">
+      <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -201,11 +210,14 @@
     <None Include="Resources\Pause_32px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\a.png" />
+    <Content Include="Resources\MissionDetails\a.png" />
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\nugetexample.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

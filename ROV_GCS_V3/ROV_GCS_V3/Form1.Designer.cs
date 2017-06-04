@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.aboutButton = new System.Windows.Forms.Button();
             this.settingsPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.vehiclePortBox = new System.Windows.Forms.TextBox();
@@ -44,28 +43,33 @@
             this.joyStickStatusLabel = new System.Windows.Forms.Label();
             this.joyStickBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.minMaxButton = new System.Windows.Forms.Button();
-            this.logoBox = new System.Windows.Forms.PictureBox();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.connectionPanel = new System.Windows.Forms.Panel();
+            this.refresher = new System.Windows.Forms.Timer(this.components);
+            this.cameraFeed = new System.Windows.Forms.PictureBox();
             this.minMaxConnectionPanelButton = new System.Windows.Forms.Button();
             this.cameraPlayButton = new System.Windows.Forms.Button();
             this.vehicleConnectButton = new System.Windows.Forms.Button();
             this.controllerConnectButton = new System.Windows.Forms.Button();
-            this.cameraFeed = new System.Windows.Forms.PictureBox();
-            this.refresher = new System.Windows.Forms.Timer(this.components);
+            this.infoButton = new System.Windows.Forms.Button();
             this.telemetryButton = new System.Windows.Forms.Button();
+            this.aboutButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.minMaxButton = new System.Windows.Forms.Button();
+            this.logoBox = new System.Windows.Forms.PictureBox();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.tiling = new System.Windows.Forms.PictureBox();
             this.menuPanel.SuspendLayout();
             this.settingsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.connectionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tiling)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.menuPanel.Controls.Add(this.infoButton);
             this.menuPanel.Controls.Add(this.telemetryButton);
             this.menuPanel.Controls.Add(this.aboutButton);
             this.menuPanel.Controls.Add(this.settingsPanel);
@@ -77,23 +81,6 @@
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(200, 534);
             this.menuPanel.TabIndex = 0;
-            // 
-            // aboutButton
-            // 
-            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.aboutButton.FlatAppearance.BorderSize = 0;
-            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.ForeColor = System.Drawing.Color.White;
-            this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
-            this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.aboutButton.Location = new System.Drawing.Point(0, 414);
-            this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(200, 40);
-            this.aboutButton.TabIndex = 6;
-            this.aboutButton.Text = "    About Us!";
-            this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.aboutButton.UseVisualStyleBackColor = false;
-            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // settingsPanel
             // 
@@ -108,9 +95,9 @@
             this.settingsPanel.Controls.Add(this.joyStickStatusLabel);
             this.settingsPanel.Controls.Add(this.joyStickBox);
             this.settingsPanel.Controls.Add(this.label1);
-            this.settingsPanel.Location = new System.Drawing.Point(3, 166);
+            this.settingsPanel.Location = new System.Drawing.Point(3, 141);
             this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(200, 221);
+            this.settingsPanel.Size = new System.Drawing.Size(200, 193);
             this.settingsPanel.TabIndex = 5;
             // 
             // label4
@@ -229,68 +216,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Controller Type:";
             // 
-            // exitButton
-            // 
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
-            this.exitButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.exitButton.Location = new System.Drawing.Point(0, 494);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(200, 40);
-            this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "    Exit!";
-            this.exitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // minMaxButton
-            // 
-            this.minMaxButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.minMaxButton.FlatAppearance.BorderSize = 0;
-            this.minMaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minMaxButton.ForeColor = System.Drawing.Color.White;
-            this.minMaxButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxButton.Image")));
-            this.minMaxButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.minMaxButton.Location = new System.Drawing.Point(0, 454);
-            this.minMaxButton.Name = "minMaxButton";
-            this.minMaxButton.Size = new System.Drawing.Size(200, 40);
-            this.minMaxButton.TabIndex = 2;
-            this.minMaxButton.Text = "    Minimize Bar";
-            this.minMaxButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.minMaxButton.UseVisualStyleBackColor = false;
-            this.minMaxButton.Click += new System.EventHandler(this.minMaxButton_Click);
-            // 
-            // logoBox
-            // 
-            this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
-            this.logoBox.Location = new System.Drawing.Point(0, 0);
-            this.logoBox.Name = "logoBox";
-            this.logoBox.Size = new System.Drawing.Size(100, 100);
-            this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logoBox.TabIndex = 1;
-            this.logoBox.TabStop = false;
-            this.logoBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.logoBox_MouseClick);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.settingsButton.FlatAppearance.BorderSize = 0;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
-            this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settingsButton.Location = new System.Drawing.Point(-3, 106);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(200, 40);
-            this.settingsButton.TabIndex = 0;
-            this.settingsButton.Text = "    Settings";
-            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
             // connectionPanel
             // 
             this.connectionPanel.Controls.Add(this.minMaxConnectionPanelButton);
@@ -301,6 +226,19 @@
             this.connectionPanel.Name = "connectionPanel";
             this.connectionPanel.Size = new System.Drawing.Size(150, 296);
             this.connectionPanel.TabIndex = 4;
+            // 
+            // refresher
+            // 
+            this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
+            // 
+            // cameraFeed
+            // 
+            this.cameraFeed.BackColor = System.Drawing.Color.Transparent;
+            this.cameraFeed.Location = new System.Drawing.Point(432, 87);
+            this.cameraFeed.Name = "cameraFeed";
+            this.cameraFeed.Size = new System.Drawing.Size(100, 50);
+            this.cameraFeed.TabIndex = 9;
+            this.cameraFeed.TabStop = false;
             // 
             // minMaxConnectionPanelButton
             // 
@@ -370,17 +308,22 @@
             this.controllerConnectButton.UseVisualStyleBackColor = false;
             this.controllerConnectButton.Click += new System.EventHandler(this.controllerConnectButton_Click);
             // 
-            // cameraFeed
+            // infoButton
             // 
-            this.cameraFeed.Location = new System.Drawing.Point(432, 87);
-            this.cameraFeed.Name = "cameraFeed";
-            this.cameraFeed.Size = new System.Drawing.Size(100, 50);
-            this.cameraFeed.TabIndex = 9;
-            this.cameraFeed.TabStop = false;
-            // 
-            // refresher
-            // 
-            this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
+            this.infoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.infoButton.FlatAppearance.BorderSize = 0;
+            this.infoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infoButton.ForeColor = System.Drawing.Color.White;
+            this.infoButton.Image = ((System.Drawing.Image)(resources.GetObject("infoButton.Image")));
+            this.infoButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.infoButton.Location = new System.Drawing.Point(-3, 330);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(200, 40);
+            this.infoButton.TabIndex = 8;
+            this.infoButton.Text = "    Information";
+            this.infoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.infoButton.UseVisualStyleBackColor = false;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // telemetryButton
             // 
@@ -399,11 +342,103 @@
             this.telemetryButton.UseVisualStyleBackColor = false;
             this.telemetryButton.Click += new System.EventHandler(this.telemetryButton_Click);
             // 
+            // aboutButton
+            // 
+            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.aboutButton.FlatAppearance.BorderSize = 0;
+            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutButton.ForeColor = System.Drawing.Color.White;
+            this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
+            this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.aboutButton.Location = new System.Drawing.Point(0, 414);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(200, 40);
+            this.aboutButton.TabIndex = 6;
+            this.aboutButton.Text = "    About Us!";
+            this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.aboutButton.UseVisualStyleBackColor = false;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.ForeColor = System.Drawing.Color.White;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.exitButton.Location = new System.Drawing.Point(0, 494);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(200, 40);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "    Exit!";
+            this.exitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // minMaxButton
+            // 
+            this.minMaxButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.minMaxButton.FlatAppearance.BorderSize = 0;
+            this.minMaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minMaxButton.ForeColor = System.Drawing.Color.White;
+            this.minMaxButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxButton.Image")));
+            this.minMaxButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.minMaxButton.Location = new System.Drawing.Point(0, 454);
+            this.minMaxButton.Name = "minMaxButton";
+            this.minMaxButton.Size = new System.Drawing.Size(200, 40);
+            this.minMaxButton.TabIndex = 2;
+            this.minMaxButton.Text = "    Minimize Bar";
+            this.minMaxButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.minMaxButton.UseVisualStyleBackColor = false;
+            this.minMaxButton.Click += new System.EventHandler(this.minMaxButton_Click);
+            // 
+            // logoBox
+            // 
+            this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
+            this.logoBox.Location = new System.Drawing.Point(0, 0);
+            this.logoBox.Name = "logoBox";
+            this.logoBox.Size = new System.Drawing.Size(100, 100);
+            this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoBox.TabIndex = 1;
+            this.logoBox.TabStop = false;
+            this.logoBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.logoBox_MouseClick);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.ForeColor = System.Drawing.Color.White;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.settingsButton.Location = new System.Drawing.Point(-3, 106);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(200, 40);
+            this.settingsButton.TabIndex = 0;
+            this.settingsButton.Text = "    Settings";
+            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // tiling
+            // 
+            this.tiling.BackColor = System.Drawing.Color.Transparent;
+            this.tiling.Image = ((System.Drawing.Image)(resources.GetObject("tiling.Image")));
+            this.tiling.Location = new System.Drawing.Point(407, 207);
+            this.tiling.Name = "tiling";
+            this.tiling.Size = new System.Drawing.Size(100, 50);
+            this.tiling.TabIndex = 10;
+            this.tiling.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 534);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(976, 534);
+            this.Controls.Add(this.tiling);
             this.Controls.Add(this.cameraFeed);
             this.Controls.Add(this.connectionPanel);
             this.Controls.Add(this.menuPanel);
@@ -415,9 +450,10 @@
             this.menuPanel.ResumeLayout(false);
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
             this.connectionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tiling)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -449,6 +485,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox vehiclePortBox;
         public System.Windows.Forms.Button telemetryButton;
+        public System.Windows.Forms.Button infoButton;
+        public System.Windows.Forms.PictureBox tiling;
     }
 }
 

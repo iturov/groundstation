@@ -70,6 +70,7 @@ namespace ROV_GCS_V3
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            Environment.Exit(1);
             Application.Exit(); // CLOSE APPLICATION
         }
 
@@ -139,6 +140,12 @@ namespace ROV_GCS_V3
         {
             Telemetry t = new Telemetry();
             t.Show();
+        }
+
+        private void infoButton_Click(object sender, EventArgs e)
+        {
+            Info info = new Info();
+            info.Show();
         }
     }
 }

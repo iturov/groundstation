@@ -121,6 +121,7 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
+            /*
             updateVariables();
 
             graph1.TriggeredUpdate(Int32.Parse(Vehicle.dataSent[0]));
@@ -131,6 +132,7 @@ namespace ROV_GCS_V3
 
             graph3.TriggeredUpdate(Controller.controllerData[4]);
             progressBar3.Value = mapInt(Controller.controllerData[4], -400, 400, -100, 100);
+            */
         }
         
         private void updateVariables()
