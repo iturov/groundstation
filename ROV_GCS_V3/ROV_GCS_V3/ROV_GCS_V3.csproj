@@ -98,6 +98,11 @@
     <Compile Include="Info.Designer.cs">
       <DependentUpon>Info.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Telemetry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,11 +142,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -211,6 +211,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\a.png" />
+    <None Include="Resources\a1.png" />
+    <None Include="Resources\mission1.jpg" />
+    <None Include="Resources\mission2.jpg" />
+    <None Include="Resources\mission1.png" />
+    <None Include="Resources\mission2.png" />
     <Content Include="Resources\MissionDetails\a.png" />
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />

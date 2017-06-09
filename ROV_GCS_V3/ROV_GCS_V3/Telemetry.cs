@@ -121,18 +121,19 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
-            /*
-            updateVariables();
+            if (Variables.controllerStatus == "Found Joystick / Gamepad!")
+            {
+                updateVariables();
 
-            graph1.TriggeredUpdate(Int32.Parse(Vehicle.dataSent[0]));
-            progressBar1.Value = mapInt(Int32.Parse(Vehicle.dataSent[0]), -350, 350, -100, 100);
+                graph1.TriggeredUpdate(Int32.Parse(Vehicle.dataSent[0]));
+                progressBar1.Value = mapInt(Int32.Parse(Vehicle.dataSent[0]), -350, 350, -100, 100);
 
-            graph2.TriggeredUpdate(Controller.controllerData[2]);
-            progressBar2.Value = mapInt(Controller.controllerData[2], -150, 150, -100, 100);
+                graph2.TriggeredUpdate(Controller.controllerData[2]);
+                progressBar2.Value = mapInt(Controller.controllerData[2], -150, 150, -100, 100);
 
-            graph3.TriggeredUpdate(Controller.controllerData[4]);
-            progressBar3.Value = mapInt(Controller.controllerData[4], -400, 400, -100, 100);
-            */
+                graph3.TriggeredUpdate(Controller.controllerData[4]);
+                progressBar3.Value = mapInt(Controller.controllerData[4], -400, 400, -100, 100);
+            }
         }
         
         private void updateVariables()

@@ -76,7 +76,9 @@ namespace ROV_GCS_V3
             Button bt = (Button)sender;
             //"missionButton1", select 13-14 character which is 1"
             int btnNumber = Int16.Parse(bt.Name.Substring(13, 1));
-            missionPlannerPictureBox.Image = Properties.Resources.a;
+
+            if (btnNumber == 1) missionPlannerPictureBox.Image = Properties.Resources.mission1;
+            else missionPlannerPictureBox.Image = Properties.Resources.mission2;
 
             missionPlannerPictureBox.Size = new Size(missionPlannerPictureBox.Width, missionPlannerPictureBox.Image.Height);
             imageImported = true;
@@ -111,6 +113,7 @@ namespace ROV_GCS_V3
         private void dockButton_Click(object sender, EventArgs e)
         {
             dock = !dock;
+            slide = true;
             dockUpdate(dock, true, slide);
         }
 

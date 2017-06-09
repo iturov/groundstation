@@ -84,7 +84,6 @@
             // 
             // button1
             // 
-            this.button1.Image = global::ROV_GCS_V3.Properties.Resources.a;
             this.button1.Location = new System.Drawing.Point(438, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -98,7 +97,7 @@
             this.dockButton.FlatAppearance.BorderSize = 0;
             this.dockButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dockButton.ForeColor = System.Drawing.Color.White;
-            this.dockButton.Image = global::ROV_GCS_V3.Properties.Resources.maximizeIcon;
+            this.dockButton.Image = ((System.Drawing.Image)(resources.GetObject("dockButton.Image")));
             this.dockButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.dockButton.Location = new System.Drawing.Point(90, 760);
             this.dockButton.Name = "dockButton";
@@ -129,6 +128,7 @@
             // missionPlannerPictureBox
             // 
             this.missionPlannerPictureBox.BackColor = System.Drawing.Color.Gray;
+            this.missionPlannerPictureBox.ErrorImage = null;
             this.missionPlannerPictureBox.Location = new System.Drawing.Point(22, 14);
             this.missionPlannerPictureBox.Name = "missionPlannerPictureBox";
             this.missionPlannerPictureBox.Size = new System.Drawing.Size(275, 700);

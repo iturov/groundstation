@@ -73,6 +73,16 @@ namespace ROV_GCS_V3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap a1 {
+            get {
+                object obj = ResourceManager.GetObject("a1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap About_32px {
             get {
                 object obj = ResourceManager.GetObject("About_32px", resourceCulture);
@@ -206,6 +216,26 @@ namespace ROV_GCS_V3.Properties {
         internal static System.Drawing.Bitmap minimizeIcon1 {
             get {
                 object obj = ResourceManager.GetObject("minimizeIcon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mission1 {
+            get {
+                object obj = ResourceManager.GetObject("mission1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mission2 {
+            get {
+                object obj = ResourceManager.GetObject("mission2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
