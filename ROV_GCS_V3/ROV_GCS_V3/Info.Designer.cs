@@ -84,6 +84,7 @@
             // 
             // button1
             // 
+            this.button1.Image = global::ROV_GCS_V3.Properties.Resources.mission4;
             this.button1.Location = new System.Drawing.Point(438, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);

@@ -78,11 +78,14 @@ namespace ROV_GCS_V3
             int btnNumber = Int16.Parse(bt.Name.Substring(13, 1));
 
             if (btnNumber == 1) missionPlannerPictureBox.Image = Properties.Resources.mission1;
-            else missionPlannerPictureBox.Image = Properties.Resources.mission2;
+            if (btnNumber == 2) missionPlannerPictureBox.Image = Properties.Resources.mission2;
+            if (btnNumber == 3) missionPlannerPictureBox.Image = Properties.Resources.mission3;
+            if (btnNumber == 4) missionPlannerPictureBox.Image = Properties.Resources.mission4;
+
 
             missionPlannerPictureBox.Size = new Size(missionPlannerPictureBox.Width, missionPlannerPictureBox.Image.Height);
             imageImported = true;
-            missionPlannerPictureBox.Size = missionPlannerPictureBox.Image.Size;
+            missionPlannerPictureBox.Size = new Size(missionPlannerPictureBox.Image.Width, missionPlannerPictureBox.Image.Height);
 
         }
 
@@ -149,7 +152,7 @@ namespace ROV_GCS_V3
         bool imageImported = false;
         private void vSlider1_ValueChanged(object sender, EventArgs e)
         {
-            if (imageImported) missionPlannerPictureBox.Location = new Point(0, - (missionPlannerPictureBox.Image.Height - panel1.Height) * vSlider1.Value / 100);
+            if (!(missionPlannerPictureBox.Height < panel1.Height) && imageImported) missionPlannerPictureBox.Location = new Point(0, - (missionPlannerPictureBox.Image.Height - panel1.Height) * vSlider1.Value / 100);
         }
     }
 }

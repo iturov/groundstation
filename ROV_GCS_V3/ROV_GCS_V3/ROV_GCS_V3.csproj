@@ -216,6 +216,8 @@
     <None Include="Resources\mission2.jpg" />
     <None Include="Resources\mission1.png" />
     <None Include="Resources\mission2.png" />
+    <None Include="Resources\mission3.png" />
+    <None Include="Resources\mission4.png" />
     <Content Include="Resources\MissionDetails\a.png" />
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />

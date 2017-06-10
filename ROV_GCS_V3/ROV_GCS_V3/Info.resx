@@ -120,16 +120,16 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dockButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAH0SURBVFhH7ZY9SxxRFIZXi4CF4HYR10ZJDPkhNipRxGYbSRl2TUhAiKKFFjaCwU4UOws/0EZI
-        8g/yDxIbK8uABIWQmI/r886cCwm6zr0zK4LsAw/omfOenZ2dmXtLLVrE4Jx7jG/xA57gKX7Fz/gRX+BD
-        a28eDO3DffyDWVzgGvZYvBgMeo7fUfzATRzHfiybOkHVtvAninMctTH5YIAuqWcHK3aoIfT4qyV0xV7Z
-        oTgIjuBv/ItTVg6GzGvL6ySGrRwOoWeoG2zGStGQnUbxDbutHA6hLvszF+Tb8BDFhpXjIFjDsv0bDdlH
-        qCdDP0evlcMgsITiE7ZbORqyu8kU5+pWyobmd2kmeQQHrZwL8tVkknPvrXQzNK6k/cU/XDBjIJnm3JGV
-        GkPTYtob9Na7go35D8qd6VF3ZqXroUF37WrSehcn4KHRXwXduVUr54YZT5Jpzn2xUjY0L6SZ4iehfDIp
-        9Cb0EFhOc4UfQ60jomalcAjVseiLSCtkrhdRM1/F61YOg4BfjGatFA3ZeRTxixGBIfyF0csx/frmc5bN
-        txwLgpM2ROhGyvwN6dGG5EAB0Ie/tEP5YMAY6hIKrWp7OIHakj3ADnyKOtlt1LZNFN+SeRhUQV0B/SRZ
-        NHdT+i8aim/Qb8t1QvrGx3h72/IW95hS6RIaZVmCoLV87QAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAfRJREFUWEft
+        lj1LHFEUhleLgIXgdhHXRkkM+SE2KlHEZhtJGXZNSECIooUWNoLBThQ7Cz/QRkjyD/IPEhsry4AEhZCY
+        j+vzzpwLCbrOvTMrguwDD+iZ856dnZ2Ze0stWsTgnHuMb/EDnuApfsXP+BFf4ENrbx4M7cN9/INZXOAa
+        9li8GAx6jt9R/MBNHMd+LJs6QdW28CeKcxy1MflggC6pZwcrdqgh9PirJXTFXtmhOAiO4G/8i1NWDobM
+        a8vrJIatHA6hZ6gbbMZK0ZCdRvENu60cDqEu+zMX5NvwEMWGleMgWMOy/RsN2UeoJ0M/R6+VwyCwhOIT
+        tls5GrK7yRTn6lbKhuZ3aSZ5BAetnAvy1WSSc++tdDM0rqT9xT9cMGMgmebckZUaQ9Ni2hv01ruCjfkP
+        yp3pUXdmpeuhQXftatJ6FyfgodFfBd25VSvnhhlPkmnOfbFSNjQvpJniJ6F8Min0JvQQWE5zhR9DrSOi
+        ZqVwCNWx6ItIK2SuF1EzX8XrVg6DgF+MZq0UDdl5FPGLEYEh/IXRyzH9+uZzls23HAuCkzZE6EbK/A3p
+        0YbkQAHQh7+0Q/lgwBjqEgqtans4gdqSPcAOfIo62W3Utk0U35J5GFRBXQH9JFk0d1P6LxqKb9Bvy3VC
+        +sbHeHvb8hb3mFLpEhplWYKgtXztAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="infoButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
