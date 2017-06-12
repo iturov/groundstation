@@ -130,8 +130,8 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
-            joyStickStatusLabel.Text = controllerData[3].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
-            joyStickStatusLabel.Text = Vehicle.dataReceived[0];
+            //if (!(Vehicle.dataReceived[0] == null)) joyStickStatusLabel.Text = Vehicle.dataReceived[4].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
+            joyStickStatusLabel.Text = Variables.controllerStatus;
 
         }
         #endregion eventsAndFunctions

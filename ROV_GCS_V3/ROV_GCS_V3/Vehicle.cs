@@ -63,7 +63,6 @@ namespace ROV_GCS_V3
                 while (true)
                 {
                     TcpClient client = server.AcceptTcpClient();
-                    //myConsole("Connected!");
                     if (!client.Connected)
                     {
                         Variables.connectionStatus = "No Connection!";
@@ -77,51 +76,34 @@ namespace ROV_GCS_V3
                         NetworkStream stream = client.GetStream();
                         int i;
                         // Loop to receive all the data sent by the client.
+                        
                         while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                         {
                             // Translate data bytes to a ASCII string.
                             data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                            
                             string[] receivedString = data.Split(',');
-
                             for (int k = 0; k < receivedString.Length; k++)
                             {
                                 dataReceived[k] = receivedString[k];
                             }
-
-
-                            /*
-                            ///CHANGED
-                            string outgoingData = "";
-                            for (int dat = 0; dat < dataSent.Length; dat++)
-                            {
-                                if (dataSent[dat] == null) dataSent[dat] = "0";
-                                if (!(dat == (dataSent.Length - 1))) outgoingData += dataSent[dat] + ",";
-                                else outgoingData += dataSent[dat];
-
-                            }
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
-                            stream.Write(msg, 0, msg.Length);
-                            ///CHANGED
-                            */
-
                             string[] dataArray = new string[16];
                             dataArray[0] = Controller.controllerData[3].ToString(); // Throttle 
                             dataArray[1] = Controller.controllerData[5].ToString(); // foward/back
                             dataArray[2] = Controller.controllerData[4].ToString(); // right/left
-                            //dataArray[3] = roboticArm[3].ToString(); // Light intensity value
-                            //dataArray[4] = roboticArm[0].ToString(); //Robot Arm elbow1
-                            //dataArray[5] = roboticArm[1].ToString(); //robot arm elbow2
-                            //dataArray[6] = roboticArm[2].ToString(); //robot arm elbow3/gripper
-                            dataArray[7] = Controller.controllerData[2].ToString();  //ROLL
-                            dataArray[8] = Controller.controllerData[16].ToString(); //YAW  %20 of 1000 uS
-                            //dataArray[9] = roboticArm[4].ToString(); //Camera servo
+                            dataArray[3] = Controller.controllerData[2].ToString();  //ROLL
+                            dataArray[4] = Controller.controllerData[16].ToString(); //YAW  %20 of 1000 uS
+                            dataArray[5] = Controller.robotValues[0].ToString(); //gripper
+                            dataArray[6] = Controller.robotValues[1].ToString(); //rollelbow
+                            dataArray[7] = Controller.robotValues[2].ToString(); //pitchelbow
+                            dataArray[8] = Controller.robotValues[3].ToString(); //light
+                            dataArray[9] = Controller.robotValues[4].ToString(); //cameraservo
+                            //Console.WriteLine(dataArray[5]);
                             string outgoingData = dataArray[0] + "," + dataArray[1] + "," + dataArray[2] + "," + dataArray[3] + "," + dataArray[4] + "," + dataArray[5] + "," + dataArray[6] + "," + dataArray[7] + "," + dataArray[8] + "," + dataArray[9];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(outgoingData);
                             // Send back a response.
                             stream.Write(msg, 0, msg.Length);
-                        }
-
+                            }
+                        
                         // Shutdown and end connection
                         client.Close();
                     }
