@@ -17,7 +17,7 @@ using SharpDX.DirectInput;
 
 namespace ROV_GCSv2
 {
-    
+
     public partial class Form1 : Form
     {
         public class Camera
@@ -70,7 +70,7 @@ namespace ROV_GCSv2
         private BackgroundWorker myJoystick = new BackgroundWorker();
         private BackgroundWorker myTcp = new BackgroundWorker();
         private Camera rc = new Camera();
-        
+
         private void newFrame(object sender, NewFrameEventArgs eventargs)
         {
             try
@@ -133,7 +133,7 @@ namespace ROV_GCSv2
                     Application.DoEvents();
                     Thread.Sleep(1);
 
-                    //joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255); 
+                    //joystickData[0] = mapInt(Int32.Parse(datas.PointOfViewControllers.GetValue(0).ToString()), 0, 65534, 0, 255);
                     //joystickData[1] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, 0, 255, 1); // min is bottom max is top L-STICK UP-DOWN "0-255"
                     joystickData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
                     joystickData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
@@ -239,7 +239,7 @@ namespace ROV_GCSv2
                             {
                                 dataSent[dat] = "0";
                             }
-                            dataArray[0] = joystickData[3].ToString(); // Throttle 
+                            dataArray[0] = joystickData[3].ToString(); // Throttle
                             dataArray[1] = joystickData[5].ToString(); // foward/back
                             dataArray[2] = joystickData[4].ToString(); // right/left
                             dataArray[3] = roboticArm[3].ToString(); // Light intensity value
@@ -276,7 +276,7 @@ namespace ROV_GCSv2
         private void timer1_Tick(object sender, EventArgs e) //REFRESH VALUES
         {
             int speedFactor = 50;
-            //roboticArm[0] += joystickData[16] / 20 * timer1.Interval / 50; 
+            //roboticArm[0] += joystickData[16] / 20 * timer1.Interval / 50;
             roboticArm[0] += (joystickData[10] - joystickData[12]) * speedFactor * timer1.Interval / 50; //elbow 1
             roboticArm[1] += -(joystickData[13] - joystickData[11]) * speedFactor * timer1.Interval / 50; // elbow2
             roboticArm[2] += (joystickData[8] - joystickData[6]) * speedFactor * timer1.Interval / 50; //gripper
@@ -291,7 +291,7 @@ namespace ROV_GCSv2
             roboticArm[2] = constrain(roboticArm[2], 1150, 1800);
             roboticArm[4] = constrain(roboticArm[4], 600, 1800);
             int printingValue = 3;
-            //RECEIVED 
+            //RECEIVED
             pressureLabel.Text = dataReceived[0];
             depthLabel.Text = dataReceived[1];
             tempLabel.Text = dataReceived[2];

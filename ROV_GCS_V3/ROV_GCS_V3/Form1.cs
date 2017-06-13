@@ -70,6 +70,9 @@ namespace ROV_GCS_V3
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            if (!(Vehicle.stream == null)) Vehicle.stream.Close();
+            if (!(Vehicle.client == null)) Vehicle.client.Close();
+            if (!(Vehicle.server == null)) Vehicle.server.Stop();
             Environment.Exit(1);
             Application.Exit(); // CLOSE APPLICATION
         }
@@ -100,7 +103,7 @@ namespace ROV_GCS_V3
 
         private void cameraPlayButton_Click(object sender, EventArgs e)
         {
-
+           
             variables.cameraState = !variables.cameraState; //CHANGE CAMERA STATE
             camera.update(variables.cameraState ,cameraIPBox.Text,Int32.Parse(cameraPortBox.Text)); // UPDATE CAMERA STATE
             graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS
@@ -118,7 +121,8 @@ namespace ROV_GCS_V3
 
         private void vehicleConnectButton_Click(object sender, EventArgs e)
         {
-            vehicle.Connect(Int16.Parse(vehiclePortBox.Text)); // CONNECT TO THE VEHICLE ON THE GOVEN PORT NUMBER
+            vehicle.Connect(Int16.Parse(vehiclePortBox.Text)); // CONNECT TO THE VEHICLE ON THE GIVEN PORT NUMBER
+            timer1.Enabled = true;
         }
 
         private void controllerConnectButton_Click(object sender, EventArgs e)
@@ -130,8 +134,8 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
-            //if (!(Vehicle.dataReceived[0] == null)) joyStickStatusLabel.Text = Vehicle.dataReceived[4].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
-            joyStickStatusLabel.Text = Variables.controllerStatus;
+            if (!(Vehicle.dataReceived[3] == null)) joyStickStatusLabel.Text = Vehicle.dataReceived[3].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
+            //joyStickStatusLabel.Text = Variables.controllerStatus;
 
         }
         #endregion eventsAndFunctions
@@ -146,6 +150,11 @@ namespace ROV_GCS_V3
         {
             Info info = new Info();
             info.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //Vehicle.SendDataAnyway();
         }
     }
 }

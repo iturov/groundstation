@@ -14,9 +14,9 @@ namespace ROV_GCS_V3
     {
         #region variables
         public static int[] controllerData = new int[32];
-        private static float[] roboticArm = new float[5];
-        public static float[] robotValues = new float[5];
-        public float Kp = 10.5f;
+        private static int[] roboticArm = new int[5];
+        public static int[] robotValues = new int[5];
+        public int Kp = 10;
         System.Timers.Timer timer = new System.Timers.Timer();
         BackgroundWorker getController = new BackgroundWorker();
         Form1 form;
@@ -33,35 +33,30 @@ namespace ROV_GCS_V3
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            roboticArm[0] += (float)(controllerData[8] - controllerData[6]) * (float)timer.Interval / (float)10.0 * (float)Kp;
-            roboticArm[1] += (float)(controllerData[10] - controllerData[12]) * (float)timer.Interval / (float)10.0 * (float)Kp;
-            roboticArm[2] += (float)(controllerData[11] - controllerData[13]) * (float)timer.Interval / (float)10.0 * (float)Kp;
-            roboticArm[3] += (float)(controllerData[9] - controllerData[7]) * (float)timer.Interval / (float)10.0 * (float)Kp;
+            roboticArm[0] += (controllerData[8] - controllerData[6]) * (int)timer.Interval / 10 * Kp;
+            roboticArm[1] += (controllerData[10] - controllerData[12]) * (int)timer.Interval / 10 * Kp;
+            roboticArm[2] += (controllerData[11] - controllerData[13]) * (int)timer.Interval / 10 * Kp;
+            roboticArm[3] += (controllerData[9] - controllerData[7]) * (int)timer.Interval / 10 * Kp;
             roboticArm[4] = 0;
             for(int i = 0; i < roboticArm.Length; i++)
             {
                 roboticArm[i] = constrain(roboticArm[i], 0, 1000);
             }
-            robotValues[0] = 1700 + mapFloat(roboticArm[0], 0, 1000, 0, 600); //GRIPPER
-            robotValues[1] = 500 + mapFloat(roboticArm[1], 0, 1000, 0, 1900); //ELBOW1 ROLL
-            robotValues[2] = 500 + mapFloat(roboticArm[2], 0, 1000, 0, 1900); //ELBOW2 PITCH
-            robotValues[3] = 1000 + mapFloat(roboticArm[3], 0, 1000, 0, 700); //LIGHT
-            robotValues[4] = 500 + mapFloat(roboticArm[4], 0, 1000, 0, 1900); //CAMERASERVO
+            robotValues[0] = 1700 + mapInt(roboticArm[0], 0, 1000, 0, 600); //GRIPPER
+            robotValues[1] = 500 + mapInt(roboticArm[1], 0, 1000, 0, 1900); //ELBOW1 ROLL
+            robotValues[2] = 500 + mapInt(roboticArm[2], 0, 1000, 0, 1900); //ELBOW2 PITCH
+            robotValues[3] = 1000 + mapInt(roboticArm[3], 0, 1000, 0, 700); //LIGHT
+            robotValues[4] = 500 + mapInt(roboticArm[4], 0, 1000, 0, 1900); //CAMERASERVO
 
             //form.joyStickStatusLabel.Text = robotValues[0].ToString();
             //Console.WriteLine(robotValues[1]);
         }
 
-        private static float constrain(float value, float min, float max)
+        private static int constrain(int value, int min, int max)
         {
             if (value > max) value = max;
             if (value < min) value = min;
             return value;
-        }
-
-        private static float mapFloat(float s, float a1, float a2, float b1, float b2)
-        {
-            return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
         }
 
         private static int mapInt(int value, int currentMin, int currentMax, int targetMin, int targetMax, int reverse = 0)
