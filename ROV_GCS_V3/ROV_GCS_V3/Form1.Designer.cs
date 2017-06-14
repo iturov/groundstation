@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.pidButton = new System.Windows.Forms.Button();
             this.infoButton = new System.Windows.Forms.Button();
             this.telemetryButton = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
@@ -70,6 +71,7 @@
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.menuPanel.Controls.Add(this.pidButton);
             this.menuPanel.Controls.Add(this.infoButton);
             this.menuPanel.Controls.Add(this.telemetryButton);
             this.menuPanel.Controls.Add(this.aboutButton);
@@ -79,9 +81,28 @@
             this.menuPanel.Controls.Add(this.logoBox);
             this.menuPanel.Controls.Add(this.settingsButton);
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(4);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 534);
+            this.menuPanel.Size = new System.Drawing.Size(267, 657);
             this.menuPanel.TabIndex = 0;
+            // 
+            // pidButton
+            // 
+            this.pidButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.pidButton.FlatAppearance.BorderSize = 0;
+            this.pidButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pidButton.ForeColor = System.Drawing.Color.White;
+            this.pidButton.Image = global::ROV_GCS_V3.Properties.Resources.Cosine_32px;
+            this.pidButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.pidButton.Location = new System.Drawing.Point(13, 476);
+            this.pidButton.Margin = new System.Windows.Forms.Padding(4);
+            this.pidButton.Name = "pidButton";
+            this.pidButton.Size = new System.Drawing.Size(267, 49);
+            this.pidButton.TabIndex = 9;
+            this.pidButton.Text = "    PID Settings";
+            this.pidButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.pidButton.UseVisualStyleBackColor = false;
+            this.pidButton.Click += new System.EventHandler(this.pidButton_Click);
             // 
             // infoButton
             // 
@@ -91,9 +112,10 @@
             this.infoButton.ForeColor = System.Drawing.Color.White;
             this.infoButton.Image = ((System.Drawing.Image)(resources.GetObject("infoButton.Image")));
             this.infoButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.infoButton.Location = new System.Drawing.Point(-3, 330);
+            this.infoButton.Location = new System.Drawing.Point(-4, 406);
+            this.infoButton.Margin = new System.Windows.Forms.Padding(4);
             this.infoButton.Name = "infoButton";
-            this.infoButton.Size = new System.Drawing.Size(200, 40);
+            this.infoButton.Size = new System.Drawing.Size(267, 49);
             this.infoButton.TabIndex = 8;
             this.infoButton.Text = "    Information";
             this.infoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -108,9 +130,10 @@
             this.telemetryButton.ForeColor = System.Drawing.Color.White;
             this.telemetryButton.Image = ((System.Drawing.Image)(resources.GetObject("telemetryButton.Image")));
             this.telemetryButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.telemetryButton.Location = new System.Drawing.Point(0, 368);
+            this.telemetryButton.Location = new System.Drawing.Point(0, 453);
+            this.telemetryButton.Margin = new System.Windows.Forms.Padding(4);
             this.telemetryButton.Name = "telemetryButton";
-            this.telemetryButton.Size = new System.Drawing.Size(200, 40);
+            this.telemetryButton.Size = new System.Drawing.Size(267, 49);
             this.telemetryButton.TabIndex = 7;
             this.telemetryButton.Text = "    Telemetry";
             this.telemetryButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -125,9 +148,10 @@
             this.aboutButton.ForeColor = System.Drawing.Color.White;
             this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
             this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.aboutButton.Location = new System.Drawing.Point(0, 414);
+            this.aboutButton.Location = new System.Drawing.Point(0, 510);
+            this.aboutButton.Margin = new System.Windows.Forms.Padding(4);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(200, 40);
+            this.aboutButton.Size = new System.Drawing.Size(267, 49);
             this.aboutButton.TabIndex = 6;
             this.aboutButton.Text = "    About Us!";
             this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -147,18 +171,20 @@
             this.settingsPanel.Controls.Add(this.joyStickStatusLabel);
             this.settingsPanel.Controls.Add(this.joyStickBox);
             this.settingsPanel.Controls.Add(this.label1);
-            this.settingsPanel.Location = new System.Drawing.Point(3, 141);
+            this.settingsPanel.Location = new System.Drawing.Point(4, 174);
+            this.settingsPanel.Margin = new System.Windows.Forms.Padding(4);
             this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(200, 193);
+            this.settingsPanel.Size = new System.Drawing.Size(267, 238);
             this.settingsPanel.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(13, 152);
+            this.label4.Location = new System.Drawing.Point(17, 187);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(92, 17);
             this.label4.TabIndex = 13;
             this.label4.Text = "Vehicle  Port:";
             // 
@@ -167,9 +193,10 @@
             this.vehiclePortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.vehiclePortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.vehiclePortBox.ForeColor = System.Drawing.Color.White;
-            this.vehiclePortBox.Location = new System.Drawing.Point(90, 150);
+            this.vehiclePortBox.Location = new System.Drawing.Point(120, 185);
+            this.vehiclePortBox.Margin = new System.Windows.Forms.Padding(4);
             this.vehiclePortBox.Name = "vehiclePortBox";
-            this.vehiclePortBox.Size = new System.Drawing.Size(32, 20);
+            this.vehiclePortBox.Size = new System.Drawing.Size(42, 22);
             this.vehiclePortBox.TabIndex = 12;
             this.vehiclePortBox.Text = "8092";
             // 
@@ -177,9 +204,10 @@
             // 
             this.vehicleConnectionStatusLabel.AutoSize = true;
             this.vehicleConnectionStatusLabel.ForeColor = System.Drawing.Color.White;
-            this.vehicleConnectionStatusLabel.Location = new System.Drawing.Point(80, 173);
+            this.vehicleConnectionStatusLabel.Location = new System.Drawing.Point(107, 213);
+            this.vehicleConnectionStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.vehicleConnectionStatusLabel.Name = "vehicleConnectionStatusLabel";
-            this.vehicleConnectionStatusLabel.Size = new System.Drawing.Size(114, 13);
+            this.vehicleConnectionStatusLabel.Size = new System.Drawing.Size(150, 17);
             this.vehicleConnectionStatusLabel.TabIndex = 11;
             this.vehicleConnectionStatusLabel.Text = "-NoVehicleConnected-";
             // 
@@ -187,9 +215,10 @@
             // 
             this.label.AutoSize = true;
             this.label.ForeColor = System.Drawing.Color.White;
-            this.label.Location = new System.Drawing.Point(13, 103);
+            this.label.Location = new System.Drawing.Point(17, 127);
+            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(71, 13);
+            this.label.Size = new System.Drawing.Size(95, 17);
             this.label.TabIndex = 10;
             this.label.Text = "Camera  Port:";
             // 
@@ -198,9 +227,10 @@
             this.cameraPortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cameraPortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cameraPortBox.ForeColor = System.Drawing.Color.White;
-            this.cameraPortBox.Location = new System.Drawing.Point(90, 101);
+            this.cameraPortBox.Location = new System.Drawing.Point(120, 124);
+            this.cameraPortBox.Margin = new System.Windows.Forms.Padding(4);
             this.cameraPortBox.Name = "cameraPortBox";
-            this.cameraPortBox.Size = new System.Drawing.Size(32, 20);
+            this.cameraPortBox.Size = new System.Drawing.Size(42, 22);
             this.cameraPortBox.TabIndex = 9;
             this.cameraPortBox.Text = "8091";
             // 
@@ -208,9 +238,10 @@
             // 
             this.cameraConnectionStatus.AutoSize = true;
             this.cameraConnectionStatus.ForeColor = System.Drawing.Color.White;
-            this.cameraConnectionStatus.Location = new System.Drawing.Point(77, 124);
+            this.cameraConnectionStatus.Location = new System.Drawing.Point(103, 153);
+            this.cameraConnectionStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cameraConnectionStatus.Name = "cameraConnectionStatus";
-            this.cameraConnectionStatus.Size = new System.Drawing.Size(120, 13);
+            this.cameraConnectionStatus.Size = new System.Drawing.Size(160, 17);
             this.cameraConnectionStatus.TabIndex = 8;
             this.cameraConnectionStatus.Text = "-NoCamerasConnected-";
             // 
@@ -219,9 +250,10 @@
             this.cameraIPBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cameraIPBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cameraIPBox.ForeColor = System.Drawing.Color.White;
-            this.cameraIPBox.Location = new System.Drawing.Point(90, 75);
+            this.cameraIPBox.Location = new System.Drawing.Point(120, 92);
+            this.cameraIPBox.Margin = new System.Windows.Forms.Padding(4);
             this.cameraIPBox.Name = "cameraIPBox";
-            this.cameraIPBox.Size = new System.Drawing.Size(87, 20);
+            this.cameraIPBox.Size = new System.Drawing.Size(115, 22);
             this.cameraIPBox.TabIndex = 7;
             this.cameraIPBox.Text = "192.168.137.152";
             // 
@@ -229,9 +261,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(25, 77);
+            this.label3.Location = new System.Drawing.Point(33, 95);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.Size = new System.Drawing.Size(77, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Camera IP:";
             // 
@@ -239,9 +272,10 @@
             // 
             this.joyStickStatusLabel.AutoSize = true;
             this.joyStickStatusLabel.ForeColor = System.Drawing.Color.White;
-            this.joyStickStatusLabel.Location = new System.Drawing.Point(63, 37);
+            this.joyStickStatusLabel.Location = new System.Drawing.Point(84, 46);
+            this.joyStickStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.joyStickStatusLabel.Name = "joyStickStatusLabel";
-            this.joyStickStatusLabel.Size = new System.Drawing.Size(117, 13);
+            this.joyStickStatusLabel.Size = new System.Drawing.Size(154, 17);
             this.joyStickStatusLabel.TabIndex = 5;
             this.joyStickStatusLabel.Text = "-NoJoystickConnected-";
             // 
@@ -252,9 +286,10 @@
             this.joyStickBox.Items.AddRange(new object[] {
             "DualShock 3",
             "DualShock 2"});
-            this.joyStickBox.Location = new System.Drawing.Point(90, 9);
+            this.joyStickBox.Location = new System.Drawing.Point(120, 11);
+            this.joyStickBox.Margin = new System.Windows.Forms.Padding(4);
             this.joyStickBox.Name = "joyStickBox";
-            this.joyStickBox.Size = new System.Drawing.Size(90, 21);
+            this.joyStickBox.Size = new System.Drawing.Size(119, 24);
             this.joyStickBox.TabIndex = 4;
             this.joyStickBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -262,9 +297,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 12);
+            this.label1.Location = new System.Drawing.Point(4, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(109, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Controller Type:";
             // 
@@ -276,9 +312,10 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
             this.exitButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.exitButton.Location = new System.Drawing.Point(0, 494);
+            this.exitButton.Location = new System.Drawing.Point(0, 608);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(200, 40);
+            this.exitButton.Size = new System.Drawing.Size(267, 49);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "    Exit!";
             this.exitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -293,9 +330,10 @@
             this.minMaxButton.ForeColor = System.Drawing.Color.White;
             this.minMaxButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxButton.Image")));
             this.minMaxButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.minMaxButton.Location = new System.Drawing.Point(0, 454);
+            this.minMaxButton.Location = new System.Drawing.Point(0, 559);
+            this.minMaxButton.Margin = new System.Windows.Forms.Padding(4);
             this.minMaxButton.Name = "minMaxButton";
-            this.minMaxButton.Size = new System.Drawing.Size(200, 40);
+            this.minMaxButton.Size = new System.Drawing.Size(267, 49);
             this.minMaxButton.TabIndex = 2;
             this.minMaxButton.Text = "    Minimize Bar";
             this.minMaxButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -306,8 +344,9 @@
             // 
             this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
             this.logoBox.Location = new System.Drawing.Point(0, 0);
+            this.logoBox.Margin = new System.Windows.Forms.Padding(4);
             this.logoBox.Name = "logoBox";
-            this.logoBox.Size = new System.Drawing.Size(100, 100);
+            this.logoBox.Size = new System.Drawing.Size(133, 123);
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoBox.TabIndex = 1;
             this.logoBox.TabStop = false;
@@ -321,9 +360,10 @@
             this.settingsButton.ForeColor = System.Drawing.Color.White;
             this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.settingsButton.Location = new System.Drawing.Point(-3, 106);
+            this.settingsButton.Location = new System.Drawing.Point(-4, 130);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(200, 40);
+            this.settingsButton.Size = new System.Drawing.Size(267, 49);
             this.settingsButton.TabIndex = 0;
             this.settingsButton.Text = "    Settings";
             this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -336,9 +376,10 @@
             this.connectionPanel.Controls.Add(this.cameraPlayButton);
             this.connectionPanel.Controls.Add(this.vehicleConnectButton);
             this.connectionPanel.Controls.Add(this.controllerConnectButton);
-            this.connectionPanel.Location = new System.Drawing.Point(827, 7);
+            this.connectionPanel.Location = new System.Drawing.Point(1103, 9);
+            this.connectionPanel.Margin = new System.Windows.Forms.Padding(4);
             this.connectionPanel.Name = "connectionPanel";
-            this.connectionPanel.Size = new System.Drawing.Size(150, 296);
+            this.connectionPanel.Size = new System.Drawing.Size(200, 364);
             this.connectionPanel.TabIndex = 4;
             // 
             // minMaxConnectionPanelButton
@@ -349,9 +390,10 @@
             this.minMaxConnectionPanelButton.ForeColor = System.Drawing.Color.White;
             this.minMaxConnectionPanelButton.Image = ((System.Drawing.Image)(resources.GetObject("minMaxConnectionPanelButton.Image")));
             this.minMaxConnectionPanelButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.minMaxConnectionPanelButton.Location = new System.Drawing.Point(0, 120);
+            this.minMaxConnectionPanelButton.Location = new System.Drawing.Point(0, 148);
+            this.minMaxConnectionPanelButton.Margin = new System.Windows.Forms.Padding(4);
             this.minMaxConnectionPanelButton.Name = "minMaxConnectionPanelButton";
-            this.minMaxConnectionPanelButton.Size = new System.Drawing.Size(150, 40);
+            this.minMaxConnectionPanelButton.Size = new System.Drawing.Size(200, 49);
             this.minMaxConnectionPanelButton.TabIndex = 8;
             this.minMaxConnectionPanelButton.Text = "    Minimize!";
             this.minMaxConnectionPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -366,9 +408,10 @@
             this.cameraPlayButton.ForeColor = System.Drawing.Color.White;
             this.cameraPlayButton.Image = ((System.Drawing.Image)(resources.GetObject("cameraPlayButton.Image")));
             this.cameraPlayButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.cameraPlayButton.Location = new System.Drawing.Point(0, 80);
+            this.cameraPlayButton.Location = new System.Drawing.Point(0, 98);
+            this.cameraPlayButton.Margin = new System.Windows.Forms.Padding(4);
             this.cameraPlayButton.Name = "cameraPlayButton";
-            this.cameraPlayButton.Size = new System.Drawing.Size(150, 40);
+            this.cameraPlayButton.Size = new System.Drawing.Size(200, 49);
             this.cameraPlayButton.TabIndex = 7;
             this.cameraPlayButton.Text = "    Connect Camera!";
             this.cameraPlayButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -383,9 +426,10 @@
             this.vehicleConnectButton.ForeColor = System.Drawing.Color.White;
             this.vehicleConnectButton.Image = ((System.Drawing.Image)(resources.GetObject("vehicleConnectButton.Image")));
             this.vehicleConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.vehicleConnectButton.Location = new System.Drawing.Point(0, 40);
+            this.vehicleConnectButton.Location = new System.Drawing.Point(0, 49);
+            this.vehicleConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.vehicleConnectButton.Name = "vehicleConnectButton";
-            this.vehicleConnectButton.Size = new System.Drawing.Size(150, 40);
+            this.vehicleConnectButton.Size = new System.Drawing.Size(200, 49);
             this.vehicleConnectButton.TabIndex = 6;
             this.vehicleConnectButton.Text = "    Connect Vehicle!";
             this.vehicleConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -401,8 +445,9 @@
             this.controllerConnectButton.Image = ((System.Drawing.Image)(resources.GetObject("controllerConnectButton.Image")));
             this.controllerConnectButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.controllerConnectButton.Location = new System.Drawing.Point(0, 0);
+            this.controllerConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.controllerConnectButton.Name = "controllerConnectButton";
-            this.controllerConnectButton.Size = new System.Drawing.Size(150, 40);
+            this.controllerConnectButton.Size = new System.Drawing.Size(200, 49);
             this.controllerConnectButton.TabIndex = 5;
             this.controllerConnectButton.Text = "    Connect Controller";
             this.controllerConnectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -416,9 +461,10 @@
             // cameraFeed
             // 
             this.cameraFeed.BackColor = System.Drawing.Color.Transparent;
-            this.cameraFeed.Location = new System.Drawing.Point(432, 87);
+            this.cameraFeed.Location = new System.Drawing.Point(576, 107);
+            this.cameraFeed.Margin = new System.Windows.Forms.Padding(4);
             this.cameraFeed.Name = "cameraFeed";
-            this.cameraFeed.Size = new System.Drawing.Size(100, 50);
+            this.cameraFeed.Size = new System.Drawing.Size(133, 62);
             this.cameraFeed.TabIndex = 9;
             this.cameraFeed.TabStop = false;
             // 
@@ -426,9 +472,10 @@
             // 
             this.tiling.BackColor = System.Drawing.Color.Transparent;
             this.tiling.Image = ((System.Drawing.Image)(resources.GetObject("tiling.Image")));
-            this.tiling.Location = new System.Drawing.Point(407, 207);
+            this.tiling.Location = new System.Drawing.Point(543, 255);
+            this.tiling.Margin = new System.Windows.Forms.Padding(4);
             this.tiling.Name = "tiling";
-            this.tiling.Size = new System.Drawing.Size(100, 50);
+            this.tiling.Size = new System.Drawing.Size(133, 62);
             this.tiling.TabIndex = 10;
             this.tiling.TabStop = false;
             // 
@@ -439,16 +486,17 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(976, 534);
+            this.ClientSize = new System.Drawing.Size(1301, 657);
             this.Controls.Add(this.tiling);
             this.Controls.Add(this.cameraFeed);
             this.Controls.Add(this.connectionPanel);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -494,6 +542,7 @@
         public System.Windows.Forms.Button infoButton;
         public System.Windows.Forms.PictureBox tiling;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Button pidButton;
     }
 }
 

@@ -70,11 +70,17 @@ namespace ROV_GCS_V3
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (!(Vehicle.stream == null)) Vehicle.stream.Close();
+            if (vehicle.tcp.IsBusy) vehicle.tcp.CancelAsync();
+            Thread.Sleep(100); // WAIT FOR 100 MS 
+            vehicle.Disconnect(); // DISCONNECT FROM VEHICLE (ABORT TCP/IP CONNECTION)
+            controller.StopPoll(); // STOP POLLING DATA FROM CONTROLLER, DISCONNECT CONTROLLER
+            variables.cameraState = false; //SET CAMERA STATE TO FALSE TO STOP STREAMING
+            camera.update(variables.cameraState, cameraIPBox.Text, Int32.Parse(cameraPortBox.Text)); // UPDATE CAMERA(EXECUTE DISCONNECTING)
             if (!(Vehicle.client == null)) Vehicle.client.Close();
             if (!(Vehicle.server == null)) Vehicle.server.Stop();
-            Environment.Exit(1);
-            Application.Exit(); // CLOSE APPLICATION
+            //Environment.FailFast("");
+            try{ Application.Exit(); } // CLOSE APPLICATION
+            catch (Exception exce) { }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,11 +117,6 @@ namespace ROV_GCS_V3
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            variables.cameraState = false; //SET CAMERA STATE TO FALSE TO STOP STREAMING
-            camera.update(variables.cameraState, cameraIPBox.Text, Int32.Parse(cameraPortBox.Text)); // UPDATE CAMERA(EXECUTE DISCONNECTING)
-            vehicle.Disconnect(); // DISCONNECT FROM VEHICLE (ABORT TCP/IP CONNECTION)
-            controller.StopPoll(); // STOP POLLING DATA FROM CONTROLLER, DISCONNECT CONTROLLER
-            Thread.Sleep(100); // WAIT FOR 100 MS 
             // EXIT!
         }
 
@@ -134,9 +135,8 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
-            if (!(Vehicle.dataReceived[3] == null)) joyStickStatusLabel.Text = Vehicle.dataReceived[3].ToString(); // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
-            //joyStickStatusLabel.Text = Variables.controllerStatus;
-
+            if (!(Vehicle.data == null)) joyStickStatusLabel.Text = Vehicle.data; // ON EVERY TICK, LABEL UPDATES WITH THE THROTTLE VALUE FROM CONTROLLER
+            else if (Variables.controllerStatus) { joyStickStatusLabel.Text = "Connected!"; }
         }
         #endregion eventsAndFunctions
 
@@ -155,6 +155,13 @@ namespace ROV_GCS_V3
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Vehicle.SendDataAnyway();
+        }
+
+        private void pidButton_Click(object sender, EventArgs e)
+        {
+            PIDCalculator pid = new PIDCalculator();
+            pid.Show();
+            pid.TopMost = true;
         }
     }
 }

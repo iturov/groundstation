@@ -121,7 +121,7 @@ namespace ROV_GCS_V3
 
         private void refresher_Tick(object sender, EventArgs e)
         {
-            if (Variables.controllerStatus == "Found Joystick / Gamepad!")
+            if (Variables.controllerStatus)
             {
                 updateVariables();
 

@@ -113,6 +113,16 @@ namespace ROV_GCS_V3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cosine_32px {
+            get {
+                object obj = ResourceManager.GetObject("Cosine_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Disconnected_32px {
             get {
                 object obj = ResourceManager.GetObject("Disconnected_32px", resourceCulture);

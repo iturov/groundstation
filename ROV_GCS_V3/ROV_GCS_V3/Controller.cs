@@ -96,7 +96,7 @@ namespace ROV_GCS_V3
             if (joystickGuid == Guid.Empty)
             {
                 Console.WriteLine("No joystick/Gamepad found.");
-                Variables.controllerStatus = "No joystick/Gamepad found.";
+                Variables.controllerStatus = false;
                 Console.ReadKey();
                 Environment.Exit(1);
             }
@@ -105,7 +105,7 @@ namespace ROV_GCS_V3
             var joystick = new Joystick(directInput, joystickGuid);
 
             Console.WriteLine("Found Joystick/Gamepad with GUID: {0}", joystickGuid);
-            Variables.controllerStatus = "Found Joystick / Gamepad!";
+            Variables.controllerStatus = true;
 
             // Query all suported ForceFeedback effects
             var allEffects = joystick.GetEffects();
@@ -186,8 +186,8 @@ namespace ROV_GCS_V3
                 getController.DoWork += controllerPoll;
                 getController.RunWorkerAsync();
             }
-            Thread.Sleep(500); // Connection Time!
-            form.joyStickStatusLabel.Text = Variables.controllerStatus;
+            Thread.Sleep(250); // Connection Time!
+            if (Variables.controllerStatus) form.joyStickStatusLabel.Text = "Connected!";
         }
 
         public void StopPoll()
