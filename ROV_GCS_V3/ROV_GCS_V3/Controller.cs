@@ -42,14 +42,12 @@ namespace ROV_GCS_V3
             {
                 roboticArm[i] = constrain(roboticArm[i], 0, 1000);
             }
-            robotValues[0] = 1700 + mapInt(roboticArm[0], 0, 1000, 0, 600); //GRIPPER
+            robotValues[0] = 1800 + mapInt(roboticArm[0], 0, 1000, 0, 500); //GRIPPER
             robotValues[1] = 500 + mapInt(roboticArm[1], 0, 1000, 0, 1900); //ELBOW1 ROLL
             robotValues[2] = 500 + mapInt(roboticArm[2], 0, 1000, 0, 1900); //ELBOW2 PITCH
             robotValues[3] = 1000 + mapInt(roboticArm[3], 0, 1000, 0, 700); //LIGHT
-            robotValues[4] = 500 + mapInt(roboticArm[4], 0, 1000, 0, 1900); //CAMERASERVO
+            robotValues[4] = 1000 + mapInt(roboticArm[4], 0, 1000, 0, 700); //CAMERASERVO
 
-            //form.joyStickStatusLabel.Text = robotValues[0].ToString();
-            //Console.WriteLine(robotValues[1]);
         }
 
         private static int constrain(int value, int min, int max)
