@@ -29,6 +29,7 @@ namespace ROV_GCS_V3
         private static int connectionMenuWidth = Properties.Settings.Default.connectionMenuSize;
         private static int connectionButtonNumber = Properties.Settings.Default.connectionButtonNumber;
         private Size connectionMenuSize = new Size(connectionMenuWidth, connectionButtonNumber * buttonHeight);
+        private int magnetoMeterGap = 50; // IN "PIXEL"
         //private Point connectionPanelClosed = new Point(Screen.PrimaryScreen.Bounds.Width - );
         #endregion varibles
 
@@ -69,6 +70,8 @@ namespace ROV_GCS_V3
             form.pidButton.Size = new Size(200, buttonHeight);
             setLocationButtonSettings(form.pidButton, 5);
 
+            form.magnetoMeterDisplay.Size = new Size(250, 250);
+            form.magnetoMeterDisplay.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - form.magnetoMeterDisplay.Width / 2, Screen.PrimaryScreen.Bounds.Height - magnetoMeterGap);
 
             form.connectionPanel.Size = connectionMenuSize;
             
@@ -95,7 +98,7 @@ namespace ROV_GCS_V3
         }
 
 
-        public void update(bool leftPanelOpen, bool connectionPanelOpen, bool cameraState)
+        public void update(bool leftPanelOpen, bool connectionPanelOpen, bool cameraState, bool magnetoMeterState = false)
         {
             if (leftPanelOpen)
             {
@@ -140,6 +143,9 @@ namespace ROV_GCS_V3
                 form.cameraPlayButton.Image = Properties.Resources.Play_32px;
                 form.cameraPlayButton.Text = "    Connect Camera!";
             }
+
+            if (magnetoMeterState) form.magnetoMeterDisplay.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - form.magnetoMeterDisplay.Width / 2, Screen.PrimaryScreen.Bounds.Height - form.magnetoMeterDisplay.Height);
+            else form.magnetoMeterDisplay.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - form.magnetoMeterDisplay.Width / 2, Screen.PrimaryScreen.Bounds.Height - magnetoMeterGap);
 
         }
         #endregion publicFunctions

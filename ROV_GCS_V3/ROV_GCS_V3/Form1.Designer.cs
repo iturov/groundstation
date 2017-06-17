@@ -60,12 +60,14 @@
             this.cameraFeed = new System.Windows.Forms.PictureBox();
             this.tiling = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.magnetoMeterDisplay = new System.Windows.Forms.PictureBox();
             this.menuPanel.SuspendLayout();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.connectionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiling)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.magnetoMeterDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -453,8 +455,22 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // magnetoMeterDisplay
+            // 
+            this.magnetoMeterDisplay.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.magnetoMeterDisplay.Image = global::ROV_GCS_V3.Properties.Resources.compass;
+            this.magnetoMeterDisplay.Location = new System.Drawing.Point(419, 404);
+            this.magnetoMeterDisplay.Name = "magnetoMeterDisplay";
+            this.magnetoMeterDisplay.Size = new System.Drawing.Size(32, 32);
+            this.magnetoMeterDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.magnetoMeterDisplay.TabIndex = 11;
+            this.magnetoMeterDisplay.TabStop = false;
+            this.magnetoMeterDisplay.MouseEnter += new System.EventHandler(this.magnetoMeterDisplay_MouseEnter);
+            this.magnetoMeterDisplay.MouseLeave += new System.EventHandler(this.magnetoMeterDisplay_MouseLeave);
             // 
             // Form1
             // 
@@ -463,6 +479,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(976, 534);
+            this.Controls.Add(this.magnetoMeterDisplay);
             this.Controls.Add(this.tiling);
             this.Controls.Add(this.cameraFeed);
             this.Controls.Add(this.connectionPanel);
@@ -479,6 +496,7 @@
             this.connectionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cameraFeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiling)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.magnetoMeterDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -514,6 +532,7 @@
         public System.Windows.Forms.PictureBox tiling;
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.Button pidButton;
+        public System.Windows.Forms.PictureBox magnetoMeterDisplay;
     }
 }
 

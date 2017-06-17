@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,6 +22,7 @@ namespace ROV_GCS_V3
         Camera camera; // CREATE CAMERA OBJECT
         Controller controller; // CREATE CONTROLLER OBJECT
         public int[] controllerData = new int[32]; // DEFINE CONTROLLER DATA TO BE POLLED
+        float prevAngle = 0;
         #endregion variables
 
         #region eventsAndFunctions
@@ -48,7 +50,7 @@ namespace ROV_GCS_V3
         private void Form1_Load(object sender, EventArgs e)
         {
             graphics.initialize(); // INITIALIZE GRAPHICS
-            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS WITH THE VARIABLES AS DEFAULT
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS WITH THE VARIABLES AS DEFAULT
             camera = new Camera(); // ADD CAMERA OBJECT
             camera.EventHandler += newFrame; // ADD NEW FRAME EVENT TO THE CAMERA EVENTHANDLER
             camera.initialize(cameraIPBox.Text, Int32.Parse(cameraPortBox.Text)); // INITALIZE CAMERA WITH THE GIVEN PARAMETERS
@@ -58,14 +60,14 @@ namespace ROV_GCS_V3
         private void settingsButton_Click(object sender, EventArgs e)
         {
             variables.leftPanelOpen = true; // SET LEFT PANEL STATE TO OPEN
-            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS WITH VARIABLES
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS WITH VARIABLES
 
         }
 
         private void minMaxButton_Click(object sender, EventArgs e)
         {
             variables.leftPanelOpen = !variables.leftPanelOpen; // CHANGE MAXIMIZED/MINIMIZED STATE OF LEFT PANEL
-            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace ROV_GCS_V3
         private void minMaxConnectionPanelButton_Click(object sender, EventArgs e)
         {
             variables.connectionPanelOpen = !variables.connectionPanelOpen;// CHANGE MAXIMIZED/MINIMIZED STATE OF CONNECTION PANEL
-            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS
         }
 
         private void logoBox_MouseClick(object sender, MouseEventArgs e)
@@ -112,7 +114,7 @@ namespace ROV_GCS_V3
            
             variables.cameraState = !variables.cameraState; //CHANGE CAMERA STATE
             camera.update(variables.cameraState ,cameraIPBox.Text,Int32.Parse(cameraPortBox.Text)); // UPDATE CAMERA STATE
-            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState); // UPDATE GRAPHICS
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -155,6 +157,52 @@ namespace ROV_GCS_V3
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Vehicle.SendDataAnyway();
+            updateMagnet(variables.currentMagnetDegree, false);
+        }
+
+        private void updateMagnet(float value, bool force)
+        {
+            if (force)
+            {
+                magnetoMeterDisplay.Image = rotateImage(variables.magnetBitmap, value);
+            }
+            else
+            {
+                float error = variables.currentMagnetDegree - prevAngle;
+                if (!(error == 0)) magnetoMeterDisplay.Image = rotateImage(variables.magnetBitmap, value);
+                prevAngle = variables.currentMagnetDegree;
+            }
+            
+        }
+
+        private static Image rotateImage(Image img, float rotationAngle)
+        {
+            //create an empty Bitmap image
+            Bitmap bmp = new Bitmap(img.Width, img.Height);
+
+            //turn the Bitmap into a Graphics object
+            System.Drawing.Graphics gfx = System.Drawing.Graphics.FromImage(bmp);
+
+            //now we set the rotation point to the center of our image
+            gfx.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
+
+            //now rotate the image
+            gfx.RotateTransform(rotationAngle);
+
+            gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
+
+            //set the InterpolationMode to HighQualityBicubic so to ensure a high
+            //quality image once it is transformed to the specified size
+            gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            //now draw our new image onto the graphics object
+            gfx.DrawImage(img, new Point(0, 0));
+
+            //dispose of our Graphics object
+            gfx.Dispose();
+
+            //return the image
+            return bmp;
         }
 
         private void pidButton_Click(object sender, EventArgs e)
@@ -162,6 +210,18 @@ namespace ROV_GCS_V3
             PIDCalculator pid = new PIDCalculator();
             pid.Show();
             pid.TopMost = true;
+        }
+
+        private void magnetoMeterDisplay_MouseEnter(object sender, EventArgs e)
+        {
+            variables.magnetState = true;
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS
+        }
+
+        private void magnetoMeterDisplay_MouseLeave(object sender, EventArgs e)
+        {
+            variables.magnetState = false;
+            graphics.update(variables.leftPanelOpen, variables.connectionPanelOpen, variables.cameraState, variables.magnetState); // UPDATE GRAPHICS
         }
     }
 }
