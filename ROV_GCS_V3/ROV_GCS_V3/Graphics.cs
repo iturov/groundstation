@@ -87,8 +87,8 @@ namespace ROV_GCS_V3
             //form.connectionPanel.Parent = form.cameraFeed;
             //form.menuPanel.Parent = form.cameraFeed;
             //CHANGED
-            form.connectionPanel.Parent = form.tiling;
-            form.menuPanel.Parent = form.tiling;
+            form.connectionPanel.Parent = form.cameraFeed;
+            form.menuPanel.Parent = form.cameraFeed;
             form.tiling.Parent = form.cameraFeed;
             //CHANGED
             

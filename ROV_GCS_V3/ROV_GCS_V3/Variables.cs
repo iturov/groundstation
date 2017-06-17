@@ -11,7 +11,7 @@ namespace ROV_GCS_V3
         #region variables
         public bool leftPanelOpen = false;
         public bool connectionPanelOpen = false;
-        public static int controllerType = 1; //1, d3 0 d2
+        public static int controllerType = 0; //1, d3 0 js
         public bool cameraState = false;
         public static bool connectionState = false;
         public static bool controllerStatus = false;

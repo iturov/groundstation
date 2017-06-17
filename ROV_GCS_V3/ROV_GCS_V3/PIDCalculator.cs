@@ -38,7 +38,7 @@ namespace ROV_GCS_V3
             InitializeComponent();
         }
 
-        public float Kp, Ki, Kd;
+        public static float Kp = 0, Ki = 0, Kd = 0;
 
         private void exitButton_Click(object sender, EventArgs e)
         {

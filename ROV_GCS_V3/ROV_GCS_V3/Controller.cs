@@ -37,17 +37,16 @@ namespace ROV_GCS_V3
             roboticArm[1] += (controllerData[10] - controllerData[12]) * (int)timer.Interval / 10 * Kp;
             roboticArm[2] += (controllerData[11] - controllerData[13]) * (int)timer.Interval / 10 * Kp;
             roboticArm[3] += (controllerData[9] - controllerData[7]) * (int)timer.Interval / 10 * Kp;
-            roboticArm[4] = 0;
+            roboticArm[4] += (controllerData[14] - controllerData[15]);
             for(int i = 0; i < roboticArm.Length; i++)
             {
                 roboticArm[i] = constrain(roboticArm[i], 0, 1000);
             }
             robotValues[0] = 1800 + mapInt(roboticArm[0], 0, 1000, 0, 500); //GRIPPER
-            robotValues[1] = 500 + mapInt(roboticArm[1], 0, 1000, 0, 1900); //ELBOW1 ROLL
+            robotValues[1] = 500 + mapInt(roboticArm[1], 0, 1000, 0, 1273); //ELBOW1 ROLL reverseeee!!!!
             robotValues[2] = 500 + mapInt(roboticArm[2], 0, 1000, 0, 1900); //ELBOW2 PITCH
-            robotValues[3] = 1000 + mapInt(roboticArm[3], 0, 1000, 0, 700); //LIGHT
-            robotValues[4] = 1000 + mapInt(roboticArm[4], 0, 1000, 0, 700); //CAMERASERVO
-
+            robotValues[3] = 1200 + mapInt(roboticArm[3], 0, 1000, 0, 800); //cam
+            robotValues[4] = constrain(roboticArm[4], 0, 1);
         }
 
         private static int constrain(int value, int min, int max)
@@ -82,8 +81,11 @@ namespace ROV_GCS_V3
             // Find a Joystick Guid
             var joystickGuid = Guid.Empty;
 
-            foreach (var deviceInstance in directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
-                joystickGuid = deviceInstance.InstanceGuid;
+            if (Variables.controllerType == 1)
+            {
+                foreach (var deviceInstance in directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
+                    joystickGuid = deviceInstance.InstanceGuid;
+            }
 
             // If Gamepad not found, look for a Joystick
             if (joystickGuid == Guid.Empty)
@@ -125,32 +127,110 @@ namespace ROV_GCS_V3
                 Application.DoEvents();
                 Thread.Sleep(1);
 
-                controllerData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
-                controllerData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
 
                 if (Variables.controllerType == 1)
                 {
                     //FOR DUALSHOCK 3
-                    controllerData[4] = mapInt(Int32.Parse(datas.RotationX.ToString()), 0, 65534, -400, 400);//R-STICK LEFT-RIGHT "-1000 -1000"  %40 of 1000 us, OTHER %20 IS FOR YAW AXIS
+                    controllerData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
+                    controllerData[3] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
+                    controllerData[16] = mapInt(Int32.Parse(datas.RotationX.ToString()), 0, 65534, -200, 200, 1);//R-STICK LEFT-RIGHT "-1000 -1000"  %40 of 1000 us, OTHER %20 IS FOR YAW AXIS
                     controllerData[5] = mapInt(Int32.Parse(datas.RotationY.ToString()), 0, 65534, -400, 400, 1);//R-STICK UP-DOWN "--1000-1000"  %40 of 1000 us
+                    controllerData[6] = Convert.ToInt32(datas.Buttons.GetValue(2)); //SQUARE
+                    controllerData[7] = Convert.ToInt32(datas.Buttons.GetValue(1)); //O
+                    controllerData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //X
+                    controllerData[9] = Convert.ToInt32(datas.Buttons.GetValue(3)); //Triangle
+                    controllerData[10] = Convert.ToInt32(datas.Buttons.GetValue(7)); //START
+                    controllerData[11] = Convert.ToInt32(datas.Buttons.GetValue(5)); //R1
+                    controllerData[12] = Convert.ToInt32(datas.Buttons.GetValue(6)); //SELECT
+                    controllerData[13] = Convert.ToInt32(datas.Buttons.GetValue(4)); //L1
+                    controllerData[14] = Convert.ToInt32(datas.Buttons.GetValue(9)); //R3
+                    controllerData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
+                    controllerData[4] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -400, 400); //R2 L2 --Yaw value %20 of 1000 us
                 }
                 if (Variables.controllerType == 0)
                 {
-                    //FOR DUALSHOCK 2
-                    controllerData[4] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -400, 400);
-                    controllerData[5] = mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -400, 400, 1);
+                    //FOR JOYSTICK
+                    controllerData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
+                    controllerData[3] = mapInt(Int32.Parse(datas.Sliders[0].ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
+                    controllerData[16] = mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -200, 200, 1);//R-STICK LEFT-RIGHT "-1000 -1000"  %40 of 1000 us, OTHER %20 IS FOR YAW AXIS
+                    controllerData[5] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -400, 400, 1);//R-STICK UP-DOWN "--1000-1000"  %40 of 1000 us
+                    int pov = Convert.ToInt32(datas.PointOfViewControllers[0].ToString());
+                    controllerData[6] = Convert.ToInt32(datas.Buttons.GetValue(1)); //SQUARE
+                    controllerData[7] = Convert.ToInt32(datas.Buttons.GetValue(4)); //O
+                    controllerData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //X
+                    controllerData[9] = Convert.ToInt32(datas.Buttons.GetValue(5)); //Triangle
+                    controllerData[14] = Convert.ToInt32(datas.Buttons.GetValue(3)); //R3
+                    controllerData[15] = Convert.ToInt32(datas.Buttons.GetValue(2)); //L3
+                    controllerData[4] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -400, 400); //R2 L2 --Yaw value %20 of 1000 us
+                    if (pov == 0)
+                    {
+                        controllerData[10] = 1;
+                        controllerData[12] = 0;
+                        controllerData[11] = 0;
+                        controllerData[13] = 0;
+
+                    }
+                    else if (pov == 9000)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 0;
+                        controllerData[11] = 1;
+                        controllerData[13] = 0;
+                    }
+                    else if (pov == 18000)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 1;
+                        controllerData[11] = 0;
+                        controllerData[13] = 0;
+                    }
+                    else if (pov == 27000)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 0;
+                        controllerData[11] = 0;
+                        controllerData[13] = 1;
+                    }
+                    else if (pov == -1)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 0;
+                        controllerData[11] = 0;
+                        controllerData[13] = 0;
+                    }
+                    else if (pov == 4500)
+                    {
+                        controllerData[10] = 1;
+                        controllerData[12] = 0;
+                        controllerData[11] = 1;
+                        controllerData[13] = 0;
+                    }
+                    else if (pov == 13500)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 1;
+                        controllerData[11] = 1;
+                        controllerData[13] = 0;
+                    }
+                    else if (pov == 22500)
+                    {
+                        controllerData[10] = 0;
+                        controllerData[12] = 1;
+                        controllerData[11] = 0;
+                        controllerData[13] = 1;
+                    }
+                    else if (pov == 31500)
+                    {
+                        controllerData[10] = 1;
+                        controllerData[12] = 0;
+                        controllerData[11] = 0;
+                        controllerData[13] = 1;
+                    }
+                    var datass = joystick.GetBufferedData();
+                    foreach (var dt in datass)
+                        Console.WriteLine(dt);
                 }
-                controllerData[6] = Convert.ToInt32(datas.Buttons.GetValue(2)); //SQUARE
-                controllerData[7] = Convert.ToInt32(datas.Buttons.GetValue(1)); //O
-                controllerData[8] = Convert.ToInt32(datas.Buttons.GetValue(0)); //X
-                controllerData[9] = Convert.ToInt32(datas.Buttons.GetValue(3)); //Triangle
-                controllerData[10] = Convert.ToInt32(datas.Buttons.GetValue(7)); //START
-                controllerData[11] = Convert.ToInt32(datas.Buttons.GetValue(5)); //R1
-                controllerData[12] = Convert.ToInt32(datas.Buttons.GetValue(6)); //SELECT
-                controllerData[13] = Convert.ToInt32(datas.Buttons.GetValue(4)); //L1
-                controllerData[14] = Convert.ToInt32(datas.Buttons.GetValue(9)); //R3
-                controllerData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
-                controllerData[16] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -200, 200); //R2 L2 --Yaw value %20 of 1000 us
+                
                 form.controllerData = controllerData;
 
                 for(int d = 0; d < 6; d++)

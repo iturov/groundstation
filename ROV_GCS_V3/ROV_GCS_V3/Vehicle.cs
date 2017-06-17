@@ -106,6 +106,7 @@ namespace ROV_GCS_V3
                 dataArray[7] = Controller.robotValues[2].ToString(); //pitchelbow
                 dataArray[8] = Controller.robotValues[3].ToString(); //light
                 dataArray[9] = Controller.robotValues[4].ToString(); //cameraservo
+                //dataArray[9] = PIDCalculator.Kp.ToString();
             }
             
 

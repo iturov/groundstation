@@ -106,9 +106,6 @@ D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsForms
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\obj\Debug\WindowsFormsApplication5.pdb
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
-D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.dll
-D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\SharpDX.DirectInput.dll
-D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\SharpDX.dll
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.dll
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\AForge.Video.xml
 D:\Projects\ROV\vehicle_base\groundstation\WindowsFormsApplication5\WindowsFormsApplication5\bin\Debug\SharpDX.xml

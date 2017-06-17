@@ -316,9 +316,9 @@ namespace WindowsFormsApplication5
                 joystickData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
                 joystickData[16] = -mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -500, 500); //R2 L2 --Yaw value 
                 //DEBUGGING
-                //var datass = joystick.GetBufferedData();
-                //foreach (var dt in datass)
-                //   Console.WriteLine(dt);
+                var datass = joystick.GetBufferedData();
+                foreach (var dt in datass)
+                   Console.WriteLine(dt);
                 //DEBUGGING
             }
         } // MAIN JOYSTICK FUNCTION
