@@ -34,5 +34,3 @@ D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_G
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\bin\Debug\kayChart.dll
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.Info.resources
 D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\obj\Debug\ROV_GCS_V3.PIDCalculator.resources
-D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\bin\Debug\AForge.dll
-D:\Projects\ROV\vehicle_base\groundstation\ROV_GCS_V3\ROV_GCS_V3\bin\Debug\AForge.Video.dll

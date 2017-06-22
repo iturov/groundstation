@@ -143,6 +143,16 @@ namespace ROV_GCS_V3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap itu_logo {
+            get {
+                object obj = ResourceManager.GetObject("itu_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoginRoundedDown_32px {
             get {
                 object obj = ResourceManager.GetObject("LoginRoundedDown_32px", resourceCulture);

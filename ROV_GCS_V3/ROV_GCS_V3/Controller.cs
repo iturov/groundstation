@@ -17,6 +17,7 @@ namespace ROV_GCS_V3
         private static int[] roboticArm = new int[5];
         public static int[] robotValues = new int[5];
         public int Kp = 10;
+        private float scaleFactor = 2.3f;
         System.Timers.Timer timer = new System.Timers.Timer();
         BackgroundWorker getController = new BackgroundWorker();
         Form1 form;
@@ -97,8 +98,6 @@ namespace ROV_GCS_V3
             {
                 Console.WriteLine("No joystick/Gamepad found.");
                 Variables.controllerStatus = false;
-                Console.ReadKey();
-                Environment.Exit(1);
             }
 
             // Instantiate the joystick
@@ -147,13 +146,14 @@ namespace ROV_GCS_V3
                     controllerData[15] = Convert.ToInt32(datas.Buttons.GetValue(8)); //L3
                     controllerData[4] = mapInt(Int32.Parse(datas.Z.ToString()), 0, 65534, -400, 400); //R2 L2 --Yaw value %20 of 1000 us
                 }
+
                 if (Variables.controllerType == 0)
                 {
                     //FOR JOYSTICK
-                    controllerData[2] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
-                    controllerData[3] = mapInt(Int32.Parse(datas.Sliders[0].ToString()), 0, 65534, -350, 350, 1); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
-                    controllerData[16] = mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -200, 200, 1);//R-STICK LEFT-RIGHT "-1000 -1000"  %40 of 1000 us, OTHER %20 IS FOR YAW AXIS
-                    controllerData[5] = mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -400, 400, 1);//R-STICK UP-DOWN "--1000-1000"  %40 of 1000 us
+                    controllerData[2] = (int)((float)mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -150, 150) / scaleFactor); //L-STICK LEFT-RIGHT "-500-500" //roll %30 of 1000 us, total 300 uS
+                    controllerData[3] = (int)((float)mapInt(Int32.Parse(datas.Sliders[0].ToString()), 0, 65534, -350, 350, 1) / scaleFactor); //L-STICK UP-DOWN //throttle %70 of 1000 uS, total 700 uS
+                    controllerData[16] =(int)((float)mapInt(Int32.Parse(datas.RotationZ.ToString()), 0, 65534, -200, 200, 1) / scaleFactor);//R-STICK LEFT-RIGHT "-1000 -1000"  %40 of 1000 us, OTHER %20 IS FOR YAW AXIS
+                    controllerData[5] = (int)((float)mapInt(Int32.Parse(datas.Y.ToString()), 0, 65534, -400, 400, 1) / scaleFactor);//R-STICK UP-DOWN "--1000-1000"  %40 of 1000 us
                     int pov = Convert.ToInt32(datas.PointOfViewControllers[0].ToString());
                     controllerData[6] = Convert.ToInt32(datas.Buttons.GetValue(1)); //SQUARE
                     controllerData[7] = Convert.ToInt32(datas.Buttons.GetValue(4)); //O
@@ -161,7 +161,7 @@ namespace ROV_GCS_V3
                     controllerData[9] = Convert.ToInt32(datas.Buttons.GetValue(5)); //Triangle
                     controllerData[14] = Convert.ToInt32(datas.Buttons.GetValue(3)); //R3
                     controllerData[15] = Convert.ToInt32(datas.Buttons.GetValue(2)); //L3
-                    controllerData[4] = mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -400, 400); //R2 L2 --Yaw value %20 of 1000 us
+                    controllerData[4] = (int)((float)mapInt(Int32.Parse(datas.X.ToString()), 0, 65534, -400, 400, 1) / scaleFactor); //R2 L2 --Yaw value %20 of 1000 us
                     if (pov == 0)
                     {
                         controllerData[10] = 1;
@@ -226,9 +226,11 @@ namespace ROV_GCS_V3
                         controllerData[11] = 0;
                         controllerData[13] = 1;
                     }
+                    /*
                     var datass = joystick.GetBufferedData();
                     foreach (var dt in datass)
                         Console.WriteLine(dt);
+                    */
                 }
                 
                 form.controllerData = controllerData;

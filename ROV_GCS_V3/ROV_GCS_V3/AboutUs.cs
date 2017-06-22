@@ -16,7 +16,7 @@ namespace ROV_GCS_V3
         {
             InitializeComponent();
         }
-        public string aboutUsText = "HELLO WORLD! \n Enter Text Here!";
+        public string aboutUsText = "           This Software is written by Sencer YAZICI, as a part of software team in ITUROV. \n All the information about this sofware is open source on the github , 'www.github.com/iturov'. \n           For further contact: 'sencer_yazici98@hotmail.com or senceryazici@gmail.com'";
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -28,6 +28,7 @@ namespace ROV_GCS_V3
             pictureBox1.Location = new Point((this.Width - pictureBox1.Width) / 2, 0);
             aboutUsLabel.Text = aboutUsText;
             aboutUsLabel.Location = new Point((this.Size.Width - aboutUsLabel.Size.Width) / 2, aboutUsLabel.Location.Y);
+            this.TopMost = true;
         }
     }
 }

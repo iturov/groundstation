@@ -22,7 +22,7 @@ namespace ROV_GCS_V3
         // static TcpListener server;
         public static TcpListener server;
         static IPAddress localAddr = IPAddress.Any;
-        public static String data = null;
+        public static string data = null;
         static Byte[] bytes = new Byte[256];
         public static TcpClient client;
         System.Timers.Timer timer = new System.Timers.Timer();

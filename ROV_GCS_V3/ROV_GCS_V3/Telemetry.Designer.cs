@@ -32,25 +32,22 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Telemetry));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Telemetry));
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.refresher = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.progressBar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.progressBar3 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuDropdown2 = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuDropdown3 = new Bunifu.Framework.UI.BunifuDropdown();
-            this.dockbutton = new System.Windows.Forms.Button();
             this.closebutton = new System.Windows.Forms.Button();
+            this.dockbutton = new System.Windows.Forms.Button();
+            this.progressBar3 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.progressBar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.progressBar1 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
@@ -95,50 +92,6 @@
             this.refresher.Interval = 70;
             this.refresher.Tick += new System.EventHandler(this.refresher_Tick);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.animated = false;
-            this.progressBar1.animationIterval = 5;
-            this.progressBar1.animationSpeed = 300;
-            this.progressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar1.BackgroundImage")));
-            this.progressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.progressBar1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar1.LabelVisible = true;
-            this.progressBar1.LineProgressThickness = 3;
-            this.progressBar1.LineThickness = 2;
-            this.progressBar1.Location = new System.Drawing.Point(460, 0);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.progressBar1.MaxValue = 100;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
-            this.progressBar1.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar1.Size = new System.Drawing.Size(110, 110);
-            this.progressBar1.TabIndex = 2;
-            this.progressBar1.Value = 50;
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.animated = false;
-            this.progressBar2.animationIterval = 5;
-            this.progressBar2.animationSpeed = 300;
-            this.progressBar2.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar2.BackgroundImage")));
-            this.progressBar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.progressBar2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar2.LabelVisible = true;
-            this.progressBar2.LineProgressThickness = 3;
-            this.progressBar2.LineThickness = 2;
-            this.progressBar2.Location = new System.Drawing.Point(460, 120);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.progressBar2.MaxValue = 100;
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
-            this.progressBar2.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar2.Size = new System.Drawing.Size(110, 110);
-            this.progressBar2.TabIndex = 4;
-            this.progressBar2.Value = 50;
-            // 
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
@@ -169,28 +122,6 @@
             this.chart2.Size = new System.Drawing.Size(460, 120);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
-            // 
-            // progressBar3
-            // 
-            this.progressBar3.animated = false;
-            this.progressBar3.animationIterval = 5;
-            this.progressBar3.animationSpeed = 300;
-            this.progressBar3.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar3.BackgroundImage")));
-            this.progressBar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.progressBar3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar3.LabelVisible = true;
-            this.progressBar3.LineProgressThickness = 3;
-            this.progressBar3.LineThickness = 2;
-            this.progressBar3.Location = new System.Drawing.Point(460, 240);
-            this.progressBar3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.progressBar3.MaxValue = 100;
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
-            this.progressBar3.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar3.Size = new System.Drawing.Size(110, 110);
-            this.progressBar3.TabIndex = 6;
-            this.progressBar3.Value = 50;
             // 
             // chart3
             // 
@@ -223,50 +154,22 @@
             this.chart3.TabIndex = 5;
             this.chart3.Text = "chart3";
             // 
-            // bunifuDropdown1
+            // closebutton
             // 
-            this.bunifuDropdown1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown1.BorderRadius = 3;
-            this.bunifuDropdown1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown1.Items = new string[0];
-            this.bunifuDropdown1.Location = new System.Drawing.Point(570, 0);
-            this.bunifuDropdown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuDropdown1.Name = "bunifuDropdown1";
-            this.bunifuDropdown1.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown1.selectedIndex = -1;
-            this.bunifuDropdown1.Size = new System.Drawing.Size(217, 35);
-            this.bunifuDropdown1.TabIndex = 7;
-            // 
-            // bunifuDropdown2
-            // 
-            this.bunifuDropdown2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown2.BorderRadius = 3;
-            this.bunifuDropdown2.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown2.Items = new string[0];
-            this.bunifuDropdown2.Location = new System.Drawing.Point(570, 120);
-            this.bunifuDropdown2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuDropdown2.Name = "bunifuDropdown2";
-            this.bunifuDropdown2.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuDropdown2.onHoverColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown2.selectedIndex = -1;
-            this.bunifuDropdown2.Size = new System.Drawing.Size(217, 35);
-            this.bunifuDropdown2.TabIndex = 8;
-            // 
-            // bunifuDropdown3
-            // 
-            this.bunifuDropdown3.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown3.BorderRadius = 3;
-            this.bunifuDropdown3.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown3.Items = new string[0];
-            this.bunifuDropdown3.Location = new System.Drawing.Point(570, 240);
-            this.bunifuDropdown3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuDropdown3.Name = "bunifuDropdown3";
-            this.bunifuDropdown3.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuDropdown3.onHoverColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown3.selectedIndex = -1;
-            this.bunifuDropdown3.Size = new System.Drawing.Size(217, 35);
-            this.bunifuDropdown3.TabIndex = 9;
+            this.closebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.closebutton.FlatAppearance.BorderSize = 0;
+            this.closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closebutton.ForeColor = System.Drawing.Color.White;
+            this.closebutton.Image = ((System.Drawing.Image)(resources.GetObject("closebutton.Image")));
+            this.closebutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.closebutton.Location = new System.Drawing.Point(687, 320);
+            this.closebutton.Name = "closebutton";
+            this.closebutton.Size = new System.Drawing.Size(100, 40);
+            this.closebutton.TabIndex = 13;
+            this.closebutton.Text = "    Minimize!";
+            this.closebutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.closebutton.UseVisualStyleBackColor = false;
+            this.closebutton.Click += new System.EventHandler(this.closebutton_Click);
             // 
             // dockbutton
             // 
@@ -285,22 +188,71 @@
             this.dockbutton.UseVisualStyleBackColor = false;
             this.dockbutton.Click += new System.EventHandler(this.dockbutton_Click_1);
             // 
-            // closebutton
+            // progressBar3
             // 
-            this.closebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.closebutton.FlatAppearance.BorderSize = 0;
-            this.closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closebutton.ForeColor = System.Drawing.Color.White;
-            this.closebutton.Image = ((System.Drawing.Image)(resources.GetObject("closebutton.Image")));
-            this.closebutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.closebutton.Location = new System.Drawing.Point(687, 320);
-            this.closebutton.Name = "closebutton";
-            this.closebutton.Size = new System.Drawing.Size(100, 40);
-            this.closebutton.TabIndex = 13;
-            this.closebutton.Text = "    Minimize!";
-            this.closebutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.closebutton.UseVisualStyleBackColor = false;
-            this.closebutton.Click += new System.EventHandler(this.closebutton_Click);
+            this.progressBar3.animated = false;
+            this.progressBar3.animationIterval = 5;
+            this.progressBar3.animationSpeed = 300;
+            this.progressBar3.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar3.BackgroundImage")));
+            this.progressBar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.progressBar3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar3.LabelVisible = true;
+            this.progressBar3.LineProgressThickness = 3;
+            this.progressBar3.LineThickness = 2;
+            this.progressBar3.Location = new System.Drawing.Point(460, 240);
+            this.progressBar3.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar3.MaxValue = 100;
+            this.progressBar3.Name = "progressBar3";
+            this.progressBar3.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
+            this.progressBar3.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar3.Size = new System.Drawing.Size(110, 110);
+            this.progressBar3.TabIndex = 6;
+            this.progressBar3.Value = 50;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.animated = false;
+            this.progressBar2.animationIterval = 5;
+            this.progressBar2.animationSpeed = 300;
+            this.progressBar2.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar2.BackgroundImage")));
+            this.progressBar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.progressBar2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar2.LabelVisible = true;
+            this.progressBar2.LineProgressThickness = 3;
+            this.progressBar2.LineThickness = 2;
+            this.progressBar2.Location = new System.Drawing.Point(460, 120);
+            this.progressBar2.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar2.MaxValue = 100;
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
+            this.progressBar2.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar2.Size = new System.Drawing.Size(110, 110);
+            this.progressBar2.TabIndex = 4;
+            this.progressBar2.Value = 50;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.animated = false;
+            this.progressBar1.animationIterval = 5;
+            this.progressBar1.animationSpeed = 300;
+            this.progressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progressBar1.BackgroundImage")));
+            this.progressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.progressBar1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar1.LabelVisible = true;
+            this.progressBar1.LineProgressThickness = 3;
+            this.progressBar1.LineThickness = 2;
+            this.progressBar1.Location = new System.Drawing.Point(460, 0);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar1.MaxValue = 100;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.ProgressBackColor = System.Drawing.Color.WhiteSmoke;
+            this.progressBar1.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar1.Size = new System.Drawing.Size(110, 110);
+            this.progressBar1.TabIndex = 2;
+            this.progressBar1.Value = 50;
             // 
             // Telemetry
             // 
@@ -310,9 +262,6 @@
             this.ClientSize = new System.Drawing.Size(787, 360);
             this.Controls.Add(this.closebutton);
             this.Controls.Add(this.dockbutton);
-            this.Controls.Add(this.bunifuDropdown3);
-            this.Controls.Add(this.bunifuDropdown2);
-            this.Controls.Add(this.bunifuDropdown1);
             this.Controls.Add(this.progressBar3);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.progressBar2);
@@ -322,6 +271,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Telemetry";
             this.Text = "Telemetry";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Telemetry_FormClosing);
             this.Load += new System.EventHandler(this.Telemetry_Load);
             this.LocationChanged += new System.EventHandler(this.Telemetry_LocationChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Telemetry_MouseDown);
@@ -341,9 +291,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private Bunifu.Framework.UI.BunifuCircleProgressbar progressBar3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown2;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown3;
         public System.Windows.Forms.Button dockbutton;
         public System.Windows.Forms.Button closebutton;
     }

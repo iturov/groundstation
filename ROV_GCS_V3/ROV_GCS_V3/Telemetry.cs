@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
 using rtChart;
+using System.IO;
 
 namespace ROV_GCS_V3
 {
@@ -78,15 +79,71 @@ namespace ROV_GCS_V3
         public Telemetry()
         {
             InitializeComponent();
-            graph1 = new kayChart(chart1, 60);
-            graph2 = new kayChart(chart2, 60);
-            graph3 = new kayChart(chart3, 60);
+
+            graph[0] = new kayChart(chart1, 60);
+            graph[1] = new kayChart(chart2, 60);
+            graph[2] = new kayChart(chart3, 60);
+            addListItems();
+            for (int i = 0; i < dropdown.Length; i++)
+            {
+                strm[i] = new StreamWriter("text" + i.ToString() + ".txt");
+
+                chechBoxState[i] = false;
+                ch[i] = new CheckBox();
+                this.Controls.Add(ch[i]);
+                ch[i].Location = new Point(570, i * 120 + 40);
+                ch[i].Name = i.ToString();
+                ch[i].Text = "Start Logging";
+                ch[i].CheckedChanged += checkBoxCheckedEvent;
+                ch[i].ForeColor = System.Drawing.Color.White;
+
+                dropdown[i] = new Bunifu.Framework.UI.BunifuDropdown();
+                this.Controls.Add(dropdown[i]);
+                dropdown[i].Size = new Size(217, 35);
+                dropdown[i].Location = new Point(570, i * 120);
+                dropdown[i].Name = i.ToString();
+                dropdown[i].onHoverColor = System.Drawing.Color.DarkGray;
+                dropdown[i].NomalColor = System.Drawing.Color.Gray;
+                dropdown[i].onItemSelected += selectedEvent;
+                for (int k = 0; k < dropList.Length; k++)
+                {
+                    dropdown[i].AddItem(dropList[k]);
+                }
+                dropdown[i].selectedIndex = 0;
+                
+            }
+        }
+        Bunifu.Framework.UI.BunifuDropdown[] dropdown = new Bunifu.Framework.UI.BunifuDropdown[3];
+        kayChart[] graph = new kayChart[3];
+        CheckBox[] ch = new CheckBox[3];
+        bool[] selectedState = new bool[3];
+        int[] telemetric = new int[16];
+        int[] telemetricRange = {350 / 3, 400 / 3, 400 / 3, 200 / 3, 1200, 500, 50, 2000, 100, 100, 100, 100, 100, 100, 100, 100};
+        int[] selectedIndexList = new int[3];
+        string[] dropList = new string[16];
+        bool[] chechBoxState = new bool[3];
+        StreamWriter[] strm = new StreamWriter[3];
+
+        private int constrain(int value, int min, int max)
+        {
+            if (value > max) value = max;
+            if (value < min) value = min;
+            return value;
         }
 
-        kayChart graph1;
-        kayChart graph2;
-        kayChart graph3;
-        int[] telemetric = new int[16];
+        private void checkBoxCheckedEvent(object sender, EventArgs e)
+        {
+            CheckBox ch = (CheckBox)sender;
+            int stateNumber = Int16.Parse(ch.Name);
+            chechBoxState[stateNumber] = !chechBoxState[stateNumber];
+        }
+
+        private void selectedEvent(object sender, EventArgs e)
+        {
+            Bunifu.Framework.UI.BunifuDropdown drop = (Bunifu.Framework.UI.BunifuDropdown)sender;
+            selectedState[Int16.Parse(drop.Name)] = true;
+            if (!chechBoxState[Int16.Parse(drop.Name)]) strm[Int16.Parse(drop.Name)].WriteLine("END OF STREAM");
+        }
 
         private static int mapInt(int value, int currentMin, int currentMax, int targetMin, int targetMax, int reverse = 0)
         {
@@ -115,34 +172,75 @@ namespace ROV_GCS_V3
             this.TopMost = true;
         }
 
-        private void chart1_combo1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void refresher_Tick(object sender, EventArgs e)
         {
             if (Variables.controllerStatus)
             {
                 updateVariables();
 
-                graph1.TriggeredUpdate(Int32.Parse(Vehicle.dataSent[0]));
-                progressBar1.Value = mapInt(Int32.Parse(Vehicle.dataSent[0]), -350, 350, -100, 100);
+                for (int i = 0; i < graph.Length; i++)
+                {
+                    selectedIndexList[i] = 0;
+                    if (selectedState[i]) selectedIndexList[i] = dropdown[i].selectedIndex;
+                    int k = telemetric[selectedIndexList[i]];
+                    graph[i].TriggeredUpdate(k);
 
-                graph2.TriggeredUpdate(Controller.controllerData[2]);
-                progressBar2.Value = mapInt(Controller.controllerData[2], -150, 150, -100, 100);
-
-                graph3.TriggeredUpdate(Controller.controllerData[4]);
-                progressBar3.Value = mapInt(Controller.controllerData[4], -400, 400, -100, 100);
+                    for (int c = 0; c < 3; c++)
+                    {
+                        if (chechBoxState[c]) strm[c].WriteLine(k.ToString());
+                        //else strm[c].WriteLine("END OF STREAM");
+                    }
+                }
+                for (int i = 0; i < telemetric.Length; i++)
+                {
+                    telemetric[i] = constrain(telemetric[i], -telemetricRange[i], telemetricRange[i]);
+                }
+                
+                progressBar1.Value = mapInt(telemetric[selectedIndexList[0]], -telemetricRange[selectedIndexList[0]], telemetricRange[selectedIndexList[0]], -100, 100);
+                progressBar2.Value = mapInt(telemetric[selectedIndexList[1]], -telemetricRange[selectedIndexList[1]], telemetricRange[selectedIndexList[1]], -100, 100);
+                progressBar3.Value = mapInt(telemetric[selectedIndexList[2]], -telemetricRange[selectedIndexList[2]], telemetricRange[selectedIndexList[2]], -100, 100);
             }
         }
         
+        private void addListItems()
+        {
+            dropList[0] = "Throttle";
+            dropList[1] = "Y-Axis";
+            dropList[2] = "X-Axis";
+            dropList[3] = "Yaw";
+            dropList[4] = "Pressure";
+            dropList[5] = "Depth";
+            dropList[6] = "Temperature";
+            dropList[7] = "Arduino";
+            dropList[8] = "Throttle";
+            dropList[9] = "Throttle";
+            dropList[10] = "Throttle";
+            dropList[11] = "Throttle";
+            dropList[12] = "Throttle";
+            dropList[13] = "Throttle";
+            dropList[14] = "Throttle";
+            dropList[15] = "Throttle";
+        }
+
         private void updateVariables()
         {
-            telemetric[0] = Int32.Parse(Vehicle.dataSent[0]); // THROTTLE
-            telemetric[1] = Int32.Parse(Vehicle.dataSent[0]); // 
-            telemetric[2] = Int32.Parse(Vehicle.dataSent[0]);
-            telemetric[3] = Int32.Parse(Vehicle.dataSent[0]);
-            telemetric[4] = Int32.Parse(Vehicle.dataSent[0]);
+            for (int i = 0; i < telemetric.Length; i++)
+            {
+                telemetric[i] = 0;
+            }
+            telemetric[0] = Controller.controllerData[3]; // THROTTLE
+            telemetric[1] = Controller.controllerData[5]; // foward/back
+            telemetric[2] = Controller.controllerData[4]; // left/Right
+            telemetric[3] = Controller.controllerData[16]; // yaw
+            if (!(Vehicle.dataReceived == null))
+            {
+                if (!(Vehicle.dataReceived[0] == null))  telemetric[4] = (int)float.Parse(Vehicle.dataReceived[0]); // pressure
+                if (!(Vehicle.dataReceived[1] == null))  telemetric[5] = (int)(float.Parse(Vehicle.dataReceived[1]) * 100); // depth
+                if (!(Vehicle.dataReceived[2] == null))  telemetric[6] = (int)float.Parse(Vehicle.dataReceived[2]); // temperature
+                try { if (!(Vehicle.dataReceived[3] == null)) telemetric[7] = (int)float.Parse(Vehicle.dataReceived[3]); }// arduino
+                catch (Exception parseEcxeption) { MessageBox.Show(parseEcxeption.ToString()); }
+                //arduino data can be string, converting to float may fail
+            }
             //...
         }
 
@@ -181,6 +279,11 @@ namespace ROV_GCS_V3
         private void closebutton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Telemetry_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }
